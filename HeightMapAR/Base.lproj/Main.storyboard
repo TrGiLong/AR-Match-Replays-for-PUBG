@@ -57,5 +57,34 @@
             </objects>
             <point key="canvasLocation" x="37.681159420289859" y="18.75"/>
         </scene>
+        <!--SimpleVC-->
+        <scene sceneID="MYR-4y-rtv">
+            <objects>
+                <viewController id="TkF-fE-f6x" customClass="SimpleVC" customModule="HeightMapAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MhL-pj-Xyh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QwD-NT-8aw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </sceneKitView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7jH-Ik-nSx" firstAttribute="trailing" secondItem="QwD-NT-8aw" secondAttribute="trailing" id="2u7-F9-UUU"/>
+                            <constraint firstItem="QwD-NT-8aw" firstAttribute="leading" secondItem="7jH-Ik-nSx" secondAttribute="leading" id="BG6-4J-n3e"/>
+                            <constraint firstItem="7jH-Ik-nSx" firstAttribute="bottom" secondItem="QwD-NT-8aw" secondAttribute="bottom" id="Rhe-ub-LTl"/>
+                            <constraint firstItem="QwD-NT-8aw" firstAttribute="top" secondItem="7jH-Ik-nSx" secondAttribute="top" id="dEZ-7f-pjh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7jH-Ik-nSx"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="QwD-NT-8aw" id="FEO-ZJ-bXQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zcR-zf-1BX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947" y="-16"/>
+        </scene>
     </scenes>
 </document>

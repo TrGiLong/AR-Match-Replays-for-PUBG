@@ -13,11 +13,17 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var arView: ARSCNView!
     
+    var mapObject : SCNNode!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        parseImage()
+        
         arView.delegate = self
         
+        //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addMapObject(withGestureRecognizer:)))
+        //arView.addGestureRecognizer(tapGestureRecognizer)
 
         // Do any additional setup after loading the view.
     }
@@ -46,57 +52,158 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //parseImage()
     }
     
+    var planes = [ARPlaneAnchor: SCNPlane]()
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        // 1
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        if (planes.count > 1) {
+            return
+        }
+        // 2
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        let plane = SCNPlane(width: width, height: height)
+        
+        planes[planeAnchor] = plane
+        
+        // 3
+        plane.materials.first?.diffuse.contents = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.50)
+        
+        // 4
+        let planeNode = SCNNode(geometry: plane)
+        
+        // 5
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x,y,z)
+        planeNode.eulerAngles.x = -.pi / 2
+        
+        
+        let clone = mapObject.clone()
+        clone.eulerAngles.x = .pi / 2
+        clone.position = SCNVector3(-planeAnchor.extent.x/2, -planeAnchor.extent.y/2, 0.1)
+        planeNode.addChildNode(clone)
+        
+        var scaleFactor : CGFloat = 0
+        
+        if (width < height) {
+            let widthClone = clone.boundingBox.max.x - clone.boundingBox.min.x
+            scaleFactor = width/CGFloat(widthClone)
+        } else {
+            let heightClone = clone.boundingBox.max.z - clone.boundingBox.min.z
+            scaleFactor = height/CGFloat(heightClone)
+        }
+        
+        print(scaleFactor)
+        clone.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
+        // 6
+        node.addChildNode(planeNode)
+    }
+    
+
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as?  ARPlaneAnchor,
+            let planeNode = node.childNodes.first,
+            let plane = planeNode.geometry as? SCNPlane
+            else { return }
+        
+        // 2
+//        let width = CGFloat(planeAnchor.extent.x)
+//        let height = CGFloat(planeAnchor.extent.z)
+//        plane.width = width
+//        plane.height = height
+        
+        // 3
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x, y, z)
+        
+//        let clone = planeNode.childNode(withName: "Map", recursively: false)!
+//        let widthClone = clone.boundingBox.max.x - clone.boundingBox.min.x
+//        let heightClone = clone.boundingBox.max.y - clone.boundingBox.min.y
+//        let sClone = widthClone * heightClone
+//        let sPlane = width * height
+//        let scaleFactor = CGFloat(sClone)/sPlane
+//
+//        clone.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
+    }
+    
     func parseImage() {
         
-
+        let image = UIImage(named: "2.png")!
         
         var sources : [SCNVector3] = [];
-        let image = UIImage(named: "1.png")!
-        print(Int(image.size.width * image.scale))
-        
         var indices: [UInt32] = []
+        var uvList:[CGPoint] = []
 
         guard let cgImage = image.cgImage, let pixelData = cgImage.dataProvider?.data else { return }
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         let bytesPerPixel = cgImage.bitsPerPixel / 8
         
-        let delta = 100
+        let delta = 16
+        let k : Float = 1
+        
+        let minHeight : Float = 0.042
+        
+        let imageWidth = Int(image.size.width)
         
         for x in stride(from: 0, through: Int(image.size.width * image.scale), by: delta) {
             for y in stride(from: 0, through: Int(image.size.height * image.scale), by: delta) {
-                // adjust the pixels to constrain to be within the width/height of the image
-                let y = y > 0 ? y - 1 : 0
-                let x = x > 0 ? x - 1 : 0
-                let pixelInfo = ((Int(image.size.width) * Int(y)) + Int(x)) * bytesPerPixel
+                let pixelInfo = ((imageWidth * y) + x) * bytesPerPixel
                 
-                let height = (Float(data[pixelInfo])/Float(255.0))
-                let xPos = Float(Float(x)/Float(image.size.width * image.scale))
-                let yPos = Float(Float(y)/Float(image.size.height * image.scale))
+                //let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
+                let g = CGFloat(data[pixelInfo+1]) / 255.0
+                //let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
+                //let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+            
+                var height = Float(g)/(k*12)
+                if (height < minHeight) {
+                    height = minHeight
+                }
                 
-                sources.append(SCNVector3(x: xPos, y: height+0.05, z: yPos));
-
+                let xPos = (Float(x)/Float(image.size.width * image.scale))/k
+                let yPos = (Float(y)/Float(image.size.height * image.scale))/k
+    
+                
+                sources.append(SCNVector3(x: xPos, y: height, z: yPos));
+                uvList.append(CGPoint(x: CGFloat(xPos), y: CGFloat(yPos)))
             }
         }
         
-        let yLength = (Int(image.size.height * image.scale)/delta)+1
-        let xLength = (Int(image.size.width * image.scale)/delta)+1
-        for y in 0..<yLength-1 {
-            indices.append(UInt32(yLength*y))
+        let yLength = (UInt32(image.size.height * image.scale)/UInt32(delta))+1
+        let xLength = (UInt32(image.size.width * image.scale)/UInt32(delta))+1
+        for y in 0..<UInt32(yLength-1) {
+            indices.append(yLength*y)
             
             for x in 0..<xLength {
-                indices.append(UInt32(yLength*y)+UInt32(x))
-                indices.append(UInt32(yLength*(y+1))+UInt32(x))
+                indices.append( (yLength*y)+x )
+                indices.append( (yLength*(y+1))+x )
             }
             
             if y < yLength-2 {
-                indices.append(UInt32(yLength*(y+1))+UInt32(xLength-1))
+                indices.append( (yLength*(y+1)) + (xLength-1) )
             }
             
         }
         
-        let node = SCNNode(geometry: SCNGeometry(sources: [SCNGeometrySource(vertices: sources)], elements: [SCNGeometryElement(indices: indices, primitiveType: .triangleStrip)]))
+        let geometrySource = SCNGeometrySource(vertices: sources)
+        let uvSource = SCNGeometrySource(textureCoordinates: uvList)
+        let indicies = SCNGeometryElement(indices: indices, primitiveType: .triangleStrip)
         
-        arView.scene.rootNode.addChildNode(node);
+        let node = SCNNode(geometry: SCNGeometry(sources: [geometrySource,uvSource], elements: [indicies]))
+        
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "2a.png")
+        material.isDoubleSided = true
+        node.geometry?.firstMaterial = material
+        node.name = "Map"
+        
+//        arView.scene.rootNode.addChildNode(node)
+        mapObject = node;
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,25 +214,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func reset(_ sender: Any) {
-        arView.session.pause()
-        arView.scene.rootNode.enumerateChildNodes { (node, stop) in
-            node.removeFromParentNode()
-        }
         
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.isLightEstimationEnabled = true;
-        
-        arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-        
-        let light = SCNLight()
-        light.type = .omni
-        let lightNode = SCNNode()
-        lightNode.light = light
-        arView.pointOfView?.addChildNode(lightNode)
     }
     
     @IBAction func loadImage(_ sender: Any) {
-        parseImage()
+        
+    }
+    
+    @objc func addMapObject(withGestureRecognizer recognizer: UIGestureRecognizer) {
+        let tapLocation = recognizer.location(in: arView)
+        let hitTestResults = arView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        
+        guard let hitTestResult = hitTestResults.first else { return }
+        let translation = hitTestResult.worldTransform.translation
+        let x = translation.x
+        let y = translation.y
+        let z = translation.z
+        
+        let clone = mapObject.clone()
+        clone.position = SCNVector3(x,y,z)
+
+        arView.scene.rootNode.addChildNode(mapObject)
     }
 }
 

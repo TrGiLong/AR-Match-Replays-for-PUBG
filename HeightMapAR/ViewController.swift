@@ -10,7 +10,14 @@ import UIKit
 
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+struct PhysicsBody {
+    
+    static let Map = 0x1 << 1
+    static let Airdrop = 0x1 << 2
+    
+}
+
+class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SCNPhysicsContactDelegate{
     @IBOutlet weak var arView: ARSCNView!
     
     var mapObject : SCNNode!
@@ -20,10 +27,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         parseImage()
         
-        arView.delegate = self
+        arView.scene.physicsWorld.gravity = SCNVector3(0, -0.1, 0)
+        arView.scene.physicsWorld.contactDelegate = self
         
-        //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addMapObject(withGestureRecognizer:)))
-        //arView.addGestureRecognizer(tapGestureRecognizer)
+        arView.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -38,10 +45,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         arView.showsStatistics = true
         arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
-                                  ARSCNDebugOptions.showWorldOrigin]
+                                  ARSCNDebugOptions.showWorldOrigin,
+        .showPhysicsShapes]
         
         // Run the view's session
         arView.session.run(configuration)
+        arView.session.delegate = self
         
         let light = SCNLight()
         light.type = .omni
@@ -51,87 +60,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         //parseImage()
     }
-    
-    var planes = [ARPlaneAnchor: SCNPlane]()
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        // 1
-        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-        
-        if (planes.count > 1) {
-            return
-        }
-        // 2
-        let width = CGFloat(planeAnchor.extent.x)
-        let height = CGFloat(planeAnchor.extent.z)
-        let plane = SCNPlane(width: width, height: height)
-        
-        planes[planeAnchor] = plane
-        
-        // 3
-        plane.materials.first?.diffuse.contents = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.50)
-        
-        // 4
-        let planeNode = SCNNode(geometry: plane)
-        
-        // 5
-        let x = CGFloat(planeAnchor.center.x)
-        let y = CGFloat(planeAnchor.center.y)
-        let z = CGFloat(planeAnchor.center.z)
-        planeNode.position = SCNVector3(x,y,z)
-        planeNode.eulerAngles.x = -.pi / 2
-        
-        
-        let clone = mapObject.clone()
-        clone.eulerAngles.x = .pi / 2
-        clone.position = SCNVector3(-planeAnchor.extent.x/2, -planeAnchor.extent.y/2, 0.1)
-        planeNode.addChildNode(clone)
-        
-        var scaleFactor : CGFloat = 0
-        
-        if (width < height) {
-            let widthClone = clone.boundingBox.max.x - clone.boundingBox.min.x
-            scaleFactor = width/CGFloat(widthClone)
-        } else {
-            let heightClone = clone.boundingBox.max.z - clone.boundingBox.min.z
-            scaleFactor = height/CGFloat(heightClone)
-        }
-        
-        print(scaleFactor)
-        clone.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-        // 6
-        node.addChildNode(planeNode)
-    }
-    
 
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let planeAnchor = anchor as?  ARPlaneAnchor,
-            let planeNode = node.childNodes.first,
-            let plane = planeNode.geometry as? SCNPlane
-            else { return }
-        
-        // 2
-//        let width = CGFloat(planeAnchor.extent.x)
-//        let height = CGFloat(planeAnchor.extent.z)
-//        plane.width = width
-//        plane.height = height
-        
-        // 3
-        let x = CGFloat(planeAnchor.center.x)
-        let y = CGFloat(planeAnchor.center.y)
-        let z = CGFloat(planeAnchor.center.z)
-        planeNode.position = SCNVector3(x, y, z)
-        
-//        let clone = planeNode.childNode(withName: "Map", recursively: false)!
-//        let widthClone = clone.boundingBox.max.x - clone.boundingBox.min.x
-//        let heightClone = clone.boundingBox.max.y - clone.boundingBox.min.y
-//        let sClone = widthClone * heightClone
-//        let sPlane = width * height
-//        let scaleFactor = CGFloat(sClone)/sPlane
-//
-//        clone.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-    }
-    
     func parseImage() {
         
         let image = UIImage(named: "2.png")!
@@ -194,7 +123,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let uvSource = SCNGeometrySource(textureCoordinates: uvList)
         let indicies = SCNGeometryElement(indices: indices, primitiveType: .triangleStrip)
         
-        let node = SCNNode(geometry: SCNGeometry(sources: [geometrySource,uvSource], elements: [indicies]))
+        let geometry = SCNGeometry(sources: [geometrySource,uvSource], elements: [indicies])
+        let node = SCNNode(geometry: geometry)
         
         let material = SCNMaterial()
         material.diffuse.contents = UIImage(named: "2a.png")
@@ -204,6 +134,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
 //        arView.scene.rootNode.addChildNode(node)
         mapObject = node;
+
+        let shape = SCNPhysicsShape(node: mapObject, options:[SCNPhysicsShape.Option.type: SCNPhysicsShape.ShapeType.concavePolyhedron])
+        let physics = SCNPhysicsBody(type: .static, shape: shape)
+        physics.categoryBitMask = PhysicsBody.Map
+        physics.contactTestBitMask = PhysicsBody.Airdrop
+        physics.collisionBitMask = PhysicsBody.Airdrop
+        mapObject.physicsBody = physics
+        
+        mapObject.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -218,24 +157,56 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func loadImage(_ sender: Any) {
+        guard let currentTransform = currentTransform else {
+            return
+        }
         
-    }
-    
-    @objc func addMapObject(withGestureRecognizer recognizer: UIGestureRecognizer) {
-        let tapLocation = recognizer.location(in: arView)
-        let hitTestResults = arView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        let width = mapObject.boundingBox.max.x - mapObject.boundingBox.min.x
+        let height = mapObject.boundingBox.max.z - mapObject.boundingBox.min.z
         
-        guard let hitTestResult = hitTestResults.first else { return }
-        let translation = hitTestResult.worldTransform.translation
-        let x = translation.x
-        let y = translation.y
-        let z = translation.z
-        
-        let clone = mapObject.clone()
-        clone.position = SCNVector3(x,y,z)
-
+        mapObject.removeFromParentNode()
+        mapObject.position = SCNVector3(currentTransform[3][0]-width/4, currentTransform[3][1], currentTransform[3][2]-height/4)
         arView.scene.rootNode.addChildNode(mapObject)
     }
+    
+    var currentTransform : simd_float4x4?
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        // Do something with the new transform
+        currentTransform = frame.camera.transform
+
+    }
+    
+    @IBAction func drop(_ sender: Any) {
+        guard let currentTransform = currentTransform else {
+            return
+        }
+        
+        let cube = SCNScene(named: "airdrop.dae")
+        let cubeNode = SCNNode()
+        
+        guard let cubeNodes = cube?.rootNode.childNodes else {
+            return
+        }
+        
+        for n in cubeNodes {
+            cubeNode.addChildNode(n)
+        }
+        
+        let shape = SCNPhysicsShape(node: cubeNode, options: [:])
+        let physhic = SCNPhysicsBody(type: .dynamic, shape: shape)
+        physhic.categoryBitMask = PhysicsBody.Airdrop
+        physhic.contactTestBitMask = PhysicsBody.Map
+        physhic.collisionBitMask = PhysicsBody.Map
+        cubeNode.physicsBody = physhic
+        
+        
+        cubeNode.scale = SCNVector3(0.005, 0.005, 0.005)
+        cubeNode.position = SCNVector3(currentTransform[3][0], currentTransform[3][1], currentTransform[3][2])
+        arView.scene.rootNode.addChildNode(cubeNode)
+        
+    }
+
+    
 }
 
 extension float4x4 {

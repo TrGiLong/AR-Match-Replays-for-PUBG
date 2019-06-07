@@ -29,10 +29,20 @@
                                             <action selector="reset:" destination="BYZ-38-t0r" id="fxl-im-6I1"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Load Image" id="rrU-J2-Pox">
+                                    <barButtonItem title="build" id="rrU-J2-Pox">
                                         <connections>
                                             <action selector="loadImage:" destination="BYZ-38-t0r" id="fRg-cl-L8l"/>
                                         </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="3dB-zp-Kuv">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xxO-Wb-htQ">
+                                            <rect key="frame" x="131" y="12" width="49" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="airdrop"/>
+                                            <connections>
+                                                <action selector="drop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j8G-qw-EW8"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
                                 </items>
                             </toolbar>

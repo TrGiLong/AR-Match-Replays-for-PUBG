@@ -18,7 +18,6 @@
 		169C527822A84228005C5B20 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169C527722A84228005C5B20 /* ARKit.framework */; };
 		169C527A22A84463005C5B20 /* MapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C527922A84463005C5B20 /* MapNode.swift */; };
 		169C527C22A84519005C5B20 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 169C527B22A84519005C5B20 /* 1.png */; };
-		169C527E22A84626005C5B20 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C527D22A84626005C5B20 /* UIImage.swift */; };
 		169C528022A85A94005C5B20 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 169C527F22A85A94005C5B20 /* 2.png */; };
 		16BFA90F22A93D3800E8D824 /* 2a.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA90E22A93D3700E8D824 /* 2a.png */; };
 		16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA92F22A9BDF500E8D824 /* airdrop.dae */; };
@@ -44,7 +43,6 @@
 		169C527722A84228005C5B20 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		169C527922A84463005C5B20 /* MapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNode.swift; sourceTree = "<group>"; };
 		169C527B22A84519005C5B20 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		169C527D22A84626005C5B20 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		169C527F22A85A94005C5B20 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		16BFA90E22A93D3700E8D824 /* 2a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2a.png; sourceTree = "<group>"; };
 		16BFA92F22A9BDF500E8D824 /* airdrop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = airdrop.dae; sourceTree = "<group>"; };
@@ -81,6 +79,31 @@
 			path = PubgAPI;
 			sourceTree = "<group>";
 		};
+		168558F922ABFD4100D68B3C /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				169C525822A81FD5005C5B20 /* ViewController.swift */,
+				169C527922A84463005C5B20 /* MapNode.swift */,
+				16ECE2E722AA80190060583E /* Spawn.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		168558FA22ABFD5400D68B3C /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				16ECE2EB22AA86040060583E /* sports-car.png */,
+				16ECE2ED22AA86070060583E /* big-anchor.png */,
+				16ECE2E522AA7DA80060583E /* spawns.json */,
+				16BFA92F22A9BDF500E8D824 /* airdrop.dae */,
+				169C527B22A84519005C5B20 /* 1.png */,
+				169C527F22A85A94005C5B20 /* 2.png */,
+				16BFA90E22A93D3700E8D824 /* 2a.png */,
+				16ECE2E922AA84C60060583E /* CarTag.scn */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
 		169C524A22A81FD5005C5B20 = {
 			isa = PBXGroup;
 			children = (
@@ -102,24 +125,14 @@
 		169C525522A81FD5005C5B20 /* HeightMapAR */ = {
 			isa = PBXGroup;
 			children = (
-				16ECE2EB22AA86040060583E /* sports-car.png */,
-				16ECE2ED22AA86070060583E /* big-anchor.png */,
-				16ECE2E522AA7DA80060583E /* spawns.json */,
-				16BFA92F22A9BDF500E8D824 /* airdrop.dae */,
-				169C527B22A84519005C5B20 /* 1.png */,
-				169C527F22A85A94005C5B20 /* 2.png */,
-				16BFA90E22A93D3700E8D824 /* 2a.png */,
 				169C525622A81FD5005C5B20 /* AppDelegate.swift */,
-				169C525822A81FD5005C5B20 /* ViewController.swift */,
-				169C527922A84463005C5B20 /* MapNode.swift */,
-				16ECE2E722AA80190060583E /* Spawn.swift */,
-				169C527D22A84626005C5B20 /* UIImage.swift */,
+				168558FA22ABFD5400D68B3C /* assets */,
+				168558F922ABFD4100D68B3C /* AR */,
 				168558F622ABCDB300D68B3C /* PubgAPI */,
 				169C525A22A81FD5005C5B20 /* Main.storyboard */,
 				169C525D22A81FD7005C5B20 /* Assets.xcassets */,
 				169C525F22A81FD7005C5B20 /* LaunchScreen.storyboard */,
 				169C526222A81FD7005C5B20 /* Info.plist */,
-				16ECE2E922AA84C60060583E /* CarTag.scn */,
 			);
 			path = HeightMapAR;
 			sourceTree = "<group>";
@@ -278,7 +291,6 @@
 			files = (
 				168558F522ABCC9B00D68B3C /* TestAPI.swift in Sources */,
 				169C527A22A84463005C5B20 /* MapNode.swift in Sources */,
-				169C527E22A84626005C5B20 /* UIImage.swift in Sources */,
 				168558F322ABCAF300D68B3C /* PubgAPI.swift in Sources */,
 				168558F822ABE94C00D68B3C /* Player.swift in Sources */,
 				16ECE2E822AA80190060583E /* Spawn.swift in Sources */,

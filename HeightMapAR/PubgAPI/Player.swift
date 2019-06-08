@@ -22,6 +22,8 @@ class Player {
     let titleId : String
     let updatedAt : String
     
+    var matches : [Match] = []
+    
     init(json : [String : Any]) throws {
         
         guard let firstData = json["data"] as? [Any] else {
@@ -72,6 +74,15 @@ class Player {
             throw PlayerException.initFailed
         }
         self.updatedAt = updatedAt
+        
+        if let relationships = data["relationships"] as? [String : Any],
+            let matchesJson = relationships["matches"] as? [String : Any],
+            let matchesDataJson = matchesJson["data"] as? [[String : String]]
+            {
+            for matchJson in matchesDataJson {
+                matches.append(Match(json: matchJson))
+            }
+        }
         
     }
 }

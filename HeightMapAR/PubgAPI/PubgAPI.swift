@@ -35,10 +35,6 @@ class PubgAPI {
             
             Alamofire.request("\(host)/\(platform.rawValue)/players", method: .get, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON() { (response) in
                 
-                print("Request: \(String(describing: response.request))")   // original url request
-                print("Response: \(String(describing: response.response))") // http url response
-                print("Result: \(response.result)")                         // response serialization result
-                
                 if response.response?.statusCode == 404 {
                     // Player not found
                     single(.error(PlayerException.notFound))
@@ -58,7 +54,5 @@ class PubgAPI {
             }
             return Disposables.create();
         }
-        
-        
     }
 }

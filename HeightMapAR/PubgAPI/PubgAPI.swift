@@ -28,26 +28,37 @@ class PubgAPI {
     
     static let host = "https://api.pubg.com/shards"
     
-    static func getPlayer(name : String, platform : PubgPlatform, subject : BehaviorSubject<Player?>) {
+    static func getPlayer(name : String, platform : PubgPlatform) -> Single<Player> {
         
-        let params : Parameters = ["filter[playerNames]" : name]
-        
-        Alamofire.request("\(host)/\(platform.rawValue)/players", method: .get, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON() { (response) in
+        return Single.create {single in
+            let params : Parameters = ["filter[playerNames]" : name]
             
-            print("Request: \(String(describing: response.request))")   // original url request
-            print("Response: \(String(describing: response.response))") // http url response
-            print("Result: \(response.result)")                         // response serialization result
-            
-            if let json = response.result.value as? [String : Any] {
-                do {
-                    try subject.onNext(Player(json: json))
-                } catch PlayerException.initFailed {
-                    print("Player error")
-                } catch {
-                    print("Unknow Error")
+            Alamofire.request("\(host)/\(platform.rawValue)/players", method: .get, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON() { (response) in
+                
+                print("Request: \(String(describing: response.request))")   // original url request
+                print("Response: \(String(describing: response.response))") // http url response
+                print("Result: \(response.result)")                         // response serialization result
+                
+                if response.response?.statusCode == 404 {
+                    // Player not found
+                    single(.error(PlayerException.notFound))
                 }
+                
+                if let json = response.result.value as? [String : Any] {
+                    do {
+                        
+                        single(.success(try Player(json: json)))
+                    } catch PlayerException.initFailed {
+                        single(.error(PlayerException.initFailed))
+                    } catch {
+                        single(.error(error))
+                    }
+                }
+                
             }
-            
+            return Disposables.create();
         }
+        
+        
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 
 enum PlayerException : Error {
     case initFailed
+    case notFound
 }
 
 class Player {

@@ -11,17 +11,14 @@ import RxSwift
 
 class TestAPI: UIViewController {
 
-    let disposeBag = DisposeBag()
-    let playerSubject = BehaviorSubject<Player?>(value: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        playerSubject.subscribe { (event) in
-            print(event)
-        }.disposed(by: disposeBag)
-        
-        PubgAPI.getPlayer(name: "WackyJacky101", platform: .steam, subject: playerSubject)
+
+        PubgAPI.getPlayer(name: "WackyJacky101dsadsadsadaads", platform: .steam).subscribe(onSuccess: { (player) in
+            
+        }) { (error) in
+            
+        }
         
         
     }

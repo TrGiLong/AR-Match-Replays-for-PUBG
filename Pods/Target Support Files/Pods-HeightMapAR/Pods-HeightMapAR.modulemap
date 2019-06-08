@@ -1,0 +1,6 @@
+framework module Pods_HeightMapAR {
+  umbrella header "Pods-HeightMapAR-umbrella.h"
+
+  export *
+  module * { export * }
+}

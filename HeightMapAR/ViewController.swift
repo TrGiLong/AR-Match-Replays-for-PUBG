@@ -97,7 +97,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SC
                 let xPos = (Float(x)/Float(image.size.width * image.scale))/k
                 let yPos = (Float(y)/Float(image.size.height * image.scale))/k
     
-                
                 sources.append(SCNVector3(x: xPos, y: height, z: yPos));
                 uvList.append(CGPoint(x: CGFloat(xPos), y: CGFloat(yPos)))
             }
@@ -134,13 +133,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SC
         
 //        arView.scene.rootNode.addChildNode(node)
         mapObject = node;
-
-        let shape = SCNPhysicsShape(node: mapObject, options:[SCNPhysicsShape.Option.type: SCNPhysicsShape.ShapeType.concavePolyhedron])
-        let physics = SCNPhysicsBody(type: .static, shape: shape)
-        physics.categoryBitMask = PhysicsBody.Map
-        physics.contactTestBitMask = PhysicsBody.Airdrop
-        physics.collisionBitMask = PhysicsBody.Airdrop
-        mapObject.physicsBody = physics
         
         mapObject.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
     }
@@ -180,30 +172,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SC
         guard let currentTransform = currentTransform else {
             return
         }
-        
-        let cube = SCNScene(named: "airdrop.dae")
-        let cubeNode = SCNNode()
-        
-        guard let cubeNodes = cube?.rootNode.childNodes else {
-            return
-        }
-        
-        for n in cubeNodes {
-            cubeNode.addChildNode(n)
-        }
-        
-        let shape = SCNPhysicsShape(node: cubeNode, options: [:])
-        let physhic = SCNPhysicsBody(type: .dynamic, shape: shape)
-        physhic.categoryBitMask = PhysicsBody.Airdrop
-        physhic.contactTestBitMask = PhysicsBody.Map
-        physhic.collisionBitMask = PhysicsBody.Map
-        cubeNode.physicsBody = physhic
-        
-        
-        cubeNode.scale = SCNVector3(0.005, 0.005, 0.005)
-        cubeNode.position = SCNVector3(currentTransform[3][0], currentTransform[3][1], currentTransform[3][2])
-        arView.scene.rootNode.addChildNode(cubeNode)
-        
     }
 
     

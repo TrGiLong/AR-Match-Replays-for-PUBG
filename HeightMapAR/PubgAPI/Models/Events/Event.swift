@@ -141,12 +141,26 @@ class EventFactory {
 }
 
 class Event {
-    let _D : String // Event timestamp
+    
+    let _D : TimeInterval // Event timestamp
     let _T : String // Event type
     var common : Common?
     
     init(json : [String : Any]) {
-        _D = json["_D"] as! String
+        
+        let formatter: DateFormatter = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+            return dateFormatter
+        }()
+    
+        var str = json["_D"] as! String
+        str = String(str.prefix(str.count-2))
+        
+        let time = formatter.date(from: str)!
+        _D = time.timeIntervalSince1970
+        
         _T = json["_T"] as! String
         if let commonJson = json["common"] {
             common = Common(json: commonJson as! [String : Any])

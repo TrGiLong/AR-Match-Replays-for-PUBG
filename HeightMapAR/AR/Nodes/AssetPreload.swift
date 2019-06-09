@@ -10,16 +10,18 @@ import Foundation
 import SceneKit
 
 class AssetPreload {
-    var playerNode : SCNNode
+    var playerNode : SCNNode!
     
     init() {
         
         let playerScene = SCNScene(named: "SceneKitAsset.scnassets/Player.scn")
-        playerNode = SCNNode()
-        for n in playerScene!.rootNode.childNodes {
-            playerNode.addChildNode(n)
+
+        guard let playerNode = playerScene?.rootNode.childNode(withName: "box", recursively: true) else {
+            print("Error")
+            return
         }
         playerNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        self.playerNode = playerNode
     }
     
 }

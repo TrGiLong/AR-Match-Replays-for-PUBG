@@ -20,7 +20,7 @@ func mapRealSize(map : Map) -> CGSize {
     case .erangel, .miramar:
         return CGSize(width: 816000, height: 816000)
     case .sanhok:
-        return CGSize(width: 416000, height: 416000)
+        return CGSize(width: 408000, height: 408000)
     default:
         return CGSize(width: 0, height: 0)
     }

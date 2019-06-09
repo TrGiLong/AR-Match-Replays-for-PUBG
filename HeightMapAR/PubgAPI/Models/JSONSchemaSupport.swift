@@ -29,9 +29,6 @@ extension DataRequest {
             guard let data = data else {
                 return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
             }
-            if let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)")
-            }
             return Result { try newJSONDecoder().decode(T.self, from: data) }
         }
     }

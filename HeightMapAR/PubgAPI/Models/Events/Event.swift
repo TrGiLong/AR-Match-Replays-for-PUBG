@@ -185,13 +185,11 @@ class Logarmordestroy : Event {
 }
 
 class LogCarePackageland : Event {
-    var itemPackages : [ItemPackage] = []
+    var itemPackage : ItemPackage
     
     override init(json : [String : Any]) {
         
-        for sb in json["itemPackage"] as! [Any] {
-            itemPackages.append(ItemPackage(json: sb as! [String : Any]))
-        }
+        itemPackage = ItemPackage(json: json["itemPackage"] as! [String : Any])
         
         super.init(json: json)
     }

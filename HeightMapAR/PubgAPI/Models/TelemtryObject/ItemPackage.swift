@@ -14,7 +14,7 @@ class ItemPackage {
     var items: [Item] = []
     
     init(json : [String : Any]) {
-        self.itemPackageID = json["itemPackageID"] as! String
+        self.itemPackageID = json["itemPackageId"] as! String
         self.location = Location(json: json["location"] as! [String : Any])
         
         for sub in json["items"] as! [Any] {

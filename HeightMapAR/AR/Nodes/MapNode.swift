@@ -9,24 +9,39 @@
 import Foundation
 import SceneKit.SCNGeometry
 
-enum Map {
+enum Map : String {
     case erangel
+    case sanhok
+    case miramar
 }
+
+func mapRealSize(map : Map) -> CGSize {
+    switch map {
+    case .erangel, .miramar:
+        return CGSize(width: 816000, height: 816000)
+    case .sanhok:
+        return CGSize(width: 416000, height: 416000)
+    default:
+        return CGSize(width: 0, height: 0)
+    }
+}
+
 
 typealias  MapSize = (width : CGFloat, height : CGFloat)
 typealias  MapCoordiante = (width : UInt32, height : UInt32)
 typealias  MapInfo = (map : SCNNode, points : [SCNVector3], originSize : MapSize, size : MapCoordiante )
 
 class MapFactory {
-    static func name( map : Map ) -> MapInfo? {
-        switch map {
-        case .erangel:
-            return MapFactory.erange()
-        }
+    
+    static let delta = 64
+    static let k : Float = 1
+    
+    static func map( map : Map ) -> MapInfo? {
+        return MapFactory.map(mapName: map.rawValue)
     }
     
-    static private func erange() -> MapInfo? {
-        let image = UIImage(named: "2.png")!
+    static private func map(mapName : String) -> MapInfo? {
+        let image = UIImage(named: "\(mapName)HeightMap.png")!
         
         var sources : [SCNVector3] = [];
         var indices: [UInt32] = []
@@ -35,9 +50,6 @@ class MapFactory {
         guard let cgImage = image.cgImage, let pixelData = cgImage.dataProvider?.data else { return nil }
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         let bytesPerPixel = cgImage.bitsPerPixel / 8
-        
-        let delta = 16
-        let k : Float = 1
         
         let minHeight : Float = 0.042
         
@@ -52,7 +64,7 @@ class MapFactory {
                 //let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
                 //let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
                 
-                var height = Float(g)/(k*12)
+                var height = Float(g)/(k*11)
                 if (height < minHeight) {
                     height = minHeight
                 }
@@ -89,7 +101,7 @@ class MapFactory {
         let node = SCNNode(geometry: geometry)
         
         let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "2a.png")
+        material.diffuse.contents = UIImage(named: "\(mapName)Map")
         material.isDoubleSided = true
         node.geometry?.firstMaterial = material
         node.name = "Map"

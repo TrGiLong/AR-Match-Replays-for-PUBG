@@ -10,19 +10,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View-->
+        <!--Replay-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ARView" customModule="HeightMapAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ARReplay" customModule="HeightMapAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZU5-O3-Uxt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="681"/>
                             </arscnView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpF-CG-oGT">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="Reset" id="cJl-3z-eiN">
                                         <connections>
@@ -36,13 +36,19 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="3dB-zp-Kuv">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xxO-Wb-htQ">
-                                            <rect key="frame" x="131" y="12" width="49" height="30"/>
+                                            <rect key="frame" x="131" y="7" width="49" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="airdrop"/>
                                             <connections>
                                                 <action selector="drop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j8G-qw-EW8"/>
                                             </connections>
                                         </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6yV-rb-eiA"/>
+                                    <barButtonItem title="Play" id="gUU-0b-coh">
+                                        <connections>
+                                            <action selector="play:" destination="BYZ-38-t0r" id="DTw-J9-v9T"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -65,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900" y="838"/>
+            <point key="canvasLocation" x="3561" y="770"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="w0i-tR-1DG">
@@ -280,6 +286,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="eNY-wB-zEZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="mHV-GY-rYh">
+                                        <rect key="frame" x="0.0" y="159" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mHV-GY-rYh" id="lHK-nT-xb6">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-kJ-3SG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <state key="normal" title="AR"/>
+                                                    <connections>
+                                                        <action selector="arShow:" destination="KzG-tL-iUV" eventType="touchUpInside" id="c7B-zT-Gp6"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="t2c-kJ-3SG" secondAttribute="bottom" id="6sB-SD-DxR"/>
+                                                <constraint firstItem="t2c-kJ-3SG" firstAttribute="leading" secondItem="lHK-nT-xb6" secondAttribute="leading" id="76s-mB-a9V"/>
+                                                <constraint firstAttribute="trailing" secondItem="t2c-kJ-3SG" secondAttribute="trailing" id="EQE-SW-4bH"/>
+                                                <constraint firstItem="t2c-kJ-3SG" firstAttribute="top" secondItem="lHK-nT-xb6" secondAttribute="top" id="yys-xi-5fi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="KzG-tL-iUV" id="iyk-HL-IiN"/>
@@ -287,21 +320,75 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="AR" id="Toh-6k-QbI">
-                            <connections>
-                                <action selector="arShow:" destination="KzG-tL-iUV" id="dOx-SI-pMP"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem title="AR" id="Toh-6k-QbI"/>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createdDate" destination="iRz-eA-dXL" id="Jqx-N0-gMa"/>
                         <outlet property="mapName" destination="AIh-tU-COG" id="0kh-Cd-ZSG"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="arReplay" id="zdc-Un-j3T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bS-Hd-yuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3561" y="19"/>
+        </scene>
+        <!--View-->
+        <scene sceneID="Iqu-yk-ODp">
+            <objects>
+                <viewController id="itP-8Y-35X" customClass="ARView" customModule="HeightMapAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xhM-NK-tqz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yX0-vY-ZLn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                            </arscnView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lu6-9w-XKe">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem title="Reset" id="pNu-kD-vlA">
+                                        <connections>
+                                            <action selector="reset:" destination="itP-8Y-35X" id="nsc-ED-mvY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="build" id="tnh-8a-snP">
+                                        <connections>
+                                            <action selector="loadImage:" destination="itP-8Y-35X" id="Fu4-Bm-Mn3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="RXm-mY-DyX">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LAI-EH-SLZ">
+                                            <rect key="frame" x="131" y="7" width="49" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="airdrop"/>
+                                            <connections>
+                                                <action selector="drop:" destination="itP-8Y-35X" eventType="touchUpInside" id="rcr-lt-HiF"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Lu6-9w-XKe" firstAttribute="leading" secondItem="Gh9-nh-oq6" secondAttribute="leading" id="7d6-Zw-8gk"/>
+                            <constraint firstItem="yX0-vY-ZLn" firstAttribute="top" secondItem="Gh9-nh-oq6" secondAttribute="top" id="Bzr-e4-B8D"/>
+                            <constraint firstItem="Lu6-9w-XKe" firstAttribute="bottom" secondItem="Gh9-nh-oq6" secondAttribute="bottom" id="JQX-Kz-Ol4"/>
+                            <constraint firstItem="Lu6-9w-XKe" firstAttribute="top" secondItem="yX0-vY-ZLn" secondAttribute="bottom" id="Riy-X8-oD2"/>
+                            <constraint firstItem="Gh9-nh-oq6" firstAttribute="trailing" secondItem="yX0-vY-ZLn" secondAttribute="trailing" id="Suu-b9-5dk"/>
+                            <constraint firstItem="yX0-vY-ZLn" firstAttribute="leading" secondItem="Gh9-nh-oq6" secondAttribute="leading" id="eY0-zg-FGL"/>
+                            <constraint firstAttribute="trailing" secondItem="Lu6-9w-XKe" secondAttribute="trailing" id="ezh-cV-HMF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gh9-nh-oq6"/>
+                    </view>
+                    <connections>
+                        <outlet property="arView" destination="yX0-vY-ZLn" id="s40-pQ-Dgj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tb0-fa-nlc" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4423" y="769"/>
         </scene>
     </scenes>
 </document>

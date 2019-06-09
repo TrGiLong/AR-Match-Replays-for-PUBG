@@ -15,18 +15,18 @@ struct PhysicsBody {
     static let Airdrop = 0x1 << 2
 }
 
-class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SCNPhysicsContactDelegate{
+class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+    
+    var map : Map = .sanhok
+    
     @IBOutlet weak var arView: ARSCNView!
     
-    var mapObject : SCNNode!
+    var mapInfo : MapInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        parseImage()
-        
-        arView.scene.physicsWorld.gravity = SCNVector3(0, -0.1, 0)
-        arView.scene.physicsWorld.contactDelegate = self
+        mapInfo = MapFactory.map(map: map)
         
         arView.delegate = self
 
@@ -43,8 +43,7 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SCNPhysics
         
         arView.showsStatistics = true
         arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
-                                  ARSCNDebugOptions.showWorldOrigin,
-        .showPhysicsShapes]
+                                  ARSCNDebugOptions.showWorldOrigin]
         
         // Run the view's session
         arView.session.run(configuration)
@@ -57,82 +56,6 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SCNPhysics
         arView.pointOfView?.addChildNode(lightNode)
         
         //parseImage()
-    }
-
-    func parseImage() {
-        
-        let image = UIImage(named: "2.png")!
-        
-        var sources : [SCNVector3] = [];
-        var indices: [UInt32] = []
-        var uvList:[CGPoint] = []
-
-        guard let cgImage = image.cgImage, let pixelData = cgImage.dataProvider?.data else { return }
-        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        let bytesPerPixel = cgImage.bitsPerPixel / 8
-        
-        let delta = 16
-        let k : Float = 1
-        
-        let minHeight : Float = 0.042
-        
-        let imageWidth = Int(image.size.width)
-        
-        for x in stride(from: 0, through: Int(image.size.width * image.scale), by: delta) {
-            for y in stride(from: 0, through: Int(image.size.height * image.scale), by: delta) {
-                let pixelInfo = ((imageWidth * y) + x) * bytesPerPixel
-                
-                //let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-                let g = CGFloat(data[pixelInfo+1]) / 255.0
-                //let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-                //let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-            
-                var height = Float(g)/(k*12)
-                if (height < minHeight) {
-                    height = minHeight
-                }
-                
-                let xPos = (Float(x)/Float(image.size.width * image.scale))/k
-                let yPos = (Float(y)/Float(image.size.height * image.scale))/k
-    
-                sources.append(SCNVector3(x: xPos, y: height, z: yPos));
-                uvList.append(CGPoint(x: CGFloat(xPos), y: CGFloat(yPos)))
-            }
-        }
-        
-        let yLength = (UInt32(image.size.height * image.scale)/UInt32(delta))+1
-        let xLength = (UInt32(image.size.width * image.scale)/UInt32(delta))+1
-        for y in 0..<UInt32(yLength-1) {
-            indices.append(yLength*y)
-            
-            for x in 0..<xLength {
-                indices.append( (yLength*y)+x )
-                indices.append( (yLength*(y+1))+x )
-            }
-            
-            if y < yLength-2 {
-                indices.append( (yLength*(y+1)) + (xLength-1) )
-            }
-            
-        }
-        
-        let geometrySource = SCNGeometrySource(vertices: sources)
-        let uvSource = SCNGeometrySource(textureCoordinates: uvList)
-        let indicies = SCNGeometryElement(indices: indices, primitiveType: .triangleStrip)
-        
-        let geometry = SCNGeometry(sources: [geometrySource,uvSource], elements: [indicies])
-        let node = SCNNode(geometry: geometry)
-        
-        let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "2a.png")
-        material.isDoubleSided = true
-        node.geometry?.firstMaterial = material
-        node.name = "Map"
-        
-//        arView.scene.rootNode.addChildNode(node)
-        mapObject = node;
-        
-        mapObject.scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -151,12 +74,12 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SCNPhysics
             return
         }
         
-        let width = mapObject.boundingBox.max.x - mapObject.boundingBox.min.x
-        let height = mapObject.boundingBox.max.z - mapObject.boundingBox.min.z
+        let width = mapInfo.map.boundingBox.max.x - mapInfo.map.boundingBox.min.x
+        let height = mapInfo.map.boundingBox.max.z - mapInfo.map.boundingBox.min.z
         
-        mapObject.removeFromParentNode()
-        mapObject.position = SCNVector3(currentTransform[3][0]-width/4, currentTransform[3][1], currentTransform[3][2]-height/4)
-        arView.scene.rootNode.addChildNode(mapObject)
+        mapInfo.map.removeFromParentNode()
+        mapInfo.map.position = SCNVector3(currentTransform[3][0]-width/4, currentTransform[3][1], currentTransform[3][2]-height/4)
+        arView.scene.rootNode.addChildNode(mapInfo.map)
     }
     
     var currentTransform : simd_float4x4?

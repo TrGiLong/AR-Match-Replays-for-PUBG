@@ -67,11 +67,15 @@
 		16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECB622AD0910002036A5 /* sanhokHeightMap.png */; };
 		16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECB822AD09A3002036A5 /* miramarMap.png */; };
 		16B4ECBB22AD09A9002036A5 /* sanhokMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECBA22AD09A9002036A5 /* sanhokMap.png */; };
+		16B4ECBD22AD0ED7002036A5 /* ARReplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECBC22AD0ED7002036A5 /* ARReplay.swift */; };
+		16B4ECC622AD11BE002036A5 /* SceneKitAsset.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECC522AD11BE002036A5 /* SceneKitAsset.scnassets */; };
+		16B4ECC822AD2999002036A5 /* AssetPreload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECC722AD2999002036A5 /* AssetPreload.swift */; };
+		16B4ECCB22AD2D74002036A5 /* LineDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECC922AD2D73002036A5 /* LineDrawing.swift */; };
+		16B4ECCC22AD2D74002036A5 /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECCA22AD2D74002036A5 /* shaders.metal */; };
 		16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA90E22A93D3700E8D824 /* erangelMap.png */; };
 		16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA92F22A9BDF500E8D824 /* airdrop.dae */; };
 		16ECE2E622AA7DA80060583E /* spawns.json in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2E522AA7DA80060583E /* spawns.json */; };
 		16ECE2E822AA80190060583E /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECE2E722AA80190060583E /* Spawn.swift */; };
-		16ECE2EA22AA84C60060583E /* CarTag.scn in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2E922AA84C60060583E /* CarTag.scn */; };
 		16ECE2EC22AA86040060583E /* sports-car.png in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2EB22AA86040060583E /* sports-car.png */; };
 		16ECE2EE22AA86070060583E /* big-anchor.png in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2ED22AA86070060583E /* big-anchor.png */; };
 		B5BA928CF6BD82C1C2DD66FC /* Pods_HeightMapAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58B72A9AB5267F774953F8D /* Pods_HeightMapAR.framework */; };
@@ -140,11 +144,15 @@
 		16B4ECB622AD0910002036A5 /* sanhokHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sanhokHeightMap.png; sourceTree = "<group>"; };
 		16B4ECB822AD09A3002036A5 /* miramarMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miramarMap.png; sourceTree = "<group>"; };
 		16B4ECBA22AD09A9002036A5 /* sanhokMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sanhokMap.png; sourceTree = "<group>"; };
+		16B4ECBC22AD0ED7002036A5 /* ARReplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARReplay.swift; sourceTree = "<group>"; };
+		16B4ECC522AD11BE002036A5 /* SceneKitAsset.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = SceneKitAsset.scnassets; sourceTree = "<group>"; };
+		16B4ECC722AD2999002036A5 /* AssetPreload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPreload.swift; sourceTree = "<group>"; };
+		16B4ECC922AD2D73002036A5 /* LineDrawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDrawing.swift; sourceTree = "<group>"; };
+		16B4ECCA22AD2D74002036A5 /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
 		16BFA90E22A93D3700E8D824 /* erangelMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erangelMap.png; sourceTree = "<group>"; };
 		16BFA92F22A9BDF500E8D824 /* airdrop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = airdrop.dae; sourceTree = "<group>"; };
 		16ECE2E522AA7DA80060583E /* spawns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spawns.json; sourceTree = "<group>"; };
 		16ECE2E722AA80190060583E /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
-		16ECE2E922AA84C60060583E /* CarTag.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = CarTag.scn; sourceTree = "<group>"; };
 		16ECE2EB22AA86040060583E /* sports-car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sports-car.png"; sourceTree = "<group>"; };
 		16ECE2ED22AA86070060583E /* big-anchor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big-anchor.png"; sourceTree = "<group>"; };
 		32652AF5BE20EB9DB2DC95A7 /* Pods-HeightMapAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeightMapAR.debug.xcconfig"; path = "Target Support Files/Pods-HeightMapAR/Pods-HeightMapAR.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,8 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				169C525822A81FD5005C5B20 /* ARMap.swift */,
-				169C527922A84463005C5B20 /* MapNode.swift */,
-				16ECE2E722AA80190060583E /* Spawn.swift */,
+				16B4ECBC22AD0ED7002036A5 /* ARReplay.swift */,
+				16B4ECBE22AD0EDD002036A5 /* Nodes */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -192,7 +200,7 @@
 				16ECE2E522AA7DA80060583E /* spawns.json */,
 				16BFA92F22A9BDF500E8D824 /* airdrop.dae */,
 				16B4ECB022AD08A8002036A5 /* Map */,
-				16ECE2E922AA84C60060583E /* CarTag.scn */,
+				16B4ECC522AD11BE002036A5 /* SceneKitAsset.scnassets */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -370,6 +378,18 @@
 			path = Sanhok;
 			sourceTree = "<group>";
 		};
+		16B4ECBE22AD0EDD002036A5 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				169C527922A84463005C5B20 /* MapNode.swift */,
+				16B4ECC722AD2999002036A5 /* AssetPreload.swift */,
+				16ECE2E722AA80190060583E /* Spawn.swift */,
+				16B4ECC922AD2D73002036A5 /* LineDrawing.swift */,
+				16B4ECCA22AD2D74002036A5 /* shaders.metal */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
 		7DD02B02160151C6E3AF4A16 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,11 +461,11 @@
 			files = (
 				16B4ECB422AD08EF002036A5 /* miramarHeightMap.png in Resources */,
 				16ECE2EE22AA86070060583E /* big-anchor.png in Resources */,
+				16B4ECC622AD11BE002036A5 /* SceneKitAsset.scnassets in Resources */,
 				169C526122A81FD7005C5B20 /* LaunchScreen.storyboard in Resources */,
 				16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */,
 				16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */,
 				169C528022A85A94005C5B20 /* erangelHeightMap.png in Resources */,
-				16ECE2EA22AA84C60060583E /* CarTag.scn in Resources */,
 				16B4ECBB22AD09A9002036A5 /* sanhokMap.png in Resources */,
 				16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */,
 				16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */,
@@ -532,10 +552,12 @@
 				16855A3122AC35F400D68B3C /* MatchIncludedRelationships.swift in Sources */,
 				16855A4D22AC4B7900D68B3C /* Vehicle.swift in Sources */,
 				16855A3922AC35F400D68B3C /* MatchDataRelationships.swift in Sources */,
+				16B4ECCC22AD2D74002036A5 /* shaders.metal in Sources */,
 				168559FB22AC346A00D68B3C /* PlayerAssets.swift in Sources */,
 				16855A5722AC543400D68B3C /* Common.swift in Sources */,
 				16855A0322AC346A00D68B3C /* PlayerAttributes.swift in Sources */,
 				1685593722AC144200D68B3C /* JSONSchemaSupport.swift in Sources */,
+				16B4ECBD22AD0ED7002036A5 /* ARReplay.swift in Sources */,
 				16855A3522AC35F400D68B3C /* MatchIncludedAttributes.swift in Sources */,
 				16855A3622AC35F400D68B3C /* Match.swift in Sources */,
 				168559FF22AC346A00D68B3C /* Player.swift in Sources */,
@@ -551,6 +573,7 @@
 				16855A2E22AC35F400D68B3C /* MatchMeta.swift in Sources */,
 				16855A3C22AC35F400D68B3C /* MatchDataLinks.swift in Sources */,
 				16855A4322AC3A5800D68B3C /* BlueZoneCustomOption.swift in Sources */,
+				16B4ECCB22AD2D74002036A5 /* LineDrawing.swift in Sources */,
 				16855A0422AC346A00D68B3C /* PlayerDatumLinks.swift in Sources */,
 				16855A4022AC35F400D68B3C /* MatchAssets.swift in Sources */,
 				169C527A22A84463005C5B20 /* MapNode.swift in Sources */,
@@ -566,6 +589,7 @@
 				16855A4B22AC4AD500D68B3C /* GameResult.swift in Sources */,
 				169C525922A81FD5005C5B20 /* ARMap.swift in Sources */,
 				16855A0022AC346A00D68B3C /* PlayerType.swift in Sources */,
+				16B4ECC822AD2999002036A5 /* AssetPreload.swift in Sources */,
 				16855A3B22AC35F400D68B3C /* MatchTeam.swift in Sources */,
 				169C525722A81FD5005C5B20 /* AppDelegate.swift in Sources */,
 			);

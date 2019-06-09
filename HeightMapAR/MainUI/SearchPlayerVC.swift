@@ -48,8 +48,9 @@ class SearchPlayerVC: UITableViewController {
         
         loadingAlert()
         PubgAPI.getPlayer(name: playerTextField.text!, platform: currentPlatform).subscribe(onSuccess: { (player) in
-            self.currentAlert?.dismiss(animated: true, completion: nil)
-            self.performSegue(withIdentifier: self.PlayerSegue, sender: player)
+            self.currentAlert?.dismiss(animated: true, completion: {
+                self.performSegue(withIdentifier: self.PlayerSegue, sender: player)
+            })
         }) { (error) in
             self.currentAlert?.dismiss(animated: true, completion: nil)
             self.missingPlayerNameAlert()

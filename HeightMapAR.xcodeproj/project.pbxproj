@@ -53,18 +53,21 @@
 		16855A5A22AC54E400D68B3C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A5922AC54E400D68B3C /* Event.swift */; };
 		16855A5C22AC987600D68B3C /* SearchPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A5B22AC987600D68B3C /* SearchPlayerVC.swift */; };
 		169C525722A81FD5005C5B20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C525622A81FD5005C5B20 /* AppDelegate.swift */; };
-		169C525922A81FD5005C5B20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C525822A81FD5005C5B20 /* ViewController.swift */; };
+		169C525922A81FD5005C5B20 /* ARMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C525822A81FD5005C5B20 /* ARMap.swift */; };
 		169C525C22A81FD5005C5B20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169C525A22A81FD5005C5B20 /* Main.storyboard */; };
 		169C525E22A81FD7005C5B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169C525D22A81FD7005C5B20 /* Assets.xcassets */; };
 		169C526122A81FD7005C5B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169C525F22A81FD7005C5B20 /* LaunchScreen.storyboard */; };
 		169C527822A84228005C5B20 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169C527722A84228005C5B20 /* ARKit.framework */; };
 		169C527A22A84463005C5B20 /* MapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C527922A84463005C5B20 /* MapNode.swift */; };
-		169C527C22A84519005C5B20 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 169C527B22A84519005C5B20 /* 1.png */; };
-		169C528022A85A94005C5B20 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 169C527F22A85A94005C5B20 /* 2.png */; };
+		169C528022A85A94005C5B20 /* erangelHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 169C527F22A85A94005C5B20 /* erangelHeightMap.png */; };
 		16B4ECAB22ACF2DD002036A5 /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */; };
 		16B4ECAD22AD03A8002036A5 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAC22AD03A8002036A5 /* MatchVC.swift */; };
 		16B4ECAF22AD0488002036A5 /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */; };
-		16BFA90F22A93D3800E8D824 /* 2a.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA90E22A93D3700E8D824 /* 2a.png */; };
+		16B4ECB422AD08EF002036A5 /* miramarHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECB322AD08EF002036A5 /* miramarHeightMap.png */; };
+		16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECB622AD0910002036A5 /* sanhokHeightMap.png */; };
+		16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECB822AD09A3002036A5 /* miramarMap.png */; };
+		16B4ECBB22AD09A9002036A5 /* sanhokMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B4ECBA22AD09A9002036A5 /* sanhokMap.png */; };
+		16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA90E22A93D3700E8D824 /* erangelMap.png */; };
 		16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA92F22A9BDF500E8D824 /* airdrop.dae */; };
 		16ECE2E622AA7DA80060583E /* spawns.json in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2E522AA7DA80060583E /* spawns.json */; };
 		16ECE2E822AA80190060583E /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECE2E722AA80190060583E /* Spawn.swift */; };
@@ -122,19 +125,22 @@
 		16855A5B22AC987600D68B3C /* SearchPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlayerVC.swift; sourceTree = "<group>"; };
 		169C525322A81FD5005C5B20 /* HeightMapAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeightMapAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		169C525622A81FD5005C5B20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		169C525822A81FD5005C5B20 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		169C525822A81FD5005C5B20 /* ARMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMap.swift; sourceTree = "<group>"; };
 		169C525B22A81FD5005C5B20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		169C525D22A81FD7005C5B20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		169C526022A81FD7005C5B20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		169C526222A81FD7005C5B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		169C527722A84228005C5B20 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		169C527922A84463005C5B20 /* MapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNode.swift; sourceTree = "<group>"; };
-		169C527B22A84519005C5B20 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		169C527F22A85A94005C5B20 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		169C527F22A85A94005C5B20 /* erangelHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erangelHeightMap.png; sourceTree = "<group>"; };
 		16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		16B4ECAC22AD03A8002036A5 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
-		16BFA90E22A93D3700E8D824 /* 2a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2a.png; sourceTree = "<group>"; };
+		16B4ECB322AD08EF002036A5 /* miramarHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miramarHeightMap.png; sourceTree = "<group>"; };
+		16B4ECB622AD0910002036A5 /* sanhokHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sanhokHeightMap.png; sourceTree = "<group>"; };
+		16B4ECB822AD09A3002036A5 /* miramarMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miramarMap.png; sourceTree = "<group>"; };
+		16B4ECBA22AD09A9002036A5 /* sanhokMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sanhokMap.png; sourceTree = "<group>"; };
+		16BFA90E22A93D3700E8D824 /* erangelMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erangelMap.png; sourceTree = "<group>"; };
 		16BFA92F22A9BDF500E8D824 /* airdrop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = airdrop.dae; sourceTree = "<group>"; };
 		16ECE2E522AA7DA80060583E /* spawns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spawns.json; sourceTree = "<group>"; };
 		16ECE2E722AA80190060583E /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
@@ -171,7 +177,7 @@
 		168558F922ABFD4100D68B3C /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				169C525822A81FD5005C5B20 /* ViewController.swift */,
+				169C525822A81FD5005C5B20 /* ARMap.swift */,
 				169C527922A84463005C5B20 /* MapNode.swift */,
 				16ECE2E722AA80190060583E /* Spawn.swift */,
 			);
@@ -185,9 +191,7 @@
 				16ECE2ED22AA86070060583E /* big-anchor.png */,
 				16ECE2E522AA7DA80060583E /* spawns.json */,
 				16BFA92F22A9BDF500E8D824 /* airdrop.dae */,
-				169C527B22A84519005C5B20 /* 1.png */,
-				169C527F22A85A94005C5B20 /* 2.png */,
-				16BFA90E22A93D3700E8D824 /* 2a.png */,
+				16B4ECB022AD08A8002036A5 /* Map */,
 				16ECE2E922AA84C60060583E /* CarTag.scn */,
 			);
 			path = assets;
@@ -329,6 +333,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		16B4ECB022AD08A8002036A5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				16B4ECB522AD08FD002036A5 /* Sanhok */,
+				16B4ECB222AD08D4002036A5 /* Miramar */,
+				16B4ECB122AD08BF002036A5 /* Erangel */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		16B4ECB122AD08BF002036A5 /* Erangel */ = {
+			isa = PBXGroup;
+			children = (
+				169C527F22A85A94005C5B20 /* erangelHeightMap.png */,
+				16BFA90E22A93D3700E8D824 /* erangelMap.png */,
+			);
+			path = Erangel;
+			sourceTree = "<group>";
+		};
+		16B4ECB222AD08D4002036A5 /* Miramar */ = {
+			isa = PBXGroup;
+			children = (
+				16B4ECB322AD08EF002036A5 /* miramarHeightMap.png */,
+				16B4ECB822AD09A3002036A5 /* miramarMap.png */,
+			);
+			path = Miramar;
+			sourceTree = "<group>";
+		};
+		16B4ECB522AD08FD002036A5 /* Sanhok */ = {
+			isa = PBXGroup;
+			children = (
+				16B4ECB622AD0910002036A5 /* sanhokHeightMap.png */,
+				16B4ECBA22AD09A9002036A5 /* sanhokMap.png */,
+			);
+			path = Sanhok;
+			sourceTree = "<group>";
+		};
 		7DD02B02160151C6E3AF4A16 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,13 +439,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B4ECB422AD08EF002036A5 /* miramarHeightMap.png in Resources */,
 				16ECE2EE22AA86070060583E /* big-anchor.png in Resources */,
 				169C526122A81FD7005C5B20 /* LaunchScreen.storyboard in Resources */,
 				16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */,
-				16BFA90F22A93D3800E8D824 /* 2a.png in Resources */,
-				169C528022A85A94005C5B20 /* 2.png in Resources */,
-				169C527C22A84519005C5B20 /* 1.png in Resources */,
+				16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */,
+				169C528022A85A94005C5B20 /* erangelHeightMap.png in Resources */,
 				16ECE2EA22AA84C60060583E /* CarTag.scn in Resources */,
+				16B4ECBB22AD09A9002036A5 /* sanhokMap.png in Resources */,
+				16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */,
+				16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */,
 				169C525E22A81FD7005C5B20 /* Assets.xcassets in Resources */,
 				169C525C22A81FD5005C5B20 /* Main.storyboard in Resources */,
 				16ECE2E622AA7DA80060583E /* spawns.json in Resources */,
@@ -520,7 +564,7 @@
 				16B4ECAD22AD03A8002036A5 /* MatchVC.swift in Sources */,
 				16ECE2E822AA80190060583E /* Spawn.swift in Sources */,
 				16855A4B22AC4AD500D68B3C /* GameResult.swift in Sources */,
-				169C525922A81FD5005C5B20 /* ViewController.swift in Sources */,
+				169C525922A81FD5005C5B20 /* ARMap.swift in Sources */,
 				16855A0022AC346A00D68B3C /* PlayerType.swift in Sources */,
 				16855A3B22AC35F400D68B3C /* MatchTeam.swift in Sources */,
 				169C525722A81FD5005C5B20 /* AppDelegate.swift in Sources */,

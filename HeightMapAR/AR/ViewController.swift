@@ -11,10 +11,8 @@ import UIKit
 import ARKit
 
 struct PhysicsBody {
-    
     static let Map = 0x1 << 1
     static let Airdrop = 0x1 << 2
-    
 }
 
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate ,SCNPhysicsContactDelegate{

@@ -20,7 +20,7 @@ func mapRealSize(map : Map) -> CGSize {
     case .erangel, .miramar:
         return CGSize(width: 816000, height: 816000)
     case .sanhok:
-        return CGSize(width: 408000, height: 408000)
+        return CGSize(width: 416000, height: 416000)
     default:
         return CGSize(width: 0, height: 0)
     }
@@ -33,7 +33,7 @@ typealias  MapInfo = (map : SCNNode, points : [SCNVector3], originSize : MapSize
 
 class MapFactory {
     
-    static let delta = 64
+    static let delta = 32
     static let k : Float = 1
     
     static func map( map : Map ) -> MapInfo? {
@@ -49,7 +49,7 @@ class MapFactory {
         
         guard let cgImage = image.cgImage, let pixelData = cgImage.dataProvider?.data else { return nil }
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        let bytesPerPixel = cgImage.bitsPerPixel / 8
+        let bytesPerPixel = 2
         
         let minHeight : Float = 0.042
         
@@ -59,15 +59,26 @@ class MapFactory {
             for y in stride(from: 0, through: Int(image.size.height * image.scale), by: delta) {
                 let pixelInfo = ((imageWidth * y) + x) * bytesPerPixel
                 
-                //let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-                let g = CGFloat(data[pixelInfo+1]) / 255.0
-                //let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-                //let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-                
-                var height = Float(g)/(k*11)
-                if (height < minHeight) {
-                    height = minHeight
-                }
+//
+//
+//                let r = CGFloat(data[pixelInfo])
+//                let g = CGFloat(data[pixelInfo+1])
+//                let b = CGFloat(data[pixelInfo+2])
+//                let a = CGFloat(data[pixelInfo+3])
+//                
+//                print(r,g,b,a)
+//
+//
+//
+                var b2 = UInt32(data[pixelInfo+1])
+                b2 = b2 << 8
+                let b1 = data[pixelInfo]
+                let height = Float(b2 + UInt32(b1))/816000
+ 
+//                var height = Float(g)/(k)
+//                if (height < minHeight) {
+//                    height = minHeight
+//                }
                 
                 let xPos = (Float(x)/Float(image.size.width * image.scale))/k
                 let yPos = (Float(y)/Float(image.size.height * image.scale))/k

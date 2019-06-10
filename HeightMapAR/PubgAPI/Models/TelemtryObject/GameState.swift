@@ -11,11 +11,11 @@ import Foundation
 class GameState {
     let elapsedTime, numAliveTeams, numJoinPlayers, numStartPlayers: Int
     let numAlivePlayers: Int
-    let safetyZonePosition: Position
+    let safetyZonePosition: Location
     let safetyZoneRadius: Float
-    let poisonGasWarningPosition: Position
+    let poisonGasWarningPosition: Location
     let poisonGasWarningRadius: Float
-    let redZonePosition: Position
+    let redZonePosition: Location
     let redZoneRadius: Float
     
     init(json : [String : Any]) {
@@ -24,11 +24,11 @@ class GameState {
         self.numJoinPlayers = (json["numJoinPlayers"] as! NSNumber).intValue
         self.numStartPlayers = (json["numStartPlayers"] as! NSNumber).intValue
         self.numAlivePlayers = (json["numAlivePlayers"] as! NSNumber).intValue
-        self.safetyZonePosition = Position(json: json["safetyZonePosition"] as! [String : Any])
+        self.safetyZonePosition = Location(json: json["safetyZonePosition"] as! [String : Any])
         self.safetyZoneRadius = (json["safetyZoneRadius"] as! NSNumber).floatValue
-        self.poisonGasWarningPosition = Position(json: json["poisonGasWarningPosition"] as! [String : Any])
+        self.poisonGasWarningPosition = Location(json: json["poisonGasWarningPosition"] as! [String : Any])
         self.poisonGasWarningRadius = (json["poisonGasWarningRadius"] as! NSNumber).floatValue
-        self.redZonePosition = Position(json: json["redZonePosition"] as! [String : Any])
+        self.redZonePosition = Location(json: json["redZonePosition"] as! [String : Any])
         self.redZoneRadius = (json["redZoneRadius"] as! NSNumber).floatValue
     }
 }

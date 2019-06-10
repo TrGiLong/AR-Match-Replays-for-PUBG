@@ -47,7 +47,6 @@
 		16855A4D22AC4B7900D68B3C /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A4C22AC4B7900D68B3C /* Vehicle.swift */; };
 		16855A4F22AC4FCB00D68B3C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A4E22AC4FCB00D68B3C /* Item.swift */; };
 		16855A5122AC515E00D68B3C /* ItemPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A5022AC515E00D68B3C /* ItemPackage.swift */; };
-		16855A5322AC52E300D68B3C /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A5222AC52E300D68B3C /* Position.swift */; };
 		16855A5522AC530A00D68B3C /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A5422AC530A00D68B3C /* GameState.swift */; };
 		16855A5722AC543400D68B3C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A5622AC543400D68B3C /* Common.swift */; };
 		16855A5A22AC54E400D68B3C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16855A5922AC54E400D68B3C /* Event.swift */; };
@@ -122,7 +121,6 @@
 		16855A4C22AC4B7900D68B3C /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		16855A4E22AC4FCB00D68B3C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		16855A5022AC515E00D68B3C /* ItemPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPackage.swift; sourceTree = "<group>"; };
-		16855A5222AC52E300D68B3C /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		16855A5422AC530A00D68B3C /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		16855A5622AC543400D68B3C /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		16855A5922AC54E400D68B3C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 				16855A4222AC3A5800D68B3C /* BlueZoneCustomOption.swift */,
 				16855A4422AC3C4C00D68B3C /* Character.swift */,
 				16855A4622AC3CF000D68B3C /* Location.swift */,
-				16855A5222AC52E300D68B3C /* Position.swift */,
 				16855A4822AC499C00D68B3C /* Stats.swift */,
 				16855A4A22AC4AD500D68B3C /* GameResult.swift */,
 				16855A4C22AC4B7900D68B3C /* Vehicle.swift */,
@@ -545,7 +542,6 @@
 				16855A3722AC35F400D68B3C /* MatchLinks.swift in Sources */,
 				168559FC22AC346A00D68B3C /* PlayerMatchesDatum.swift in Sources */,
 				16855A0122AC346A00D68B3C /* PlayerRelationships.swift in Sources */,
-				16855A5322AC52E300D68B3C /* Position.swift in Sources */,
 				16855A0222AC346A00D68B3C /* PlayerMeta.swift in Sources */,
 				16855A4F22AC4FCB00D68B3C /* Item.swift in Sources */,
 				16855A3222AC35F400D68B3C /* MatchParticipants.swift in Sources */,

@@ -416,7 +416,7 @@ class LogMatchStart : Event {
     let teamSize : Int
     let isCustomGame : Bool
     let isEventMode : Bool
-    let blueZoneCustomOptions : String
+    let blueZoneCustomOptions : [BlueZoneCustomOption]
     
     override init(json : [String : Any]) {
         
@@ -427,7 +427,7 @@ class LogMatchStart : Event {
         mapName = json["mapName"] as! String
         weatherId = json["weatherId"] as! String
         cameraViewBehaviour = json["cameraViewBehaviour"] as! String
-        blueZoneCustomOptions = json["blueZoneCustomOptions"] as! String
+        blueZoneCustomOptions = BlueZoneCustomOptions.parse(string: json["blueZoneCustomOptions"] as! String)
         
         self.teamSize = (json["teamSize"] as! NSNumber).intValue
         

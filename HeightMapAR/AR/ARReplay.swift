@@ -94,7 +94,7 @@ class ARReplay: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     var eventLoopTimeInterval : TimeInterval = 0.1
     var previousTime : TimeInterval?
     
-    let speed = 1.0
+    let speed = 5.0
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
@@ -125,6 +125,10 @@ class ARReplay: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
     
     var players : Set<SCNNode> = []
+    var blueZone : SCNNode?
+    var redZone  : SCNNode?
+    
+    var blueZoneOptions : [BlueZoneCustomOption] = []
     
     private let movingActionKey = "movingActionKey"
 }
@@ -136,6 +140,8 @@ extension ARReplay {
         }
         
         switch eventType {
+        case .LogMatchStart:
+            self.matchStart(event: event as! LogMatchStart)
         case .LogPlayerPosition:
             playerEventPosition(event: event as! LogPlayerPosition)
         case .LogPlayerTakeDamage:
@@ -154,15 +160,23 @@ extension ARReplay {
             self.playerKill(event: event as! LogPllayerKill)
         case .LogArmorDestroy:
             self.armorDestry(event: event as! Logarmordestroy)
+        case .LogPlayerAttack:
+            self.logPlayyerAttack(event: event as! LogPLayerAttack)
+        case .LogPlayerRevive:
+            self.playerRevive(event: event as! LogPlayerRevive)
+        case .LogHeal:
+            self.heal(event: event as! LogHeal)
+        case .LogGameStatePeriodic:
+            self.gameStatePeriodic(event: event as! LogGameStatePeriodoc)
         default:
             return
         }
     }
 
-    func processEventInFuture( execute : @escaping () -> Void) {
+    func processEventInFuture(time : TimeInterval = 10 ,execute : @escaping () -> Void) {
         arView.scene.rootNode.runAction(
             SCNAction.sequence([
-                SCNAction.wait(duration: 10/speed),
+                SCNAction.wait(duration: time/speed),
                 SCNAction.run({ (_) in
                     execute()
                 })
@@ -170,19 +184,20 @@ extension ARReplay {
         )
     }
     
-    func firstFutureEvent<T : Event>(in duration : TimeInterval, compare : (T) -> Bool) -> T? {
+    func firstFutureEvent(in duration : TimeInterval, compare : (Event) -> Bool) -> Event? {
+        
         var ind = currentEventIndex + 1
+        if (ind >= events.count) { return nil }
+        
         while events[ind]._D < eventLoopTime + duration {
-            guard let nextEvent = events[ind] as? T else {
-                ind+=1
-                continue
-            }
+            
+            let nextEvent = events[ind]
             
             if (compare(nextEvent)) {
                 return nextEvent
             } else {
                 ind+=1
-                if (ind >= events.count) { break }
+                if (ind >= events.count) { return nil }
             }
             
         }
@@ -190,13 +205,89 @@ extension ARReplay {
         return nil
     }
     
+    func matchStart(event : LogMatchStart) {
+        self.blueZoneOptions = event.blueZoneCustomOptions
+    }
+    
+    func gameStatePeriodic(event : LogGameStatePeriodoc) {
+        
+        //blue zone
+        let blueZonePosition = locationToVector(location: event.gameStates.safetyZonePosition)
+        let radius = event.gameStates.safetyZoneRadius/Float(mapRealSize(map: map).width)
+ 
+        blueZone?.removeFromParentNode()
+        blueZone = drawZone(position: blueZonePosition, radius: CGFloat(radius), color: UIColor(red: 0.1882, green: 0, blue: 0.8078, alpha: 0.4))
+        blueZone?.position = blueZonePosition
+        mapInfo.map.addChildNode(blueZone!)
+        
+        //red zone
+        let redZonePosition = locationToVector(location: event.gameStates.redZonePosition)
+        let redRadius = event.gameStates.redZoneRadius/Float(mapRealSize(map: map).width)
+        
+        redZone?.removeFromParentNode()
+        redZone = drawZone(position: redZonePosition, radius: CGFloat(redRadius), color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.4))
+        redZone?.position = redZonePosition
+        mapInfo.map.addChildNode(redZone!)
+        
+    }
+    
+    
+    func heal(event : LogHeal) {
+        _ = getPlayer(character: event.character)
+    }
+    
+    func itemUse(event : LogItemUse) {
+        _ = getPlayer(character: event.character)
+    }
+    
+    func playerRevive(event : LogPlayerRevive) {
+        _ = getPlayer(character: event.reviver)
+    }
+    
     func logPlayyerAttack(event : LogPLayerAttack) {
+        let nextEvent = firstFutureEvent(in: 50, compare: { (future) -> Bool in
+            
+            if let makeGroggy = future as? LogPlayerMakeGroggy {
+                return makeGroggy.attackId == event.attackId
+            }
+            
+            if let takeDamage = future as? LogPlayerTakeDamage {
+                return takeDamage.attackId == event.attackId
+            }
+            
+            if let armorDestroy = future as? Logarmordestroy {
+                return armorDestroy.attackId == event.attackId
+            }
+            
+            if let kill = future as? LogPllayerKill {
+                return kill.attackId == event.attackId
+            }
+            
+            return false
+        })
         
+        if let future = nextEvent as? LogPllayerKill {
+            playerKill(event: future, repeatAnimation: event.fireWeaponStackCount)
+        }
+        
+        //TODO: remove
+        if let future = nextEvent as? LogPlayerMakeGroggy {
+            playerMakeGroggy(event: future, repeatAnimation: event.fireWeaponStackCount)
+        }
+        
+        //TODO: remove
+        if let future = nextEvent as? LogPlayerTakeDamage {
+            playerTakeDamage(event: future, repeatAnimation: event.fireWeaponStackCount)
+        }
+        
+        if let future = nextEvent as? Logarmordestroy {
+            armorDestry(event: future, repeatAnimation: event.fireWeaponStackCount)
+        }
     }
     
-    func armorDestry(event : Logarmordestroy) {
-        guard let attackerNode = getPlayer(id: event.attacker.accountId) else { return }
-        guard let victimNode = getPlayer(id: event.victim.accountId) else { return }
+    func armorDestry(event : Logarmordestroy, repeatAnimation : Int = 1) {
+        guard let attackerNode = getPlayer(character: event.attacker) else { return }
+        guard let victimNode = getPlayer(character: event.victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
@@ -204,12 +295,12 @@ extension ARReplay {
         from.y += 0.002
         to.y   += 0.002
         
-        drawLine(from: from, to: to, duration: 2)
+        drawLine(from: from, to: to, duration: 1)
     }
     
-    func playerKill(event : LogPllayerKill) {
-        guard let attackerNode = getPlayer(id: event.killer.accountId) else { return }
-        guard let victimNode = getPlayer(id: event.victim.accountId) else { return }
+    func playerKill(event : LogPllayerKill, repeatAnimation : Int = 1) {
+        guard let attackerNode = getPlayer(character: event.killer) else { return }
+        guard let victimNode = getPlayer(character: event.victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
@@ -217,12 +308,16 @@ extension ARReplay {
         from.y += 0.002
         to.y   += 0.002
         
-        drawLine(from: from, to: to, duration: 2)
+        drawLine(from: from, to: to, duration: 1)
+        victimNode.runAction(SCNAction.sequence([
+            SCNAction.wait(duration: 1),
+            SCNAction.removeFromParentNode()
+            ]))
     }
     
-    func playerMakeGroggy(event : LogPlayerMakeGroggy) {
-        guard let attackerNode = getPlayer(id: event.attacker.accountId) else { return }
-        guard let victimNode = getPlayer(id: event.victim.accountId) else { return }
+    func playerMakeGroggy(event : LogPlayerMakeGroggy, repeatAnimation : Int = 1) {
+        guard let attackerNode = getPlayer(character: event.attacker) else { return }
+        guard let victimNode = getPlayer(character: event.victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
@@ -230,16 +325,16 @@ extension ARReplay {
         from.y += 0.002
         to.y   += 0.002
         
-        drawLine(from: from, to: to, duration: 2)
+        drawLine(from: from, to: to, duration: 1)
     }
     
     
-    func playerTakeDamage(event : LogPlayerTakeDamage) {
+    func playerTakeDamage(event : LogPlayerTakeDamage, repeatAnimation : Int = 1) {
         guard let attacker = event.attacker else { return }
         //        guard let victim  = event.victim else { return }
         
-        guard let attackerNode = getPlayer(id: attacker.accountId) else { return }
-        guard let victimNode = getPlayer(id: event.victim.accountId) else { return }
+        guard let attackerNode = getPlayer(character: attacker) else { return }
+        guard let victimNode = getPlayer(character: event.victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
@@ -247,11 +342,11 @@ extension ARReplay {
         from.y += 0.002
         to.y   += 0.002
         
-        drawLine(from: from, to: to, duration: 2)
+        drawLine(from: from, to: to, duration: 1)
     }
     
     func vehicleRide(event : LogVehicleRide) {
-        guard let node = getPlayer(id: event.attacker.accountId) else { return }
+        guard let node = getPlayer(character: event.attacker) else { return }
         
         let newLocation = locationToVector(location: event.attacker.location)
         node.removeAction(forKey: movingActionKey)
@@ -278,27 +373,16 @@ extension ARReplay {
     }
    
     func playerEventPosition(event : LogPlayerPosition) {
-        guard let node = getPlayer(id: event.character.accountId) else { return }
+        guard let node = getPlayer(character: event.character) else { return }
         let newLocation = locationToVector(location: event.character.location)
 
-        var ind = currentEventIndex + 1
-        while events[ind]._D < eventLoopTime + 11 {
-            guard let nextEvent = events[ind] as? LogPlayerPosition else {
-                ind+=1
-                continue
-            }
-            if (nextEvent.character.accountId != event.character.accountId) {
-                ind+=1
-                if (ind >= events.count) { break }
-            } else {
-                
-                node.position = newLocation
-                
-                let nexLocation = locationToVector(location: nextEvent.character.location)
-                node.runAction(SCNAction.move(to: nexLocation, duration: 10/speed),forKey: movingActionKey)
-                
-                break;
-            }
+        if let nextEvent = firstFutureEvent(in: 11, compare: { (futureEvent) -> Bool in
+            guard let futureEvent = futureEvent as? LogPlayerPosition else { return false }
+            return futureEvent.character.accountId == event.character.accountId
+        }) as? LogPlayerPosition {
+            node.position = newLocation
+            let nexLocation = locationToVector(location: nextEvent.character.location)
+            node.runAction(SCNAction.move(to: nexLocation, duration: 10/speed),forKey: movingActionKey)
         }
         
     }
@@ -307,6 +391,16 @@ extension ARReplay {
         if let node = players.first(where: { (node) -> Bool in
             return node.name == id
         }) {
+            return node
+        }
+        return nil
+    }
+    
+    func getPlayer(character : Character) -> SCNNode? {
+        if let node = players.first(where: { (node) -> Bool in
+            return node.name == character.accountId
+        }) {
+            updatCharacterNode(node: node, character: character)
             return node
         }
         return nil
@@ -346,7 +440,7 @@ extension ARReplay {
         node.addChildNode(nodeText)
         
         
-        let textHP = SCNText(string: "\(character.health)/100", extrusionDepth: 1)
+        let textHP = SCNText(string: "\(Int(character.health)) HP", extrusionDepth: 1)
         let materialHP = SCNMaterial()
         if (character.health < 20) {
             materialHP.diffuse.contents = UIColor.red
@@ -378,17 +472,45 @@ extension ARReplay {
 //        
         return SCNVector3(xPos , zPos, yPos)
     }
+    
+    func drawZone(position : SCNVector3, radius : CGFloat, color : UIColor) -> SCNNode {
+
+        let cylinder = SCNCylinder(radius: radius, height: 0.5)
+        
+        let material = SCNMaterial()
+        material.lightingModel = .blinn
+        material.isDoubleSided = true
+        material.diffuse.contents = color
+        
+        let material2 = SCNMaterial()
+        material2.diffuse.contents = UIColor.clear
+        
+        cylinder.materials = [material,material2,material2]
+        
+        let node = SCNNode(geometry: cylinder)
+        node.position = position
+        
+        return node
+    }
 }
 
 extension ARReplay {
-    func drawLine(from : SCNVector3, to : SCNVector3, duration : TimeInterval) {
+    func drawLine(from : SCNVector3, to : SCNVector3, repeaterAnimation : Int = 1, duration : TimeInterval) {
         let line = SCNGeometry.lineThrough(points: [from,to], width: 50, closed: false, color: UIColor.green.cgColor)
         
         let node = SCNNode(geometry: line)
         mapInfo.map.addChildNode(node)
         node.runAction(SCNAction.sequence([
+            
+            SCNAction.repeat(SCNAction.sequence([
+                SCNAction.unhide(),
+                SCNAction.wait(duration: 0.1),
+                SCNAction.hide()
+                ]), count: repeaterAnimation),
+            
             SCNAction.wait(duration: duration),
             SCNAction.removeFromParentNode()
             ]))
     }
 }
+

@@ -71,6 +71,8 @@
 		16B4ECC822AD2999002036A5 /* AssetPreload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECC722AD2999002036A5 /* AssetPreload.swift */; };
 		16B4ECCB22AD2D74002036A5 /* LineDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECC922AD2D73002036A5 /* LineDrawing.swift */; };
 		16B4ECCC22AD2D74002036A5 /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECCA22AD2D74002036A5 /* shaders.metal */; };
+		16B77B5B22AF025300DC99F5 /* vikendiHeigtMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B77B5A22AF025300DC99F5 /* vikendiHeigtMap.png */; };
+		16B77B5D22AF048900DC99F5 /* vikendi.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B77B5C22AF048900DC99F5 /* vikendi.png */; };
 		16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA90E22A93D3700E8D824 /* erangelMap.png */; };
 		16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA92F22A9BDF500E8D824 /* airdrop.dae */; };
 		16C1C9B022AEBDF50097D7AF /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C1C9AE22AEBDF50097D7AF /* smoke.png */; };
@@ -149,6 +151,8 @@
 		16B4ECC722AD2999002036A5 /* AssetPreload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPreload.swift; sourceTree = "<group>"; };
 		16B4ECC922AD2D73002036A5 /* LineDrawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDrawing.swift; sourceTree = "<group>"; };
 		16B4ECCA22AD2D74002036A5 /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
+		16B77B5A22AF025300DC99F5 /* vikendiHeigtMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vikendiHeigtMap.png; sourceTree = "<group>"; };
+		16B77B5C22AF048900DC99F5 /* vikendi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vikendi.png; sourceTree = "<group>"; };
 		16BFA90E22A93D3700E8D824 /* erangelMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erangelMap.png; sourceTree = "<group>"; };
 		16BFA92F22A9BDF500E8D824 /* airdrop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = airdrop.dae; sourceTree = "<group>"; };
 		16C1C9AE22AEBDF50097D7AF /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
@@ -347,6 +351,7 @@
 		16B4ECB022AD08A8002036A5 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				16B77B5922AF022800DC99F5 /* Vikendi */,
 				16B4ECB522AD08FD002036A5 /* Sanhok */,
 				16B4ECB222AD08D4002036A5 /* Miramar */,
 				16B4ECB122AD08BF002036A5 /* Erangel */,
@@ -391,6 +396,15 @@
 				16B4ECCA22AD2D74002036A5 /* shaders.metal */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		16B77B5922AF022800DC99F5 /* Vikendi */ = {
+			isa = PBXGroup;
+			children = (
+				16B77B5C22AF048900DC99F5 /* vikendi.png */,
+				16B77B5A22AF025300DC99F5 /* vikendiHeigtMap.png */,
+			);
+			path = Vikendi;
 			sourceTree = "<group>";
 		};
 		7DD02B02160151C6E3AF4A16 /* Pods */ = {
@@ -464,6 +478,7 @@
 			files = (
 				16B4ECB422AD08EF002036A5 /* miramarHeightMap.png in Resources */,
 				16ECE2EE22AA86070060583E /* big-anchor.png in Resources */,
+				16B77B5D22AF048900DC99F5 /* vikendi.png in Resources */,
 				16B4ECC622AD11BE002036A5 /* SceneKitAsset.scnassets in Resources */,
 				169C526122A81FD7005C5B20 /* LaunchScreen.storyboard in Resources */,
 				16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */,
@@ -474,6 +489,7 @@
 				16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */,
 				16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */,
 				16C1C9B122AEBDF50097D7AF /* smoke.scnp in Resources */,
+				16B77B5B22AF025300DC99F5 /* vikendiHeigtMap.png in Resources */,
 				169C525E22A81FD7005C5B20 /* Assets.xcassets in Resources */,
 				169C525C22A81FD5005C5B20 /* Main.storyboard in Resources */,
 				16ECE2E622AA7DA80060583E /* spawns.json in Resources */,

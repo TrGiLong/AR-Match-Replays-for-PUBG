@@ -13,6 +13,7 @@ enum Map : String {
     case erangel
     case sanhok
     case miramar
+    case vikendi
 }
 
 func mapRealSize(map : Map) -> CGSize {
@@ -21,8 +22,8 @@ func mapRealSize(map : Map) -> CGSize {
         return CGSize(width: 816000, height: 816000)
     case .sanhok:
         return CGSize(width: 416000, height: 416000)
-    default:
-        return CGSize(width: 0, height: 0)
+    case .vikendi:
+        return CGSize(width: 616000, height: 616000)
     }
 }
 
@@ -37,11 +38,11 @@ class MapFactory {
     static let k : Float = 1
     
     static func map( map : Map ) -> MapInfo? {
-        return MapFactory.map(mapName: map.rawValue)
+        return MapFactory.createMap(map : map)
     }
     
-    static private func map(mapName : String) -> MapInfo? {
-        let image = UIImage(named: "\(mapName)HeightMap.png")!
+    static private func createMap(map : Map) -> MapInfo? {
+        let image = UIImage(named: "\(map.rawValue)HeightMap.png")!
         
         var sources : [SCNVector3] = [];
         var indices: [UInt32] = []
@@ -51,7 +52,7 @@ class MapFactory {
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         let bytesPerPixel = 2
         
-        let minHeight : Float = 0.042
+//        let minHeight : Float = 0.042
         
         let imageWidth = Int(image.size.width)
         
@@ -112,7 +113,7 @@ class MapFactory {
         let node = SCNNode(geometry: geometry)
         
         let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "\(mapName)Map")
+        material.diffuse.contents = UIImage(named: "\(map.rawValue)Map")
         material.isDoubleSided = true
         node.geometry?.firstMaterial = material
         node.name = "Map"

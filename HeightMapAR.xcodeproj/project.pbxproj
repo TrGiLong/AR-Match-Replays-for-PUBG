@@ -73,6 +73,7 @@
 		16B4ECCC22AD2D74002036A5 /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECCA22AD2D74002036A5 /* shaders.metal */; };
 		16B77B5B22AF025300DC99F5 /* vikendiHeigtMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B77B5A22AF025300DC99F5 /* vikendiHeigtMap.png */; };
 		16B77B5D22AF048900DC99F5 /* vikendi.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B77B5C22AF048900DC99F5 /* vikendi.png */; };
+		16B77B5F22AF05F700DC99F5 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B77B5E22AF05F700DC99F5 /* UIColor.swift */; };
 		16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA90E22A93D3700E8D824 /* erangelMap.png */; };
 		16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA92F22A9BDF500E8D824 /* airdrop.dae */; };
 		16C1C9B022AEBDF50097D7AF /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C1C9AE22AEBDF50097D7AF /* smoke.png */; };
@@ -153,6 +154,7 @@
 		16B4ECCA22AD2D74002036A5 /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
 		16B77B5A22AF025300DC99F5 /* vikendiHeigtMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vikendiHeigtMap.png; sourceTree = "<group>"; };
 		16B77B5C22AF048900DC99F5 /* vikendi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vikendi.png; sourceTree = "<group>"; };
+		16B77B5E22AF05F700DC99F5 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		16BFA90E22A93D3700E8D824 /* erangelMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erangelMap.png; sourceTree = "<group>"; };
 		16BFA92F22A9BDF500E8D824 /* airdrop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = airdrop.dae; sourceTree = "<group>"; };
 		16C1C9AE22AEBDF50097D7AF /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				169C525822A81FD5005C5B20 /* ARMap.swift */,
 				16B4ECBC22AD0ED7002036A5 /* ARReplay.swift */,
+				16B77B5E22AF05F700DC99F5 /* UIColor.swift */,
 				16B4ECBE22AD0EDD002036A5 /* Nodes */,
 			);
 			path = AR;
@@ -586,6 +589,7 @@
 				16855A3D22AC35F400D68B3C /* MatchIncluded.swift in Sources */,
 				16855A4922AC499C00D68B3C /* Stats.swift in Sources */,
 				168559FA22AC346A00D68B3C /* PlayerDatum.swift in Sources */,
+				16B77B5F22AF05F700DC99F5 /* UIColor.swift in Sources */,
 				16855A3422AC35F400D68B3C /* MatchStats.swift in Sources */,
 				16855A3F22AC35F400D68B3C /* MatchData.swift in Sources */,
 				16B4ECAB22ACF2DD002036A5 /* PlayerVC.swift in Sources */,

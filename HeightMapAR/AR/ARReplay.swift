@@ -418,8 +418,15 @@ extension ARReplay {
             return node
         } else {
             let node = assetPreload.playerNode.clone()
+            node.geometry = (node.geometry?.copy() as! SCNGeometry)
+            if let newMaterial = node.geometry?.materials.first?.copy() as? SCNMaterial {
+                newMaterial.diffuse.contents = UIColor.randomColor(seed: "\(character.teamId)")
+                node.geometry?.materials = [newMaterial]
+            }
             
             node.name = character.accountId
+            node.geometry?.firstMaterial?.diffuse.contents = UIColor.randomColor(seed: "\(character.teamId)")
+
             players.insert(node)
         
             updatCharacterNode(node: node, character: character)
@@ -433,7 +440,7 @@ extension ARReplay {
             node.removeFromParentNode()
         }
         
-        let text = SCNText(string: "\(character.teamId) \(character.name)", extrusionDepth: 1)
+        let text = SCNText(string: "\(character.name)", extrusionDepth: 1)
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.white
         material.lightingModel = .blinn

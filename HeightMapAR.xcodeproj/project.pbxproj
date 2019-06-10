@@ -73,6 +73,8 @@
 		16B4ECCC22AD2D74002036A5 /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECCA22AD2D74002036A5 /* shaders.metal */; };
 		16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA90E22A93D3700E8D824 /* erangelMap.png */; };
 		16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA92F22A9BDF500E8D824 /* airdrop.dae */; };
+		16C1C9B022AEBDF50097D7AF /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C1C9AE22AEBDF50097D7AF /* smoke.png */; };
+		16C1C9B122AEBDF50097D7AF /* smoke.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 16C1C9AF22AEBDF50097D7AF /* smoke.scnp */; };
 		16ECE2E622AA7DA80060583E /* spawns.json in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2E522AA7DA80060583E /* spawns.json */; };
 		16ECE2E822AA80190060583E /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECE2E722AA80190060583E /* Spawn.swift */; };
 		16ECE2EC22AA86040060583E /* sports-car.png in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2EB22AA86040060583E /* sports-car.png */; };
@@ -149,6 +151,8 @@
 		16B4ECCA22AD2D74002036A5 /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
 		16BFA90E22A93D3700E8D824 /* erangelMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erangelMap.png; sourceTree = "<group>"; };
 		16BFA92F22A9BDF500E8D824 /* airdrop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = airdrop.dae; sourceTree = "<group>"; };
+		16C1C9AE22AEBDF50097D7AF /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
+		16C1C9AF22AEBDF50097D7AF /* smoke.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = smoke.scnp; sourceTree = "<group>"; };
 		16ECE2E522AA7DA80060583E /* spawns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spawns.json; sourceTree = "<group>"; };
 		16ECE2E722AA80190060583E /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
 		16ECE2EB22AA86040060583E /* sports-car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sports-car.png"; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				16BFA92F22A9BDF500E8D824 /* airdrop.dae */,
 				16B4ECB022AD08A8002036A5 /* Map */,
 				16B4ECC522AD11BE002036A5 /* SceneKitAsset.scnassets */,
+				16C1C9AE22AEBDF50097D7AF /* smoke.png */,
+				16C1C9AF22AEBDF50097D7AF /* smoke.scnp */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -378,8 +384,8 @@
 		16B4ECBE22AD0EDD002036A5 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				169C527922A84463005C5B20 /* MapNode.swift */,
 				16B4ECC722AD2999002036A5 /* AssetPreload.swift */,
+				169C527922A84463005C5B20 /* MapNode.swift */,
 				16ECE2E722AA80190060583E /* Spawn.swift */,
 				16B4ECC922AD2D73002036A5 /* LineDrawing.swift */,
 				16B4ECCA22AD2D74002036A5 /* shaders.metal */,
@@ -463,9 +469,11 @@
 				16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */,
 				16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */,
 				169C528022A85A94005C5B20 /* erangelHeightMap.png in Resources */,
+				16C1C9B022AEBDF50097D7AF /* smoke.png in Resources */,
 				16B4ECBB22AD09A9002036A5 /* sanhokMap.png in Resources */,
 				16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */,
 				16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */,
+				16C1C9B122AEBDF50097D7AF /* smoke.scnp in Resources */,
 				169C525E22A81FD7005C5B20 /* Assets.xcassets in Resources */,
 				169C525C22A81FD5005C5B20 /* Main.storyboard in Resources */,
 				16ECE2E622AA7DA80060583E /* spawns.json in Resources */,

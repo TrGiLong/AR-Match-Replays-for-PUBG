@@ -310,7 +310,10 @@ extension ARReplay {
         
         drawLine(from: from, to: to, duration: 1)
         victimNode.runAction(SCNAction.sequence([
-            SCNAction.wait(duration: 1),
+            SCNAction.run({ (node) in
+                node.addParticleSystem(self.assetPreload.smoke)
+            }),
+            SCNAction.wait(duration: 3),
             SCNAction.removeFromParentNode()
             ]))
     }
@@ -363,13 +366,15 @@ extension ARReplay {
     }
     
     func playerLogin(event : LogPlayerLogin) {
-        //let node = getPlayerNodeOrCreated(character: event.accountId)
-        //mapInfo.map.addChildNode(node)
+        if let node = getPlayer(id: event.accountId) {
+            mapInfo.map.addChildNode(node)
+        }
     }
     
     func playerLogout(event : LogPlayerLogout) {
-        //let node = getPlayerNodeOrCreated(character: event.accountId)
-        //node.removeFromParentNode()
+        if let node = getPlayer(id: event.accountId) {
+            node.removeFromParentNode()
+        }
     }
    
     func playerEventPosition(event : LogPlayerPosition) {
@@ -430,7 +435,7 @@ extension ARReplay {
         
         let text = SCNText(string: "\(character.teamId) \(character.name)", extrusionDepth: 1)
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.blue
+        material.diffuse.contents = UIColor.white
         material.lightingModel = .blinn
         text.firstMaterial = material
         
@@ -496,7 +501,7 @@ extension ARReplay {
 
 extension ARReplay {
     func drawLine(from : SCNVector3, to : SCNVector3, repeaterAnimation : Int = 1, duration : TimeInterval) {
-        let line = SCNGeometry.lineThrough(points: [from,to], width: 50, closed: false, color: UIColor.green.cgColor)
+        let line = SCNGeometry.lineThrough(points: [from,to], width: 25, closed: false, color: UIColor.green.cgColor)
         
         let node = SCNNode(geometry: line)
         mapInfo.map.addChildNode(node)

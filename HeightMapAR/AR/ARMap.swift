@@ -18,10 +18,9 @@ struct PhysicsBody {
 class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     var map : Map = .sanhok
+    var mapInfo : MapInfo!
     
     @IBOutlet weak var arView: ARSCNView!
-    
-    var mapInfo : MapInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()

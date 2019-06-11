@@ -10,6 +10,35 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Map-->
+        <scene sceneID="LjH-Ia-nZT">
+            <objects>
+                <viewController id="LOy-Cn-nFd" customClass="SCMap" customModule="HeightMapAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CK1-As-7gg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noD-zw-kpK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </sceneKitView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="noD-zw-kpK" firstAttribute="leading" secondItem="VhG-pf-w4Z" secondAttribute="leading" id="SWf-Ek-XYL"/>
+                            <constraint firstItem="VhG-pf-w4Z" firstAttribute="bottom" secondItem="noD-zw-kpK" secondAttribute="bottom" id="bMo-OA-slY"/>
+                            <constraint firstItem="VhG-pf-w4Z" firstAttribute="trailing" secondItem="noD-zw-kpK" secondAttribute="trailing" id="kJp-TH-MmA"/>
+                            <constraint firstItem="noD-zw-kpK" firstAttribute="top" secondItem="VhG-pf-w4Z" secondAttribute="top" id="pdp-6I-R5Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VhG-pf-w4Z"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="noD-zw-kpK" id="ecu-HE-Lqm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zoJ-Y4-kVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4422" y="19"/>
+        </scene>
         <!--Replay-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -284,12 +313,36 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="6p4-Qb-q8u" detailTextLabel="aUU-gv-DdD" style="IBUITableViewCellStyleValue1" id="W8r-qw-nAu">
+                                        <rect key="frame" x="0.0" y="123" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W8r-qw-nAu" id="l9h-ff-SLT">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6p4-Qb-q8u">
+                                                    <rect key="frame" x="20" y="12" width="65.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aUU-gv-DdD">
+                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="eNY-wB-zEZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="mHV-GY-rYh">
-                                        <rect key="frame" x="0.0" y="159" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="203" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mHV-GY-rYh" id="lHK-nT-xb6">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -297,9 +350,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-kJ-3SG">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                                    <state key="normal" title="AR"/>
+                                                    <state key="normal" title="Play"/>
                                                     <connections>
-                                                        <action selector="arShow:" destination="KzG-tL-iUV" eventType="touchUpInside" id="c7B-zT-Gp6"/>
+                                                        <action selector="replayShow:" destination="KzG-tL-iUV" eventType="touchUpInside" id="dAy-xR-Ufx"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -308,6 +361,29 @@
                                                 <constraint firstItem="t2c-kJ-3SG" firstAttribute="leading" secondItem="lHK-nT-xb6" secondAttribute="leading" id="76s-mB-a9V"/>
                                                 <constraint firstAttribute="trailing" secondItem="t2c-kJ-3SG" secondAttribute="trailing" id="EQE-SW-4bH"/>
                                                 <constraint firstItem="t2c-kJ-3SG" firstAttribute="top" secondItem="lHK-nT-xb6" secondAttribute="top" id="yys-xi-5fi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="UmO-8Q-UsN">
+                                        <rect key="frame" x="0.0" y="247" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UmO-8Q-UsN" id="sIl-kY-40P">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wB9-Je-0Se">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <state key="normal" title="Play with AR"/>
+                                                    <connections>
+                                                        <action selector="arShow:" destination="KzG-tL-iUV" eventType="touchUpInside" id="m89-v4-pqQ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wB9-Je-0Se" firstAttribute="top" secondItem="sIl-kY-40P" secondAttribute="top" id="1YA-5X-tZW"/>
+                                                <constraint firstItem="wB9-Je-0Se" firstAttribute="leading" secondItem="sIl-kY-40P" secondAttribute="leading" id="ABb-AZ-tEL"/>
+                                                <constraint firstAttribute="bottom" secondItem="wB9-Je-0Se" secondAttribute="bottom" id="Tan-1a-AJh"/>
+                                                <constraint firstAttribute="trailing" secondItem="wB9-Je-0Se" secondAttribute="trailing" id="tJj-Nd-AkG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -325,13 +401,15 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createdDate" destination="iRz-eA-dXL" id="Jqx-N0-gMa"/>
+                        <outlet property="duration" destination="aUU-gv-DdD" id="Yvs-Gc-1fg"/>
                         <outlet property="mapName" destination="AIh-tU-COG" id="0kh-Cd-ZSG"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="arReplay" id="zdc-Un-j3T"/>
+                        <segue destination="M2w-gW-PTv" kind="show" identifier="replay" id="6FE-cn-4oW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bS-Hd-yuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3561" y="19"/>
+            <point key="canvasLocation" x="3560.8695652173915" y="18.75"/>
         </scene>
         <!--View-->
         <scene sceneID="Iqu-yk-ODp">
@@ -389,6 +467,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tb0-fa-nlc" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4423" y="769"/>
+        </scene>
+        <!--Replay-->
+        <scene sceneID="m3q-Fp-Zua">
+            <objects>
+                <viewController id="M2w-gW-PTv" customClass="SCReplay" customModule="HeightMapAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pTq-4f-kBX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtl-bJ-cuV">
+                                <rect key="frame" x="0.0" y="88" width="414" height="676"/>
+                            </sceneKitView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQX-5J-ghH">
+                                <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Play" id="6ai-2X-3Wh">
+                                        <connections>
+                                            <action selector="play:" destination="M2w-gW-PTv" id="uFh-WQ-Wjt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qtl-bJ-cuV" firstAttribute="top" secondItem="10I-Wt-jbg" secondAttribute="top" id="7aB-Mn-8is"/>
+                            <constraint firstAttribute="trailing" secondItem="dQX-5J-ghH" secondAttribute="trailing" id="XKQ-zu-wV5"/>
+                            <constraint firstItem="10I-Wt-jbg" firstAttribute="bottom" secondItem="dQX-5J-ghH" secondAttribute="bottom" id="Xau-ho-GvM"/>
+                            <constraint firstItem="dQX-5J-ghH" firstAttribute="top" secondItem="Qtl-bJ-cuV" secondAttribute="bottom" id="Yfr-X7-QQ3"/>
+                            <constraint firstItem="dQX-5J-ghH" firstAttribute="leading" secondItem="10I-Wt-jbg" secondAttribute="leading" id="e4I-sr-fk5"/>
+                            <constraint firstItem="Qtl-bJ-cuV" firstAttribute="leading" secondItem="10I-Wt-jbg" secondAttribute="leading" id="e6M-J7-hJn"/>
+                            <constraint firstItem="10I-Wt-jbg" firstAttribute="trailing" secondItem="Qtl-bJ-cuV" secondAttribute="trailing" id="irv-rK-WcS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="10I-Wt-jbg"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Qtl-bJ-cuV" id="HLX-pO-vBD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3DT-5i-cmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1969.5652173913045" y="768.75"/>
         </scene>
     </scenes>
 </document>

@@ -12,11 +12,13 @@ import RxSwift
 class MatchVC: UITableViewController {
 
     let arReplaySegue = "arReplay"
+    let replaySegue = "replay"
     
     var match : Match!
     
     @IBOutlet weak var mapName: UILabel!
     @IBOutlet weak var createdDate: UILabel!
+    @IBOutlet weak var duration: UILabel!
     
     let disposeBag = DisposeBag()
     
@@ -30,10 +32,18 @@ class MatchVC: UITableViewController {
         
         let map = PubgAsset.shared.map[attr.mapName]
         mapName.text = map ?? attr.mapName
+        
+        duration.text = "\(attr.duration) minute"
     }
 
     private var events : [Event]?
     @IBAction func arShow(_ sender: Any) {
+        
+        if toMap(map: match.data.attributes.mapName) == nil {
+            showAlert(self, title: "Ops!", message: "This map is not support to show")
+            return
+        }
+        
         let id = match.data.relationships.assets.data.first!.id
         let url = match.included.first(where: { (matchIncuded) -> Bool in
             return matchIncuded.id == id
@@ -50,11 +60,30 @@ class MatchVC: UITableViewController {
         }).disposed(by: disposeBag)
  
     }
+    @IBAction func replayShow(_ sender: Any) {
+        let id = match.data.relationships.assets.data.first!.id
+        let url = match.included.first(where: { (matchIncuded) -> Bool in
+            return matchIncuded.id == id
+        })
+        
+        let alert = showLoadingAlert(viewController: self)
+        PubgAPI.getTelemtry(url: url!.attributes.url!).subscribe(onSuccess: { (events) in
+            alert.dismiss(animated: true, completion: {
+                self.events = events
+                self.performSegue(withIdentifier: self.replaySegue, sender: nil)
+            })
+        }, onError: { (error) in
+            print(error)
+        }).disposed(by: disposeBag)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == arReplaySegue) {
             (segue.destination as! ARReplay).map = toMap(map: match.data.attributes.mapName)!
             (segue.destination as! ARReplay).events = events!
+        } else if (segue.identifier == replaySegue) {
+            (segue.destination as! SCReplay).map = toMap(map: match.data.attributes.mapName)!
+            (segue.destination as! SCReplay).events = events!
         }
     }
     
@@ -65,7 +94,10 @@ class MatchVC: UITableViewController {
             return .erangel
         } else if map == "Savage_Main" {
             return .sanhok
+        } else if map == "DihorOtok_Main" {
+            return .vikendi
         }
+        
         return nil
     }
 }

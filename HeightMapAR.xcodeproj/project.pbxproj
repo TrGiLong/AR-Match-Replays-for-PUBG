@@ -59,6 +59,13 @@
 		169C527822A84228005C5B20 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169C527722A84228005C5B20 /* ARKit.framework */; };
 		169C527A22A84463005C5B20 /* MapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C527922A84463005C5B20 /* MapNode.swift */; };
 		169C528022A85A94005C5B20 /* erangelHeightMap.png in Resources */ = {isa = PBXBuildFile; fileRef = 169C527F22A85A94005C5B20 /* erangelHeightMap.png */; };
+		16A4685822AF85EB0082187E /* mapName.json in Resources */ = {isa = PBXBuildFile; fileRef = 16A4685122AF85EB0082187E /* mapName.json */; };
+		16A4685922AF85EB0082187E /* vehicleId.json in Resources */ = {isa = PBXBuildFile; fileRef = 16A4685322AF85EB0082187E /* vehicleId.json */; };
+		16A4685A22AF85EB0082187E /* damageCauserName.json in Resources */ = {isa = PBXBuildFile; fileRef = 16A4685422AF85EB0082187E /* damageCauserName.json */; };
+		16A4685B22AF85EB0082187E /* itemId.json in Resources */ = {isa = PBXBuildFile; fileRef = 16A4685622AF85EB0082187E /* itemId.json */; };
+		16A4685C22AF85EB0082187E /* damageTypeCategory.json in Resources */ = {isa = PBXBuildFile; fileRef = 16A4685722AF85EB0082187E /* damageTypeCategory.json */; };
+		16A4685E22AF86000082187E /* PubgAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A4685D22AF86000082187E /* PubgAsset.swift */; };
+		16A4686022AF8A680082187E /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A4685F22AF8A680082187E /* Library.swift */; };
 		16B4ECAB22ACF2DD002036A5 /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */; };
 		16B4ECAD22AD03A8002036A5 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAC22AD03A8002036A5 /* MatchVC.swift */; };
 		16B4ECAF22AD0488002036A5 /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */; };
@@ -140,6 +147,13 @@
 		169C527722A84228005C5B20 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		169C527922A84463005C5B20 /* MapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNode.swift; sourceTree = "<group>"; };
 		169C527F22A85A94005C5B20 /* erangelHeightMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erangelHeightMap.png; sourceTree = "<group>"; };
+		16A4685122AF85EB0082187E /* mapName.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapName.json; sourceTree = "<group>"; };
+		16A4685322AF85EB0082187E /* vehicleId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vehicleId.json; sourceTree = "<group>"; };
+		16A4685422AF85EB0082187E /* damageCauserName.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = damageCauserName.json; sourceTree = "<group>"; };
+		16A4685622AF85EB0082187E /* itemId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = itemId.json; sourceTree = "<group>"; };
+		16A4685722AF85EB0082187E /* damageTypeCategory.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = damageTypeCategory.json; sourceTree = "<group>"; };
+		16A4685D22AF86000082187E /* PubgAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubgAsset.swift; sourceTree = "<group>"; };
+		16A4685F22AF8A680082187E /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		16B4ECAC22AD03A8002036A5 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
@@ -304,6 +318,7 @@
 				16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */,
 				16B4ECAC22AD03A8002036A5 /* MatchVC.swift */,
 				16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */,
+				16A4685F22AF8A680082187E /* Library.swift */,
 			);
 			path = MainUI;
 			sourceTree = "<group>";
@@ -330,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				169C525622A81FD5005C5B20 /* AppDelegate.swift */,
+				16A4684F22AF85DE0082187E /* pubg-assets */,
 				168558FA22ABFD5400D68B3C /* assets */,
 				168558F922ABFD4100D68B3C /* AR */,
 				16855A5D22AC987F00D68B3C /* MainUI */,
@@ -349,6 +365,43 @@
 				C58B72A9AB5267F774953F8D /* Pods_HeightMapAR.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		16A4684F22AF85DE0082187E /* pubg-assets */ = {
+			isa = PBXGroup;
+			children = (
+				16A4685D22AF86000082187E /* PubgAsset.swift */,
+				16A4685022AF85EB0082187E /* telemetry */,
+			);
+			path = "pubg-assets";
+			sourceTree = "<group>";
+		};
+		16A4685022AF85EB0082187E /* telemetry */ = {
+			isa = PBXGroup;
+			children = (
+				16A4685222AF85EB0082187E /* vehicle */,
+				16A4685522AF85EB0082187E /* item */,
+				16A4685122AF85EB0082187E /* mapName.json */,
+				16A4685422AF85EB0082187E /* damageCauserName.json */,
+				16A4685722AF85EB0082187E /* damageTypeCategory.json */,
+			);
+			path = telemetry;
+			sourceTree = "<group>";
+		};
+		16A4685222AF85EB0082187E /* vehicle */ = {
+			isa = PBXGroup;
+			children = (
+				16A4685322AF85EB0082187E /* vehicleId.json */,
+			);
+			path = vehicle;
+			sourceTree = "<group>";
+		};
+		16A4685522AF85EB0082187E /* item */ = {
+			isa = PBXGroup;
+			children = (
+				16A4685622AF85EB0082187E /* itemId.json */,
+			);
+			path = item;
 			sourceTree = "<group>";
 		};
 		16B4ECB022AD08A8002036A5 /* Map */ = {
@@ -479,15 +532,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A4685C22AF85EB0082187E /* damageTypeCategory.json in Resources */,
 				16B4ECB422AD08EF002036A5 /* miramarHeightMap.png in Resources */,
 				16ECE2EE22AA86070060583E /* big-anchor.png in Resources */,
 				16B77B5D22AF048900DC99F5 /* vikendi.png in Resources */,
+				16A4685922AF85EB0082187E /* vehicleId.json in Resources */,
+				16A4685822AF85EB0082187E /* mapName.json in Resources */,
 				16B4ECC622AD11BE002036A5 /* SceneKitAsset.scnassets in Resources */,
 				169C526122A81FD7005C5B20 /* LaunchScreen.storyboard in Resources */,
 				16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */,
 				16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */,
 				169C528022A85A94005C5B20 /* erangelHeightMap.png in Resources */,
 				16C1C9B022AEBDF50097D7AF /* smoke.png in Resources */,
+				16A4685A22AF85EB0082187E /* damageCauserName.json in Resources */,
 				16B4ECBB22AD09A9002036A5 /* sanhokMap.png in Resources */,
 				16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */,
 				16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */,
@@ -495,6 +552,7 @@
 				16B77B5B22AF025300DC99F5 /* vikendiHeigtMap.png in Resources */,
 				169C525E22A81FD7005C5B20 /* Assets.xcassets in Resources */,
 				169C525C22A81FD5005C5B20 /* Main.storyboard in Resources */,
+				16A4685B22AF85EB0082187E /* itemId.json in Resources */,
 				16ECE2E622AA7DA80060583E /* spawns.json in Resources */,
 				16ECE2EC22AA86040060583E /* sports-car.png in Resources */,
 			);
@@ -569,11 +627,13 @@
 				16855A3722AC35F400D68B3C /* MatchLinks.swift in Sources */,
 				168559FC22AC346A00D68B3C /* PlayerMatchesDatum.swift in Sources */,
 				16855A0122AC346A00D68B3C /* PlayerRelationships.swift in Sources */,
+				16A4686022AF8A680082187E /* Library.swift in Sources */,
 				16855A0222AC346A00D68B3C /* PlayerMeta.swift in Sources */,
 				16855A4F22AC4FCB00D68B3C /* Item.swift in Sources */,
 				16855A3222AC35F400D68B3C /* MatchParticipants.swift in Sources */,
 				16855A3122AC35F400D68B3C /* MatchIncludedRelationships.swift in Sources */,
 				16855A4D22AC4B7900D68B3C /* Vehicle.swift in Sources */,
+				16A4685E22AF86000082187E /* PubgAsset.swift in Sources */,
 				16855A3922AC35F400D68B3C /* MatchDataRelationships.swift in Sources */,
 				16B4ECCC22AD2D74002036A5 /* shaders.metal in Sources */,
 				168559FB22AC346A00D68B3C /* PlayerAssets.swift in Sources */,

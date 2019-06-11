@@ -23,8 +23,13 @@ class MatchVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        createdDate.text = match.data.attributes.createdAt.description
+        let attr = match.data.attributes
+        
+        createdDate.text = dateToString(attr.createdAt)
         mapName.text = match.data.attributes.mapName
+        
+        let map = PubgAsset.shared.map[attr.mapName]
+        mapName.text = map ?? attr.mapName
     }
 
     private var events : [Event]?

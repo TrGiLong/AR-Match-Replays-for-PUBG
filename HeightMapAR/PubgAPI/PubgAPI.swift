@@ -40,7 +40,7 @@ class PubgAPI {
                 if let player = response.result.value {
                     single(.success(player))
                 } else {
-                    single(.error(PubgError.notFound))
+                    single(.error(response.error ?? PubgError.notFound))
                 }
             })
             
@@ -60,7 +60,7 @@ class PubgAPI {
                 if let match = response.result.value {
                     single(.success(match))
                 } else {
-                    single(.error(PubgError.notFound))
+                    single(.error(response.error ?? PubgError.notFound))
                 }
             })
             

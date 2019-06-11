@@ -20,3 +20,11 @@ func showLoadingAlert(viewController : UIViewController) -> UIAlertController {
     viewController.present(alert, animated: true, completion: nil)
     return alert
 }
+
+func showAlert(_ viewController : UIViewController ,title : String, message : String) -> UIAlertController {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in }))
+    
+    viewController.present(alert, animated: true, completion: nil)
+    return alert
+}

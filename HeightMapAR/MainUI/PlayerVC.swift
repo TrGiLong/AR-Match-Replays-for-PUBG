@@ -21,12 +21,33 @@ class PlayerVC: UIViewController {
     
     var player : Player!
     var platform : PubgPlatform!
-
+    
+    var matches : [Match] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if let data = player.data.first?.relationships.matches.data {
+            
+            let matches = Observable<PlayerMatchesDatum>.from(data).flatMap { (matchData) -> Single<Match> in
+                return PubgAPI.getMatch(playerMatch: matchData, platform: self.platform)
+            }
+            
+            matches.subscribe(onNext: { (match) in
+                self.matches.append(match)
+                self.tableView.reloadData()
+            }, onError: { (error) in
+                print("Error")
+                _ = showAlert(self, title: "Error", message: error.localizedDescription)
+            }, onCompleted: {
+                
+            }).disposed(by: disposeBag)
+            
+        }
+        
     }
 }
 
@@ -41,7 +62,7 @@ extension PlayerVC : UITableViewDelegate, UITableViewDataSource {
         case 0:
             return 2
         case 1:
-            return player.data.first?.relationships.matches.data.count ?? 0
+            return matches.count
         default:
             return 0
         }
@@ -83,25 +104,22 @@ extension PlayerVC : UITableViewDelegate, UITableViewDataSource {
         var cell = tableView.dequeueReusableCell(withIdentifier: matchCellIden)
         
         if (cell == nil) {
-            cell = UITableViewCell(style: .default, reuseIdentifier: matchCellIden)
+            cell = UITableViewCell(style: .value1, reuseIdentifier: matchCellIden)
         }
         
-        cell!.textLabel?.text = player.data.first?.relationships.matches.data[indexPath.row].id ?? "Error"
+        let match = matches[indexPath.row]
+        let attr = match.data.attributes
+        let mapName = PubgAsset.shared.map[attr.mapName]
+        
+        cell!.textLabel?.text = "\(mapName ?? attr.mapName) (\(attr.gameMode))"
+        cell!.detailTextLabel?.text = dateToString(match.data.attributes.createdAt)
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            currentAlert = showLoadingAlert(viewController: self)
-            PubgAPI.getMatch(playerMatch: (player.data.first?.relationships.matches.data[indexPath.row])!, platform: platform).subscribe(onSuccess: { (match) in
-                self.currentAlert?.dismiss(animated: true
-                    , completion: {
-                        self.performSegue(withIdentifier: self.matchSegue, sender: match)
-                })
-            }) { (error) in
-                print(error)
-            }.disposed(by: disposeBag)
+            self.performSegue(withIdentifier: self.matchSegue, sender: matches[indexPath.row])
         }
     }
     
@@ -110,4 +128,5 @@ extension PlayerVC : UITableViewDelegate, UITableViewDataSource {
             (segue.destination as? MatchVC)?.match = (sender as! Match)
         }
     }
+    
 }

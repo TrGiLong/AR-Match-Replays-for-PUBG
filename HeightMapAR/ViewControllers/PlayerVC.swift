@@ -126,6 +126,7 @@ extension PlayerVC : UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == matchSegue {
             (segue.destination as? MatchVC)?.match = (sender as! Match)
+            (segue.destination as? MatchVC)?.player = player
         }
     }
     

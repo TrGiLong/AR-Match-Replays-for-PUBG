@@ -20,20 +20,32 @@ class Replay {
     
     var isReplayPause = true
     
+    let kAttackLifeTime : TimeInterval = 1
+    
     var players : Set<SCNNode> = []
     var blueZone : SCNNode?
     var redZone  : SCNNode?
     
     var blueZoneOptions : [BlueZoneCustomOption] = []
     
+    var mainPlayerId : String
+    
     private let movingActionKey = "movingActionKey"
     
-    init(_ mapInfo : MapInfo,_ map : Map,_ events : [Event]) {
+    private let kHP = "HP"
+    
+    let ui : UIController?
+    
+    init(_ mapInfo : MapInfo,_ map : Map,_ events : [Event],_ ui : UIController? = nil, _ mainPlayer : String) {
         self.mapInfo = mapInfo
         self.events = events
         
         eventLoopTime = events[0]._D
         self.map = map
+        
+        self.mainPlayerId = mainPlayer
+        
+        self.ui = ui
     }
     
     func play() {
@@ -47,7 +59,7 @@ class Replay {
     var eventLoopTime : TimeInterval = 0
     var eventLoopTimeInterval : TimeInterval = 0.1
     var previousTime : TimeInterval?
-    let speed = 2.0
+    var speed = 1.0
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         let deltaTime = time - (previousTime ?? time)
@@ -101,6 +113,8 @@ class Replay {
             self.heal(event: event as! LogHeal)
         case .LogGameStatePeriodic:
             self.gameStatePeriodic(event: event as! LogGameStatePeriodoc)
+        case .LogItemUse:
+            self.itemUse(event: event as! LogItemUse)
         default:
             return
         }
@@ -162,11 +176,17 @@ class Replay {
         redZone?.position = redZonePosition
         mapInfo.map.addChildNode(redZone!)
         
+        //update ui
+        ui?.numberAlive(event: event)
     }
     
     
     func heal(event : LogHeal) {
-        _ = getPlayer(character: event.character)
+        if let node = getPlayer(character: event.character) {
+            if let textNode = node.childNode(withName: kHP, recursively: false) {
+                textNode.geometry = hpGeometry(health: event.character.health + event.healAmount)
+            }
+        }
     }
     
     func itemUse(event : LogItemUse) {
@@ -241,6 +261,8 @@ class Replay {
         from.y += 0.002
         to.y   += 0.002
         
+        ui?.showKillEvent(event: event)
+        
         drawLine(from: from, to: to, duration: 1)
         victimNode.runAction(SCNAction.sequence([
             SCNAction.run({ (node) in
@@ -260,7 +282,7 @@ class Replay {
         
         from.y += 0.002
         to.y   += 0.002
-        
+
         drawLine(from: from, to: to, duration: 1)
     }
     
@@ -275,9 +297,15 @@ class Replay {
         var from = attackerNode.position
         var to   = victimNode.position
         
+        if let node = getPlayer(character: event.victim) {
+            if let textNode = node.childNode(withName: kHP, recursively: false) {
+                textNode.geometry = hpGeometry(health: event.victim.health - event.damage)
+            }
+        }
+        
         from.y += 0.002
         to.y   += 0.002
-        
+
         drawLine(from: from, to: to, duration: 1)
     }
     
@@ -350,7 +378,13 @@ class Replay {
         }) {
             return node
         } else {
-            let node = assetPreload.playerNode.clone()
+            
+            var node : SCNNode!
+            if character.accountId == mainPlayerId {
+                node = assetPreload.mainPlayerNode.clone()
+            } else {
+                node = assetPreload.playerNode.clone()
+            }
             node.geometry = (node.geometry?.copy() as! SCNGeometry)
             if let newMaterial = node.geometry?.materials.first?.copy() as? SCNMaterial {
                 newMaterial.diffuse.contents = UIColor.randomColor(seed: "\(character.teamId)")
@@ -384,21 +418,26 @@ class Replay {
         nodeText.scale = SCNVector3(0.01, 0.01, 0.01)
         node.addChildNode(nodeText)
         
-        
-        let textHP = SCNText(string: "\(Int(character.health)) HP", extrusionDepth: 1)
+        let nodeTextHP = SCNNode(geometry: hpGeometry(health: character.health))
+        nodeTextHP.name = kHP
+        nodeTextHP.position = SCNVector3(0.1, 0.0, 0)
+        nodeTextHP.scale = SCNVector3(0.01, 0.01, 0.01)
+        node.addChildNode(nodeTextHP)
+    }
+}
+
+extension Replay {
+    func hpGeometry(health : Float) -> SCNGeometry {
+        let textHP = SCNText(string: "\(Int(health)) HP", extrusionDepth: 1)
         let materialHP = SCNMaterial()
-        if (character.health < 20) {
+        if (health < 20) {
             materialHP.diffuse.contents = UIColor.red
         } else {
             materialHP.diffuse.contents = UIColor.green
         }
         materialHP.lightingModel = .blinn
         textHP.firstMaterial = materialHP
-        
-        let nodeTextHP = SCNNode(geometry: textHP)
-        nodeTextHP.position = SCNVector3(0.1, 0.0, 0)
-        nodeTextHP.scale = SCNVector3(0.01, 0.01, 0.01)
-        node.addChildNode(nodeTextHP)
+        return textHP
     }
 }
 
@@ -441,7 +480,7 @@ extension Replay {
 
 extension Replay {
     func drawLine(from : SCNVector3, to : SCNVector3, repeaterAnimation : Int = 1, duration : TimeInterval) {
-        let line = SCNGeometry.lineThrough(points: [from,to], width: 25, closed: false, color: UIColor.green.cgColor)
+        let line = SCNGeometry.lineThrough(points: [from,to], width: 4, closed: false, color: UIColor.green.cgColor)
         
         let node = SCNNode(geometry: line)
         mapInfo.map.addChildNode(node)
@@ -449,7 +488,7 @@ extension Replay {
             
             SCNAction.repeat(SCNAction.sequence([
                 SCNAction.unhide(),
-                SCNAction.wait(duration: 0.1),
+                SCNAction.wait(duration: 0.05),
                 SCNAction.hide()
                 ]), count: repeaterAnimation),
             

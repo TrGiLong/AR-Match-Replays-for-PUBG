@@ -69,6 +69,66 @@
 		16A4686622AF92AD0082187E /* SCMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A4686522AF92AD0082187E /* SCMap.swift */; };
 		16A4686922AF94EF0082187E /* Replay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A4686822AF94EF0082187E /* Replay.swift */; };
 		16A4686D22AFA0700082187E /* SCReplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A4686C22AFA0700082187E /* SCReplay.swift */; };
+		16A4686F22AFF49D0082187E /* UIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A4686E22AFF49D0082187E /* UIController.swift */; };
+		16A469DB22B00CD40082187E /* Item_Weapon_Sawnoff_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A4699B22B00CD40082187E /* Item_Weapon_Sawnoff_C.png */; };
+		16A469DC22B00CD40082187E /* Item_Weapon_G18_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A4699C22B00CD40082187E /* Item_Weapon_G18_C.png */; };
+		16A469DD22B00CD40082187E /* Item_Weapon_M9_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A4699D22B00CD40082187E /* Item_Weapon_M9_C.png */; };
+		16A469DE22B00CD40082187E /* Item_Weapon_NagantM1895_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A4699E22B00CD40082187E /* Item_Weapon_NagantM1895_C.png */; };
+		16A469DF22B00CD40082187E /* Item_Weapon_M1911_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A4699F22B00CD40082187E /* Item_Weapon_M1911_C.png */; };
+		16A469E022B00CD40082187E /* Item_Weapon_vz61Skorpion_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A022B00CD40082187E /* Item_Weapon_vz61Skorpion_C.png */; };
+		16A469E122B00CD40082187E /* Item_Weapon_FlareGun_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A122B00CD40082187E /* Item_Weapon_FlareGun_C.png */; };
+		16A469E222B00CD40082187E /* Item_Weapon_Rhino_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A222B00CD40082187E /* Item_Weapon_Rhino_C.png */; };
+		16A469E322B00CD40082187E /* Item_Weapon_Cowbar_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A422B00CD40082187E /* Item_Weapon_Cowbar_C.png */; };
+		16A469E422B00CD40082187E /* Item_Weapon_Pan_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A522B00CD40082187E /* Item_Weapon_Pan_C.png */; };
+		16A469E522B00CD40082187E /* Item_Weapon_Machete_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A622B00CD40082187E /* Item_Weapon_Machete_C.png */; };
+		16A469E622B00CD40082187E /* Item_Weapon_Sickle_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A722B00CD40082187E /* Item_Weapon_Sickle_C.png */; };
+		16A469E722B00CD40082187E /* Item_Weapon_BerylM762_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469A922B00CD40082187E /* Item_Weapon_BerylM762_C.png */; };
+		16A469E822B00CD40082187E /* Item_Weapon_M24_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469AA22B00CD40082187E /* Item_Weapon_M24_C.png */; };
+		16A469E922B00CD40082187E /* Item_Weapon_Crossbow_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469AB22B00CD40082187E /* Item_Weapon_Crossbow_C.png */; };
+		16A469EA22B00CD40082187E /* Item_Weapon_Groza_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469AC22B00CD40082187E /* Item_Weapon_Groza_C.png */; };
+		16A469EB22B00CD40082187E /* Item_Weapon_VSS_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469AD22B00CD40082187E /* Item_Weapon_VSS_C.png */; };
+		16A469EC22B00CD40082187E /* Item_Weapon_MP5K_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469AE22B00CD40082187E /* Item_Weapon_MP5K_C.png */; };
+		16A469ED22B00CD40082187E /* Item_Weapon_AK47_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469AF22B00CD40082187E /* Item_Weapon_AK47_C.png */; };
+		16A469EE22B00CD40082187E /* Item_Weapon_QBZ95_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B022B00CD40082187E /* Item_Weapon_QBZ95_C.png */; };
+		16A469EF22B00CD40082187E /* Item_Weapon_UMP_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B122B00CD40082187E /* Item_Weapon_UMP_C.png */; };
+		16A469F022B00CD40082187E /* Item_Weapon_Win1894_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B222B00CD40082187E /* Item_Weapon_Win1894_C.png */; };
+		16A469F122B00CD40082187E /* Item_Weapon_Saiga12_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B322B00CD40082187E /* Item_Weapon_Saiga12_C.png */; };
+		16A469F222B00CD40082187E /* Item_Weapon_AWM_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B422B00CD40082187E /* Item_Weapon_AWM_C.png */; };
+		16A469F322B00CD40082187E /* Item_Weapon_DP28_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B522B00CD40082187E /* Item_Weapon_DP28_C.png */; };
+		16A469F422B00CD40082187E /* Item_Weapon_Winchester_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B622B00CD40082187E /* Item_Weapon_Winchester_C.png */; };
+		16A469F522B00CD40082187E /* Item_Weapon_Mini14_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B722B00CD40082187E /* Item_Weapon_Mini14_C.png */; };
+		16A469F622B00CD40082187E /* Item_Weapon_M16A4_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B822B00CD40082187E /* Item_Weapon_M16A4_C.png */; };
+		16A469F722B00CD40082187E /* Item_Weapon_AUG_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469B922B00CD40082187E /* Item_Weapon_AUG_C.png */; };
+		16A469F822B00CD40082187E /* Item_Weapon_Vector_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469BA22B00CD40082187E /* Item_Weapon_Vector_C.png */; };
+		16A469F922B00CD40082187E /* Item_Weapon_SCAR-L_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469BB22B00CD40082187E /* Item_Weapon_SCAR-L_C.png */; };
+		16A469FA22B00CD40082187E /* Item_Weapon_M249_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469BC22B00CD40082187E /* Item_Weapon_M249_C.png */; };
+		16A469FB22B00CD40082187E /* Item_Weapon_QBU88_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469BD22B00CD40082187E /* Item_Weapon_QBU88_C.png */; };
+		16A469FC22B00CD40082187E /* Item_Weapon_G36C_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469BE22B00CD40082187E /* Item_Weapon_G36C_C.png */; };
+		16A469FD22B00CD40082187E /* Item_Weapon_FNFal_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469BF22B00CD40082187E /* Item_Weapon_FNFal_C.png */; };
+		16A469FE22B00CD40082187E /* Item_Weapon_Kar98k_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C022B00CD40082187E /* Item_Weapon_Kar98k_C.png */; };
+		16A469FF22B00CD40082187E /* Item_Weapon_UZI_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C122B00CD40082187E /* Item_Weapon_UZI_C.png */; };
+		16A46A0022B00CD40082187E /* Item_Weapon_HK416_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C222B00CD40082187E /* Item_Weapon_HK416_C.png */; };
+		16A46A0122B00CD40082187E /* Item_Weapon_SKS_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C322B00CD40082187E /* Item_Weapon_SKS_C.png */; };
+		16A46A0222B00CD40082187E /* Item_Weapon_Beretta686_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C422B00CD40082187E /* Item_Weapon_Beretta686_C.png */; };
+		16A46A0322B00CD40082187E /* Item_Weapon_BizonPP19_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C522B00CD40082187E /* Item_Weapon_BizonPP19_C.png */; };
+		16A46A0422B00CD40082187E /* Item_Weapon_Thompson_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C622B00CD40082187E /* Item_Weapon_Thompson_C.png */; };
+		16A46A0522B00CD40082187E /* Item_Weapon_Mk14_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C722B00CD40082187E /* Item_Weapon_Mk14_C.png */; };
+		16A46A0622B00CD40082187E /* Item_Weapon_Mk47Mutant_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469C822B00CD40082187E /* Item_Weapon_Mk47Mutant_C.png */; };
+		16A46A0722B00CD40082187E /* Item_Weapon_Grenade_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469CB22B00CD40082187E /* Item_Weapon_Grenade_C.png */; };
+		16A46A0822B00CD40082187E /* Item_Weapon_Molotov_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469CC22B00CD40082187E /* Item_Weapon_Molotov_C.png */; };
+		16A46A0922B00CD40082187E /* Item_Weapon_FlashBang_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469CD22B00CD40082187E /* Item_Weapon_FlashBang_c.png */; };
+		16A46A0A22B00CD40082187E /* Item_Weapon_SmokeBomb_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469CE22B00CD40082187E /* Item_Weapon_SmokeBomb_C.png */; };
+		16A46A0B22B00CD40082187E /* Item_Head_F_00_Lv2_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D022B00CD40082187E /* Item_Head_F_00_Lv2_C.png */; };
+		16A46A0C22B00CD40082187E /* Item_Head_G_00_Lv3_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D122B00CD40082187E /* Item_Head_G_00_Lv3_C.png */; };
+		16A46A0D22B00CD40082187E /* Item_Head_E_00_Lv1_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D222B00CD40082187E /* Item_Head_E_00_Lv1_C.png */; };
+		16A46A0E22B00CD40082187E /* Item_Back_F_00_Lv2_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D422B00CD40082187E /* Item_Back_F_00_Lv2_C.png */; };
+		16A46A0F22B00CD40082187E /* Item_Back_E_00_Lv1_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D522B00CD40082187E /* Item_Back_E_00_Lv1_C.png */; };
+		16A46A1022B00CD40082187E /* Item_Back_C_00_Lv3_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D622B00CD40082187E /* Item_Back_C_00_Lv3_C.png */; };
+		16A46A1122B00CD40082187E /* Item_Armor_C_00_Lv3_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D822B00CD40082187E /* Item_Armor_C_00_Lv3_C.png */; };
+		16A46A1222B00CD40082187E /* Item_Armor_E_00_Lv1_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469D922B00CD40082187E /* Item_Armor_E_00_Lv1_C.png */; };
+		16A46A1322B00CD40082187E /* Item_Armor_D_00_Lv2_C.png in Resources */ = {isa = PBXBuildFile; fileRef = 16A469DA22B00CD40082187E /* Item_Armor_D_00_Lv2_C.png */; };
+		16A46A1722B031070082187E /* BannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A46A1622B031070082187E /* BannerVC.swift */; };
+		16A46A1922B036700082187E /* MapOpenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A46A1822B036700082187E /* MapOpenVC.swift */; };
 		16B4ECAB22ACF2DD002036A5 /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */; };
 		16B4ECAD22AD03A8002036A5 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAC22AD03A8002036A5 /* MatchVC.swift */; };
 		16B4ECAF22AD0488002036A5 /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */; };
@@ -160,6 +220,66 @@
 		16A4686522AF92AD0082187E /* SCMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCMap.swift; sourceTree = "<group>"; };
 		16A4686822AF94EF0082187E /* Replay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replay.swift; sourceTree = "<group>"; };
 		16A4686C22AFA0700082187E /* SCReplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCReplay.swift; sourceTree = "<group>"; };
+		16A4686E22AFF49D0082187E /* UIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIController.swift; sourceTree = "<group>"; };
+		16A4699B22B00CD40082187E /* Item_Weapon_Sawnoff_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Sawnoff_C.png; sourceTree = "<group>"; };
+		16A4699C22B00CD40082187E /* Item_Weapon_G18_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_G18_C.png; sourceTree = "<group>"; };
+		16A4699D22B00CD40082187E /* Item_Weapon_M9_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_M9_C.png; sourceTree = "<group>"; };
+		16A4699E22B00CD40082187E /* Item_Weapon_NagantM1895_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_NagantM1895_C.png; sourceTree = "<group>"; };
+		16A4699F22B00CD40082187E /* Item_Weapon_M1911_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_M1911_C.png; sourceTree = "<group>"; };
+		16A469A022B00CD40082187E /* Item_Weapon_vz61Skorpion_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_vz61Skorpion_C.png; sourceTree = "<group>"; };
+		16A469A122B00CD40082187E /* Item_Weapon_FlareGun_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_FlareGun_C.png; sourceTree = "<group>"; };
+		16A469A222B00CD40082187E /* Item_Weapon_Rhino_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Rhino_C.png; sourceTree = "<group>"; };
+		16A469A422B00CD40082187E /* Item_Weapon_Cowbar_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Cowbar_C.png; sourceTree = "<group>"; };
+		16A469A522B00CD40082187E /* Item_Weapon_Pan_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Pan_C.png; sourceTree = "<group>"; };
+		16A469A622B00CD40082187E /* Item_Weapon_Machete_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Machete_C.png; sourceTree = "<group>"; };
+		16A469A722B00CD40082187E /* Item_Weapon_Sickle_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Sickle_C.png; sourceTree = "<group>"; };
+		16A469A922B00CD40082187E /* Item_Weapon_BerylM762_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_BerylM762_C.png; sourceTree = "<group>"; };
+		16A469AA22B00CD40082187E /* Item_Weapon_M24_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_M24_C.png; sourceTree = "<group>"; };
+		16A469AB22B00CD40082187E /* Item_Weapon_Crossbow_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Crossbow_C.png; sourceTree = "<group>"; };
+		16A469AC22B00CD40082187E /* Item_Weapon_Groza_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Groza_C.png; sourceTree = "<group>"; };
+		16A469AD22B00CD40082187E /* Item_Weapon_VSS_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_VSS_C.png; sourceTree = "<group>"; };
+		16A469AE22B00CD40082187E /* Item_Weapon_MP5K_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_MP5K_C.png; sourceTree = "<group>"; };
+		16A469AF22B00CD40082187E /* Item_Weapon_AK47_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_AK47_C.png; sourceTree = "<group>"; };
+		16A469B022B00CD40082187E /* Item_Weapon_QBZ95_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_QBZ95_C.png; sourceTree = "<group>"; };
+		16A469B122B00CD40082187E /* Item_Weapon_UMP_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_UMP_C.png; sourceTree = "<group>"; };
+		16A469B222B00CD40082187E /* Item_Weapon_Win1894_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Win1894_C.png; sourceTree = "<group>"; };
+		16A469B322B00CD40082187E /* Item_Weapon_Saiga12_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Saiga12_C.png; sourceTree = "<group>"; };
+		16A469B422B00CD40082187E /* Item_Weapon_AWM_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_AWM_C.png; sourceTree = "<group>"; };
+		16A469B522B00CD40082187E /* Item_Weapon_DP28_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_DP28_C.png; sourceTree = "<group>"; };
+		16A469B622B00CD40082187E /* Item_Weapon_Winchester_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Winchester_C.png; sourceTree = "<group>"; };
+		16A469B722B00CD40082187E /* Item_Weapon_Mini14_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Mini14_C.png; sourceTree = "<group>"; };
+		16A469B822B00CD40082187E /* Item_Weapon_M16A4_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_M16A4_C.png; sourceTree = "<group>"; };
+		16A469B922B00CD40082187E /* Item_Weapon_AUG_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_AUG_C.png; sourceTree = "<group>"; };
+		16A469BA22B00CD40082187E /* Item_Weapon_Vector_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Vector_C.png; sourceTree = "<group>"; };
+		16A469BB22B00CD40082187E /* Item_Weapon_SCAR-L_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Item_Weapon_SCAR-L_C.png"; sourceTree = "<group>"; };
+		16A469BC22B00CD40082187E /* Item_Weapon_M249_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_M249_C.png; sourceTree = "<group>"; };
+		16A469BD22B00CD40082187E /* Item_Weapon_QBU88_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_QBU88_C.png; sourceTree = "<group>"; };
+		16A469BE22B00CD40082187E /* Item_Weapon_G36C_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_G36C_C.png; sourceTree = "<group>"; };
+		16A469BF22B00CD40082187E /* Item_Weapon_FNFal_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_FNFal_C.png; sourceTree = "<group>"; };
+		16A469C022B00CD40082187E /* Item_Weapon_Kar98k_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Kar98k_C.png; sourceTree = "<group>"; };
+		16A469C122B00CD40082187E /* Item_Weapon_UZI_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_UZI_C.png; sourceTree = "<group>"; };
+		16A469C222B00CD40082187E /* Item_Weapon_HK416_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_HK416_C.png; sourceTree = "<group>"; };
+		16A469C322B00CD40082187E /* Item_Weapon_SKS_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_SKS_C.png; sourceTree = "<group>"; };
+		16A469C422B00CD40082187E /* Item_Weapon_Beretta686_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Beretta686_C.png; sourceTree = "<group>"; };
+		16A469C522B00CD40082187E /* Item_Weapon_BizonPP19_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_BizonPP19_C.png; sourceTree = "<group>"; };
+		16A469C622B00CD40082187E /* Item_Weapon_Thompson_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Thompson_C.png; sourceTree = "<group>"; };
+		16A469C722B00CD40082187E /* Item_Weapon_Mk14_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Mk14_C.png; sourceTree = "<group>"; };
+		16A469C822B00CD40082187E /* Item_Weapon_Mk47Mutant_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Mk47Mutant_C.png; sourceTree = "<group>"; };
+		16A469CB22B00CD40082187E /* Item_Weapon_Grenade_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Grenade_C.png; sourceTree = "<group>"; };
+		16A469CC22B00CD40082187E /* Item_Weapon_Molotov_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_Molotov_C.png; sourceTree = "<group>"; };
+		16A469CD22B00CD40082187E /* Item_Weapon_FlashBang_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_FlashBang_c.png; sourceTree = "<group>"; };
+		16A469CE22B00CD40082187E /* Item_Weapon_SmokeBomb_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Weapon_SmokeBomb_C.png; sourceTree = "<group>"; };
+		16A469D022B00CD40082187E /* Item_Head_F_00_Lv2_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Head_F_00_Lv2_C.png; sourceTree = "<group>"; };
+		16A469D122B00CD40082187E /* Item_Head_G_00_Lv3_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Head_G_00_Lv3_C.png; sourceTree = "<group>"; };
+		16A469D222B00CD40082187E /* Item_Head_E_00_Lv1_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Head_E_00_Lv1_C.png; sourceTree = "<group>"; };
+		16A469D422B00CD40082187E /* Item_Back_F_00_Lv2_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Back_F_00_Lv2_C.png; sourceTree = "<group>"; };
+		16A469D522B00CD40082187E /* Item_Back_E_00_Lv1_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Back_E_00_Lv1_C.png; sourceTree = "<group>"; };
+		16A469D622B00CD40082187E /* Item_Back_C_00_Lv3_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Back_C_00_Lv3_C.png; sourceTree = "<group>"; };
+		16A469D822B00CD40082187E /* Item_Armor_C_00_Lv3_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Armor_C_00_Lv3_C.png; sourceTree = "<group>"; };
+		16A469D922B00CD40082187E /* Item_Armor_E_00_Lv1_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Armor_E_00_Lv1_C.png; sourceTree = "<group>"; };
+		16A469DA22B00CD40082187E /* Item_Armor_D_00_Lv2_C.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Item_Armor_D_00_Lv2_C.png; sourceTree = "<group>"; };
+		16A46A1622B031070082187E /* BannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerVC.swift; sourceTree = "<group>"; };
+		16A46A1822B036700082187E /* MapOpenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpenVC.swift; sourceTree = "<group>"; };
 		16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		16B4ECAC22AD03A8002036A5 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
@@ -226,6 +346,7 @@
 				16ECE2ED22AA86070060583E /* big-anchor.png */,
 				16ECE2E522AA7DA80060583E /* spawns.json */,
 				16BFA92F22A9BDF500E8D824 /* airdrop.dae */,
+				16A4699822B00CD40082187E /* Item */,
 				16B4ECB022AD08A8002036A5 /* Map */,
 				16B4ECC522AD11BE002036A5 /* SceneKitAsset.scnassets */,
 				16C1C9AE22AEBDF50097D7AF /* smoke.png */,
@@ -319,10 +440,12 @@
 			isa = PBXGroup;
 			children = (
 				16855A5B22AC987600D68B3C /* SearchPlayerVC.swift */,
+				16A46A1822B036700082187E /* MapOpenVC.swift */,
 				16B4ECAA22ACF2DD002036A5 /* PlayerVC.swift */,
 				16B4ECAC22AD03A8002036A5 /* MatchVC.swift */,
 				16B4ECAE22AD0488002036A5 /* LoadingAlert.swift */,
 				16A4685F22AF8A680082187E /* Library.swift */,
+				16A46A1622B031070082187E /* BannerVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -354,9 +477,9 @@
 				16A4686722AF94D80082187E /* Replay */,
 				168558F922ABFD4100D68B3C /* AR */,
 				16A4686422AF92750082187E /* SC */,
-				16855A5D22AC987F00D68B3C /* ViewControllers */,
-				16A4686322AF923E0082187E /* Scenekit */,
+				16A4686322AF923E0082187E /* Engine */,
 				168558F622ABCDB300D68B3C /* PubgAPI */,
+				16855A5D22AC987F00D68B3C /* ViewControllers */,
 				169C525A22A81FD5005C5B20 /* Main.storyboard */,
 				169C525D22A81FD7005C5B20 /* Assets.xcassets */,
 				169C525F22A81FD7005C5B20 /* LaunchScreen.storyboard */,
@@ -411,13 +534,14 @@
 			path = item;
 			sourceTree = "<group>";
 		};
-		16A4686322AF923E0082187E /* Scenekit */ = {
+		16A4686322AF923E0082187E /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				16A4686E22AFF49D0082187E /* UIController.swift */,
 				16B77B5E22AF05F700DC99F5 /* UIColor.swift */,
 				16B4ECBE22AD0EDD002036A5 /* Nodes */,
 			);
-			path = Scenekit;
+			path = Engine;
 			sourceTree = "<group>";
 		};
 		16A4686422AF92750082187E /* SC */ = {
@@ -435,6 +559,142 @@
 				16A4686822AF94EF0082187E /* Replay.swift */,
 			);
 			path = Replay;
+			sourceTree = "<group>";
+		};
+		16A4699822B00CD40082187E /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				16A4699922B00CD40082187E /* Weapon */,
+				16A469C922B00CD40082187E /* Equipment */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		16A4699922B00CD40082187E /* Weapon */ = {
+			isa = PBXGroup;
+			children = (
+				16A4699A22B00CD40082187E /* Handgun */,
+				16A469A322B00CD40082187E /* Melee */,
+				16A469A822B00CD40082187E /* Main */,
+			);
+			path = Weapon;
+			sourceTree = "<group>";
+		};
+		16A4699A22B00CD40082187E /* Handgun */ = {
+			isa = PBXGroup;
+			children = (
+				16A4699B22B00CD40082187E /* Item_Weapon_Sawnoff_C.png */,
+				16A4699C22B00CD40082187E /* Item_Weapon_G18_C.png */,
+				16A4699D22B00CD40082187E /* Item_Weapon_M9_C.png */,
+				16A4699E22B00CD40082187E /* Item_Weapon_NagantM1895_C.png */,
+				16A4699F22B00CD40082187E /* Item_Weapon_M1911_C.png */,
+				16A469A022B00CD40082187E /* Item_Weapon_vz61Skorpion_C.png */,
+				16A469A122B00CD40082187E /* Item_Weapon_FlareGun_C.png */,
+				16A469A222B00CD40082187E /* Item_Weapon_Rhino_C.png */,
+			);
+			path = Handgun;
+			sourceTree = "<group>";
+		};
+		16A469A322B00CD40082187E /* Melee */ = {
+			isa = PBXGroup;
+			children = (
+				16A469A422B00CD40082187E /* Item_Weapon_Cowbar_C.png */,
+				16A469A522B00CD40082187E /* Item_Weapon_Pan_C.png */,
+				16A469A622B00CD40082187E /* Item_Weapon_Machete_C.png */,
+				16A469A722B00CD40082187E /* Item_Weapon_Sickle_C.png */,
+			);
+			path = Melee;
+			sourceTree = "<group>";
+		};
+		16A469A822B00CD40082187E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				16A469A922B00CD40082187E /* Item_Weapon_BerylM762_C.png */,
+				16A469AA22B00CD40082187E /* Item_Weapon_M24_C.png */,
+				16A469AB22B00CD40082187E /* Item_Weapon_Crossbow_C.png */,
+				16A469AC22B00CD40082187E /* Item_Weapon_Groza_C.png */,
+				16A469AD22B00CD40082187E /* Item_Weapon_VSS_C.png */,
+				16A469AE22B00CD40082187E /* Item_Weapon_MP5K_C.png */,
+				16A469AF22B00CD40082187E /* Item_Weapon_AK47_C.png */,
+				16A469B022B00CD40082187E /* Item_Weapon_QBZ95_C.png */,
+				16A469B122B00CD40082187E /* Item_Weapon_UMP_C.png */,
+				16A469B222B00CD40082187E /* Item_Weapon_Win1894_C.png */,
+				16A469B322B00CD40082187E /* Item_Weapon_Saiga12_C.png */,
+				16A469B422B00CD40082187E /* Item_Weapon_AWM_C.png */,
+				16A469B522B00CD40082187E /* Item_Weapon_DP28_C.png */,
+				16A469B622B00CD40082187E /* Item_Weapon_Winchester_C.png */,
+				16A469B722B00CD40082187E /* Item_Weapon_Mini14_C.png */,
+				16A469B822B00CD40082187E /* Item_Weapon_M16A4_C.png */,
+				16A469B922B00CD40082187E /* Item_Weapon_AUG_C.png */,
+				16A469BA22B00CD40082187E /* Item_Weapon_Vector_C.png */,
+				16A469BB22B00CD40082187E /* Item_Weapon_SCAR-L_C.png */,
+				16A469BC22B00CD40082187E /* Item_Weapon_M249_C.png */,
+				16A469BD22B00CD40082187E /* Item_Weapon_QBU88_C.png */,
+				16A469BE22B00CD40082187E /* Item_Weapon_G36C_C.png */,
+				16A469BF22B00CD40082187E /* Item_Weapon_FNFal_C.png */,
+				16A469C022B00CD40082187E /* Item_Weapon_Kar98k_C.png */,
+				16A469C122B00CD40082187E /* Item_Weapon_UZI_C.png */,
+				16A469C222B00CD40082187E /* Item_Weapon_HK416_C.png */,
+				16A469C322B00CD40082187E /* Item_Weapon_SKS_C.png */,
+				16A469C422B00CD40082187E /* Item_Weapon_Beretta686_C.png */,
+				16A469C522B00CD40082187E /* Item_Weapon_BizonPP19_C.png */,
+				16A469C622B00CD40082187E /* Item_Weapon_Thompson_C.png */,
+				16A469C722B00CD40082187E /* Item_Weapon_Mk14_C.png */,
+				16A469C822B00CD40082187E /* Item_Weapon_Mk47Mutant_C.png */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		16A469C922B00CD40082187E /* Equipment */ = {
+			isa = PBXGroup;
+			children = (
+				16A469CA22B00CD40082187E /* Throwable */,
+				16A469CF22B00CD40082187E /* Headgear */,
+				16A469D322B00CD40082187E /* Backpack */,
+				16A469D722B00CD40082187E /* Vest */,
+			);
+			path = Equipment;
+			sourceTree = "<group>";
+		};
+		16A469CA22B00CD40082187E /* Throwable */ = {
+			isa = PBXGroup;
+			children = (
+				16A469CB22B00CD40082187E /* Item_Weapon_Grenade_C.png */,
+				16A469CC22B00CD40082187E /* Item_Weapon_Molotov_C.png */,
+				16A469CD22B00CD40082187E /* Item_Weapon_FlashBang_c.png */,
+				16A469CE22B00CD40082187E /* Item_Weapon_SmokeBomb_C.png */,
+			);
+			path = Throwable;
+			sourceTree = "<group>";
+		};
+		16A469CF22B00CD40082187E /* Headgear */ = {
+			isa = PBXGroup;
+			children = (
+				16A469D022B00CD40082187E /* Item_Head_F_00_Lv2_C.png */,
+				16A469D122B00CD40082187E /* Item_Head_G_00_Lv3_C.png */,
+				16A469D222B00CD40082187E /* Item_Head_E_00_Lv1_C.png */,
+			);
+			path = Headgear;
+			sourceTree = "<group>";
+		};
+		16A469D322B00CD40082187E /* Backpack */ = {
+			isa = PBXGroup;
+			children = (
+				16A469D422B00CD40082187E /* Item_Back_F_00_Lv2_C.png */,
+				16A469D522B00CD40082187E /* Item_Back_E_00_Lv1_C.png */,
+				16A469D622B00CD40082187E /* Item_Back_C_00_Lv3_C.png */,
+			);
+			path = Backpack;
+			sourceTree = "<group>";
+		};
+		16A469D722B00CD40082187E /* Vest */ = {
+			isa = PBXGroup;
+			children = (
+				16A469D822B00CD40082187E /* Item_Armor_C_00_Lv3_C.png */,
+				16A469D922B00CD40082187E /* Item_Armor_E_00_Lv1_C.png */,
+				16A469DA22B00CD40082187E /* Item_Armor_D_00_Lv2_C.png */,
+			);
+			path = Vest;
 			sourceTree = "<group>";
 		};
 		16B4ECB022AD08A8002036A5 /* Map */ = {
@@ -565,26 +825,83 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A469DB22B00CD40082187E /* Item_Weapon_Sawnoff_C.png in Resources */,
+				16A469DC22B00CD40082187E /* Item_Weapon_G18_C.png in Resources */,
+				16A469DD22B00CD40082187E /* Item_Weapon_M9_C.png in Resources */,
+				16A469DE22B00CD40082187E /* Item_Weapon_NagantM1895_C.png in Resources */,
+				16A469DF22B00CD40082187E /* Item_Weapon_M1911_C.png in Resources */,
+				16A469E022B00CD40082187E /* Item_Weapon_vz61Skorpion_C.png in Resources */,
+				16A469E122B00CD40082187E /* Item_Weapon_FlareGun_C.png in Resources */,
+				16A469E222B00CD40082187E /* Item_Weapon_Rhino_C.png in Resources */,
+				16A469E322B00CD40082187E /* Item_Weapon_Cowbar_C.png in Resources */,
+				16A469E422B00CD40082187E /* Item_Weapon_Pan_C.png in Resources */,
+				16A469E522B00CD40082187E /* Item_Weapon_Machete_C.png in Resources */,
+				16A469E622B00CD40082187E /* Item_Weapon_Sickle_C.png in Resources */,
+				16A469E722B00CD40082187E /* Item_Weapon_BerylM762_C.png in Resources */,
+				16A469E822B00CD40082187E /* Item_Weapon_M24_C.png in Resources */,
+				16A469E922B00CD40082187E /* Item_Weapon_Crossbow_C.png in Resources */,
+				16A469EA22B00CD40082187E /* Item_Weapon_Groza_C.png in Resources */,
+				16A469EB22B00CD40082187E /* Item_Weapon_VSS_C.png in Resources */,
+				16A469EC22B00CD40082187E /* Item_Weapon_MP5K_C.png in Resources */,
+				16A469ED22B00CD40082187E /* Item_Weapon_AK47_C.png in Resources */,
+				16A469EE22B00CD40082187E /* Item_Weapon_QBZ95_C.png in Resources */,
+				16A469EF22B00CD40082187E /* Item_Weapon_UMP_C.png in Resources */,
+				16A469F022B00CD40082187E /* Item_Weapon_Win1894_C.png in Resources */,
+				16A469F122B00CD40082187E /* Item_Weapon_Saiga12_C.png in Resources */,
+				16A469F222B00CD40082187E /* Item_Weapon_AWM_C.png in Resources */,
+				16A469F322B00CD40082187E /* Item_Weapon_DP28_C.png in Resources */,
+				16A469F422B00CD40082187E /* Item_Weapon_Winchester_C.png in Resources */,
+				16A469F522B00CD40082187E /* Item_Weapon_Mini14_C.png in Resources */,
+				16A469F622B00CD40082187E /* Item_Weapon_M16A4_C.png in Resources */,
+				16A469F722B00CD40082187E /* Item_Weapon_AUG_C.png in Resources */,
+				16A469F822B00CD40082187E /* Item_Weapon_Vector_C.png in Resources */,
+				16A469F922B00CD40082187E /* Item_Weapon_SCAR-L_C.png in Resources */,
+				16A469FA22B00CD40082187E /* Item_Weapon_M249_C.png in Resources */,
+				16A469FB22B00CD40082187E /* Item_Weapon_QBU88_C.png in Resources */,
+				16A469FC22B00CD40082187E /* Item_Weapon_G36C_C.png in Resources */,
+				16A469FD22B00CD40082187E /* Item_Weapon_FNFal_C.png in Resources */,
+				16A469FE22B00CD40082187E /* Item_Weapon_Kar98k_C.png in Resources */,
+				16A469FF22B00CD40082187E /* Item_Weapon_UZI_C.png in Resources */,
+				16A46A0022B00CD40082187E /* Item_Weapon_HK416_C.png in Resources */,
+				16A46A0122B00CD40082187E /* Item_Weapon_SKS_C.png in Resources */,
+				16A46A0222B00CD40082187E /* Item_Weapon_Beretta686_C.png in Resources */,
+				16A46A0322B00CD40082187E /* Item_Weapon_BizonPP19_C.png in Resources */,
+				16A46A0422B00CD40082187E /* Item_Weapon_Thompson_C.png in Resources */,
+				16A46A0522B00CD40082187E /* Item_Weapon_Mk14_C.png in Resources */,
+				16A46A0622B00CD40082187E /* Item_Weapon_Mk47Mutant_C.png in Resources */,
 				16A4685C22AF85EB0082187E /* damageTypeCategory.json in Resources */,
+				16A46A1322B00CD40082187E /* Item_Armor_D_00_Lv2_C.png in Resources */,
+				16A46A0F22B00CD40082187E /* Item_Back_E_00_Lv1_C.png in Resources */,
+				16A46A1022B00CD40082187E /* Item_Back_C_00_Lv3_C.png in Resources */,
 				16B4ECB422AD08EF002036A5 /* miramarHeightMap.png in Resources */,
 				16ECE2EE22AA86070060583E /* big-anchor.png in Resources */,
+				16A46A0B22B00CD40082187E /* Item_Head_F_00_Lv2_C.png in Resources */,
+				16A46A0A22B00CD40082187E /* Item_Weapon_SmokeBomb_C.png in Resources */,
 				16B77B5D22AF048900DC99F5 /* vikendiMap.png in Resources */,
 				16A4685922AF85EB0082187E /* vehicleId.json in Resources */,
+				16A46A0D22B00CD40082187E /* Item_Head_E_00_Lv1_C.png in Resources */,
+				16A46A0C22B00CD40082187E /* Item_Head_G_00_Lv3_C.png in Resources */,
 				16A4685822AF85EB0082187E /* mapName.json in Resources */,
 				16B4ECC622AD11BE002036A5 /* SceneKitAsset.scnassets in Resources */,
 				169C526122A81FD7005C5B20 /* LaunchScreen.storyboard in Resources */,
+				16A46A1122B00CD40082187E /* Item_Armor_C_00_Lv3_C.png in Resources */,
 				16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */,
 				16BFA90F22A93D3800E8D824 /* erangelMap.png in Resources */,
 				169C528022A85A94005C5B20 /* erangelHeightMap.png in Resources */,
+				16A46A0722B00CD40082187E /* Item_Weapon_Grenade_C.png in Resources */,
 				16C1C9B022AEBDF50097D7AF /* smoke.png in Resources */,
 				16A4685A22AF85EB0082187E /* damageCauserName.json in Resources */,
+				16A46A1222B00CD40082187E /* Item_Armor_E_00_Lv1_C.png in Resources */,
 				16B4ECBB22AD09A9002036A5 /* sanhokMap.png in Resources */,
 				16B4ECB722AD0910002036A5 /* sanhokHeightMap.png in Resources */,
 				16B4ECB922AD09A3002036A5 /* miramarMap.png in Resources */,
 				16C1C9B122AEBDF50097D7AF /* smoke.scnp in Resources */,
+				16A46A0922B00CD40082187E /* Item_Weapon_FlashBang_c.png in Resources */,
 				16B77B5B22AF025300DC99F5 /* vikendiHeightMap.png in Resources */,
+				16A46A0E22B00CD40082187E /* Item_Back_F_00_Lv2_C.png in Resources */,
 				169C525E22A81FD7005C5B20 /* Assets.xcassets in Resources */,
 				169C525C22A81FD5005C5B20 /* Main.storyboard in Resources */,
+				16A46A0822B00CD40082187E /* Item_Weapon_Molotov_C.png in Resources */,
 				16A4685B22AF85EB0082187E /* itemId.json in Resources */,
 				16ECE2E622AA7DA80060583E /* spawns.json in Resources */,
 				16ECE2EC22AA86040060583E /* sports-car.png in Resources */,
@@ -604,18 +921,22 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HeightMapAR/Pods-HeightMapAR-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -670,6 +991,7 @@
 				16855A3922AC35F400D68B3C /* MatchDataRelationships.swift in Sources */,
 				16B4ECCC22AD2D74002036A5 /* shaders.metal in Sources */,
 				168559FB22AC346A00D68B3C /* PlayerAssets.swift in Sources */,
+				16A46A1722B031070082187E /* BannerVC.swift in Sources */,
 				16855A5722AC543400D68B3C /* Common.swift in Sources */,
 				16855A0322AC346A00D68B3C /* PlayerAttributes.swift in Sources */,
 				1685593722AC144200D68B3C /* JSONSchemaSupport.swift in Sources */,
@@ -686,6 +1008,7 @@
 				168559FA22AC346A00D68B3C /* PlayerDatum.swift in Sources */,
 				16B77B5F22AF05F700DC99F5 /* UIColor.swift in Sources */,
 				16855A3422AC35F400D68B3C /* MatchStats.swift in Sources */,
+				16A4686F22AFF49D0082187E /* UIController.swift in Sources */,
 				16855A3F22AC35F400D68B3C /* MatchData.swift in Sources */,
 				16B4ECAB22ACF2DD002036A5 /* PlayerVC.swift in Sources */,
 				16855A2F22AC35F400D68B3C /* MatchDataAttributes.swift in Sources */,
@@ -700,6 +1023,7 @@
 				16855A3322AC35F400D68B3C /* MatchType.swift in Sources */,
 				16855A3022AC35F400D68B3C /* MatchDatum.swift in Sources */,
 				16855A5122AC515E00D68B3C /* ItemPackage.swift in Sources */,
+				16A46A1922B036700082187E /* MapOpenVC.swift in Sources */,
 				16A4686922AF94EF0082187E /* Replay.swift in Sources */,
 				16855A5A22AC54E400D68B3C /* Event.swift in Sources */,
 				168559FE22AC346A00D68B3C /* PlayerLinks.swift in Sources */,
@@ -858,6 +1182,7 @@
 			baseConfigurationReference = 32652AF5BE20EB9DB2DC95A7 /* Pods-HeightMapAR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2JJ8VV7365;
 				INFOPLIST_FILE = HeightMapAR/Info.plist;
@@ -865,8 +1190,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = TGL.HeightMapAR;
+				PRODUCT_BUNDLE_IDENTIFIER = TGL.PubgAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -877,6 +1203,7 @@
 			baseConfigurationReference = F21C6E35EA0AE25EF60AE897 /* Pods-HeightMapAR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2JJ8VV7365;
 				INFOPLIST_FILE = HeightMapAR/Info.plist;
@@ -884,8 +1211,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = TGL.HeightMapAR;
+				PRODUCT_BUNDLE_IDENTIFIER = TGL.PubgAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

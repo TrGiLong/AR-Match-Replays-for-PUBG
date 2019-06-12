@@ -46,15 +46,7 @@ class SearchPlayerVC: UITableViewController {
             return
         }
         
-        loadingAlert()
-        PubgAPI.getPlayer(name: playerTextField.text!, platform: currentPlatform).subscribe(onSuccess: { (player) in
-            self.currentAlert?.dismiss(animated: true, completion: {
-                self.performSegue(withIdentifier: self.PlayerSegue, sender: player)
-            })
-        }) { (error) in
-            self.currentAlert?.dismiss(animated: true, completion: nil)
-            self.missingPlayerNameAlert()
-        }.disposed(by: disposeBag)
+        searchPlayer(name: playerTextField.text!, platform: currentPlatform)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,4 +74,23 @@ class SearchPlayerVC: UITableViewController {
         self.currentAlert = showLoadingAlert(viewController: self)
     }
     
+    @IBAction func openShroud(_ sender: Any) {
+        searchPlayer(name: "shroud", platform: .steam)
+    }
+    
+    @IBAction func openChoco(_ sender: Any) {
+        searchPlayer(name: "chocoTaco", platform: .steam)
+    }
+    
+    func searchPlayer(name : String, platform : PubgPlatform) {
+        loadingAlert()
+        PubgAPI.getPlayer(name: name, platform: platform).subscribe(onSuccess: { (player) in
+            self.currentAlert?.dismiss(animated: true, completion: {
+                self.performSegue(withIdentifier: self.PlayerSegue, sender: player)
+            })
+        }) { (error) in
+            self.currentAlert?.dismiss(animated: true, completion: nil)
+            self.missingPlayerNameAlert()
+            }.disposed(by: disposeBag)
+    }
 }

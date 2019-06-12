@@ -14,6 +14,7 @@ class MatchVC: UITableViewController {
     let arReplaySegue = "arReplay"
     let replaySegue = "replay"
     
+    var player : Player!
     var match : Match!
     
     @IBOutlet weak var mapName: UILabel!
@@ -33,14 +34,14 @@ class MatchVC: UITableViewController {
         let map = PubgAsset.shared.map[attr.mapName]
         mapName.text = map ?? attr.mapName
         
-        duration.text = "\(attr.duration) minute"
+        duration.text = "\(Int(attr.duration/60)) minute"
     }
 
     private var events : [Event]?
     @IBAction func arShow(_ sender: Any) {
         
         if toMap(map: match.data.attributes.mapName) == nil {
-            showAlert(self, title: "Ops!", message: "This map is not support to show")
+            _ = showAlert(self, title: "Ops!", message: "This map is not support to show")
             return
         }
         
@@ -61,6 +62,12 @@ class MatchVC: UITableViewController {
  
     }
     @IBAction func replayShow(_ sender: Any) {
+        
+        if (toMap(map: match.data.attributes.mapName) ==  nil) {
+            _ = showAlert(self, title: "Ops!", message: "Unsupported map")
+            return
+        }
+        
         let id = match.data.relationships.assets.data.first!.id
         let url = match.included.first(where: { (matchIncuded) -> Bool in
             return matchIncuded.id == id
@@ -81,11 +88,21 @@ class MatchVC: UITableViewController {
         if (segue.identifier == arReplaySegue) {
             (segue.destination as! ARReplay).map = toMap(map: match.data.attributes.mapName)!
             (segue.destination as! ARReplay).events = events!
+            (segue.destination as! ARReplay).mainPlayer = player
+            (segue.destination as! ARReplay).speed = Double(Int(speed.value))
         } else if (segue.identifier == replaySegue) {
             (segue.destination as! SCReplay).map = toMap(map: match.data.attributes.mapName)!
             (segue.destination as! SCReplay).events = events!
+            (segue.destination as! SCReplay).mainPlayer = player
+            (segue.destination as! SCReplay).speed = Double(Int(speed.value))
         }
     }
+    
+    @IBOutlet weak var speed: UISlider!
+    @IBAction func speed(_ sender: UISlider) {
+        speedLabel.text = "\(Int(sender.value))x"
+    }
+    @IBOutlet weak var speedLabel: UILabel!
     
     private func toMap(map : String) -> Map? {
         if map == "Desert_Main" {

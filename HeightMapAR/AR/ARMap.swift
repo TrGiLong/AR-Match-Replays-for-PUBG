@@ -28,6 +28,17 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         mapInfo = MapFactory.map(map: map)
         
         arView.delegate = self
+        
+        
+        
+        let qaText = SCNText(string: "Yêu Quỳnh Anh", extrusionDepth: 3)
+        qaText.font = UIFont.boldSystemFont(ofSize: 10)
+        qaText.firstMaterial?.diffuse.contents = UIColor.black
+        let qaNode = SCNNode(geometry: qaText)
+        qaNode.position = SCNVector3(0, 0, -4)
+        qaNode.scale = SCNVector3(0.001, 0.001, 0.001)
+        arView.scene.rootNode.addChildNode(qaNode)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -38,11 +49,11 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.isLightEstimationEnabled = true;
-        configuration.planeDetection = .horizontal
+        //configuration.planeDetection = .horizontal
         
-        arView.showsStatistics = true
-        arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
-                                  ARSCNDebugOptions.showWorldOrigin]
+        //arView.showsStatistics = true
+        //arView.debugOptions = [ARSCNDebugOptions.showFeaturePoints,
+        //                          ARSCNDebugOptions.showWorldOrigin]
         
         // Run the view's session
         arView.session.run(configuration)
@@ -68,7 +79,7 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         
     }
     
-    @IBAction func loadImage(_ sender: Any) {
+    @IBAction func showMap(_ sender: Any) {
         guard let currentTransform = currentTransform else {
             return
         }
@@ -79,6 +90,8 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         mapInfo.map.removeFromParentNode()
         mapInfo.map.position = SCNVector3(currentTransform[3][0]-width/4, currentTransform[3][1], currentTransform[3][2]-height/4)
         arView.scene.rootNode.addChildNode(mapInfo.map)
+        
+
     }
     
     var currentTransform : simd_float4x4?
@@ -87,13 +100,6 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         currentTransform = frame.camera.transform
 
     }
-    
-    @IBAction func drop(_ sender: Any) {
-        guard let currentTransform = currentTransform else {
-            return
-        }
-    }
-
     
 }
 

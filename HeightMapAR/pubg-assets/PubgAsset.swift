@@ -13,9 +13,13 @@ class PubgAsset {
     static let shared = PubgAsset()
     
     let map : [String : String]
+    let damageCauserName : [String : String]
+    let itemId : [String : String]
     
     private init() {
         map = (PubgAsset.getJsonFromFile(fileName: "mapName", type: "json") as? [String : String]) ?? [:]
+        damageCauserName = (PubgAsset.getJsonFromFile(fileName: "damageCauserName", type: "json") as? [String : String]) ?? [:]
+        itemId = (PubgAsset.getJsonFromFile(fileName: "itemId", type: "json") as? [String : String]) ?? [:]
     }
     
     static private func getJsonFromFile(fileName : String, type : String) -> Any? {

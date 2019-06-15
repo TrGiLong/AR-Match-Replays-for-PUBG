@@ -107,12 +107,12 @@ class ARReplay: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     }
 
     @IBAction func pause(_ sender: Any) {
-        replay.isReplayPause = true
+        replay.play()
         arView.scene.isPaused = true
     }
     
     @IBAction func play(_ sender: Any) {
-        replay.isReplayPause = false
+        replay.pause()
         arView.scene.isPaused = false
     }
     

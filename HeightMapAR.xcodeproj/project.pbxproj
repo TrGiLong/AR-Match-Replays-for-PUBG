@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16061BD622B58D5300350041 /* ReplayEventsExecute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16061BD522B58D5300350041 /* ReplayEventsExecute.swift */; };
+		16061BD822B58E9D00350041 /* ReplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16061BD722B58E9D00350041 /* ReplayScene.swift */; };
+		16061BDA22B58EE300350041 /* ReplayDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16061BD922B58EE300350041 /* ReplayDrawing.swift */; };
 		168558F322ABCAF300D68B3C /* PubgAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168558F222ABCAF300D68B3C /* PubgAPI.swift */; };
 		1685593722AC144200D68B3C /* JSONSchemaSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685592C22AC144200D68B3C /* JSONSchemaSupport.swift */; };
 		168559FA22AC346A00D68B3C /* PlayerDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168559EF22AC346900D68B3C /* PlayerDatum.swift */; };
@@ -156,6 +159,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16061BD522B58D5300350041 /* ReplayEventsExecute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayEventsExecute.swift; sourceTree = "<group>"; };
+		16061BD722B58E9D00350041 /* ReplayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayScene.swift; sourceTree = "<group>"; };
+		16061BD922B58EE300350041 /* ReplayDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayDrawing.swift; sourceTree = "<group>"; };
 		168558F222ABCAF300D68B3C /* PubgAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubgAPI.swift; sourceTree = "<group>"; };
 		1685592C22AC144200D68B3C /* JSONSchemaSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSchemaSupport.swift; sourceTree = "<group>"; };
 		168559EF22AC346900D68B3C /* PlayerDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDatum.swift; sourceTree = "<group>"; };
@@ -557,6 +563,9 @@
 			isa = PBXGroup;
 			children = (
 				16A4686822AF94EF0082187E /* Replay.swift */,
+				16061BD522B58D5300350041 /* ReplayEventsExecute.swift */,
+				16061BD722B58E9D00350041 /* ReplayScene.swift */,
+				16061BD922B58EE300350041 /* ReplayDrawing.swift */,
 			);
 			path = Replay;
 			sourceTree = "<group>";
@@ -976,6 +985,7 @@
 				168559FD22AC346A00D68B3C /* PlayerMatches.swift in Sources */,
 				16855A4722AC3CF000D68B3C /* Location.swift in Sources */,
 				16855A3A22AC35F400D68B3C /* MatchRosters.swift in Sources */,
+				16061BDA22B58EE300350041 /* ReplayDrawing.swift in Sources */,
 				16855A3E22AC35F400D68B3C /* MatchDeathType.swift in Sources */,
 				16855A5C22AC987600D68B3C /* SearchPlayerVC.swift in Sources */,
 				16855A3722AC35F400D68B3C /* MatchLinks.swift in Sources */,
@@ -1007,6 +1017,7 @@
 				16855A4922AC499C00D68B3C /* Stats.swift in Sources */,
 				168559FA22AC346A00D68B3C /* PlayerDatum.swift in Sources */,
 				16B77B5F22AF05F700DC99F5 /* UIColor.swift in Sources */,
+				16061BD822B58E9D00350041 /* ReplayScene.swift in Sources */,
 				16855A3422AC35F400D68B3C /* MatchStats.swift in Sources */,
 				16A4686F22AFF49D0082187E /* UIController.swift in Sources */,
 				16855A3F22AC35F400D68B3C /* MatchData.swift in Sources */,
@@ -1026,6 +1037,7 @@
 				16A46A1922B036700082187E /* MapOpenVC.swift in Sources */,
 				16A4686922AF94EF0082187E /* Replay.swift in Sources */,
 				16855A5A22AC54E400D68B3C /* Event.swift in Sources */,
+				16061BD622B58D5300350041 /* ReplayEventsExecute.swift in Sources */,
 				168559FE22AC346A00D68B3C /* PlayerLinks.swift in Sources */,
 				16855A5522AC530A00D68B3C /* GameState.swift in Sources */,
 				16B4ECAD22AD03A8002036A5 /* MatchVC.swift in Sources */,

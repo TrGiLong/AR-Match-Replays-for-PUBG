@@ -37,13 +37,10 @@ class Replay {
     
     init(_ mapInfo : MapInfo,_ map : Map,_ events : [Event],_ ui : UIController? = nil, _ mainPlayer : String) {
         self.mapInfo = mapInfo
-        self.events = events
-        
-        eventLoopTime = events[0]._D
         self.map = map
-        
+        self.events = events
+        eventLoopTime = events[0]._D
         self.mainPlayerId = mainPlayer
-        
         self.ui = ui
     }
     

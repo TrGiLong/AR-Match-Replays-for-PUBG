@@ -23,7 +23,7 @@ extension Replay {
         if let node = players.first(where: { (node) -> Bool in
             return node.name == character.accountId
         }) {
-            updatCharacterNode(node: node, character: character)
+            updatePlayerInfoNode(node: node, character: character)
             return node
         }
         return nil
@@ -42,6 +42,7 @@ extension Replay {
             } else {
                 node = assetPreload.playerNode.clone()
             }
+            
             node.geometry = (node.geometry?.copy() as! SCNGeometry)
             if let newMaterial = node.geometry?.materials.first?.copy() as? SCNMaterial {
                 newMaterial.diffuse.contents = UIColor.randomColor(seed: "\(character.teamId)")
@@ -53,33 +54,58 @@ extension Replay {
             
             players.insert(node)
             
-            updatCharacterNode(node: node, character: character)
+            updatePlayerInfoNode(node: node, character: character)
             
             return node
         }
     }
     
-    func updatCharacterNode(node : SCNNode, character : Character) {
-        node.childNodes.forEach { (node) in
-            node.removeFromParentNode()
+    func updatePlayerInfoNode(node : SCNNode, character : Character) {
+
+        var infoNode = node.childNode(withName: kPlayerInfoNode, recursively: false)
+        if infoNode == nil {
+            infoNode = SCNNode()
+            infoNode?.name = kPlayerInfoNode
+            node.addChildNode(infoNode!)
+            
+            // Static node
+            let playerName = playerNameNode(character: character)
+            playerName.position = SCNVector3(0.1, 0.1, 0)
+            playerName.scale = SCNVector3(0.01, 0.01, 0.01)
+            infoNode!.addChildNode(playerName)
         }
         
-        let text = SCNText(string: "\(character.name)", extrusionDepth: 1)
-        let material = SCNMaterial()
-        material.diffuse.contents = UIColor.white
-        material.lightingModel = .blinn
-        text.firstMaterial = material
-        
-        let nodeText = SCNNode(geometry: text)
-        nodeText.position = SCNVector3(0.1, 0.1, 0)
-        nodeText.scale = SCNVector3(0.01, 0.01, 0.01)
-        node.addChildNode(nodeText)
-        
-        let nodeTextHP = SCNNode(geometry: hpGeometry(health: character.health))
-        nodeTextHP.name = kHP
-        nodeTextHP.position = SCNVector3(0.1, 0.0, 0)
-        nodeTextHP.scale = SCNVector3(0.01, 0.01, 0.01)
-        node.addChildNode(nodeTextHP)
+        // dynamic node
+        var hpNode = infoNode!.childNode(withName: kHP, recursively: false)
+        if hpNode == nil {
+            hpNode = SCNNode(geometry: hpGeometry(health: character.health))
+            hpNode!.name = kHP
+            hpNode!.position = SCNVector3(0.1, 0.0, 0)
+            hpNode!.scale = SCNVector3(0.01, 0.01, 0.01)
+            infoNode!.addChildNode(hpNode!)
+        }
+        hpNode?.geometry = hpGeometry(health: character.health)
+    }
+    
+    func updateRotationInfoNode() {
+        for playerNode in players {
+            
+            if playerNode.parent == nil {
+                continue
+            }
+            
+            guard let infoNode = playerNode.childNode(withName: kPlayerInfoNode, recursively: false) else {
+                continue
+            }
+            
+            guard let cameraEulerAngles = cameraEulerAngles else {
+                return
+            }
+            
+            infoNode.eulerAngles.y = cameraEulerAngles.y
+            
+            
+        }
     }
     
     func locationToVector(location : Location) -> SCNVector3 {

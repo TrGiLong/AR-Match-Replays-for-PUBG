@@ -10,6 +10,7 @@
 		16061BD622B58D5300350041 /* ReplayEventsExecute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16061BD522B58D5300350041 /* ReplayEventsExecute.swift */; };
 		16061BD822B58E9D00350041 /* ReplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16061BD722B58E9D00350041 /* ReplayScene.swift */; };
 		16061BDA22B58EE300350041 /* ReplayDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16061BD922B58EE300350041 /* ReplayDrawing.swift */; };
+		16061BDC22B594E300350041 /* demo.scn in Resources */ = {isa = PBXBuildFile; fileRef = 16061BDB22B594E300350041 /* demo.scn */; };
 		168558F322ABCAF300D68B3C /* PubgAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168558F222ABCAF300D68B3C /* PubgAPI.swift */; };
 		1685593722AC144200D68B3C /* JSONSchemaSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685592C22AC144200D68B3C /* JSONSchemaSupport.swift */; };
 		168559FA22AC346A00D68B3C /* PlayerDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168559EF22AC346900D68B3C /* PlayerDatum.swift */; };
@@ -162,6 +163,7 @@
 		16061BD522B58D5300350041 /* ReplayEventsExecute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayEventsExecute.swift; sourceTree = "<group>"; };
 		16061BD722B58E9D00350041 /* ReplayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayScene.swift; sourceTree = "<group>"; };
 		16061BD922B58EE300350041 /* ReplayDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplayDrawing.swift; sourceTree = "<group>"; };
+		16061BDB22B594E300350041 /* demo.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = demo.scn; sourceTree = "<group>"; };
 		168558F222ABCAF300D68B3C /* PubgAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubgAPI.swift; sourceTree = "<group>"; };
 		1685592C22AC144200D68B3C /* JSONSchemaSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSchemaSupport.swift; sourceTree = "<group>"; };
 		168559EF22AC346900D68B3C /* PlayerDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDatum.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				16B4ECC522AD11BE002036A5 /* SceneKitAsset.scnassets */,
 				16C1C9AE22AEBDF50097D7AF /* smoke.png */,
 				16C1C9AF22AEBDF50097D7AF /* smoke.scnp */,
+				16061BDB22B594E300350041 /* demo.scn */,
 			);
 			path = assets;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 				16A4685C22AF85EB0082187E /* damageTypeCategory.json in Resources */,
 				16A46A1322B00CD40082187E /* Item_Armor_D_00_Lv2_C.png in Resources */,
 				16A46A0F22B00CD40082187E /* Item_Back_E_00_Lv1_C.png in Resources */,
+				16061BDC22B594E300350041 /* demo.scn in Resources */,
 				16A46A1022B00CD40082187E /* Item_Back_C_00_Lv3_C.png in Resources */,
 				16B4ECB422AD08EF002036A5 /* miramarHeightMap.png in Resources */,
 				16ECE2EE22AA86070060583E /* big-anchor.png in Resources */,

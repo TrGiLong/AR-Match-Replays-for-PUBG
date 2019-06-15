@@ -9,6 +9,17 @@
 import SceneKit
 
 extension Replay {
+    
+    func playerNameNode(character : Character) -> SCNNode {
+        let text = SCNText(string: "\(character.name)", extrusionDepth: 1)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.white
+        material.lightingModel = .blinn
+        text.firstMaterial = material
+        
+        return SCNNode(geometry: text)
+    }
+    
     func hpGeometry(health : Float) -> SCNGeometry {
         let textHP = SCNText(string: "\(Int(health)) HP", extrusionDepth: 1)
         let materialHP = SCNMaterial()

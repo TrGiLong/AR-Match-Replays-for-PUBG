@@ -32,6 +32,7 @@ class Replay {
     
     let kMovingActionKey = "movingActionKey"
     let kHP = "HP"
+    let kPlayerInfoNode = "playerInfoNode"
     
     let ui : UIController?
     
@@ -56,6 +57,7 @@ class Replay {
     var eventLoopTimeInterval : TimeInterval = 0.1
     var previousTime : TimeInterval?
     var speed = 1.0
+    var cameraEulerAngles : simd_float3?
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         let deltaTime = time - (previousTime ?? time)
@@ -70,9 +72,12 @@ class Replay {
                     break;
                 }
             }
+            eventLoopTime += deltaTime * speed
+            
+            updateRotationInfoNode()
         }
         
-        eventLoopTime += deltaTime * speed
+        
     }
     
     

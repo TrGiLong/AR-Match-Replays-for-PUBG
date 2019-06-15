@@ -98,7 +98,6 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         // Do something with the new transform
         currentTransform = frame.camera.transform
-
     }
     
 }

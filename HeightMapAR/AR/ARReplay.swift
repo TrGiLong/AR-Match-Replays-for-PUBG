@@ -61,10 +61,10 @@ class ARReplay: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         configuration.isLightEstimationEnabled = true;
 //        configuration.planeDetection = .horizontal
         
-        arView.showsStatistics = false
+        arView.showsStatistics = true
         arView.debugOptions = [
-            //ARSCNDebugOptions.showFeaturePoints,
-//                               ARSCNDebugOptions.showWorldOrigin
+            ARSCNDebugOptions.showFeaturePoints,
+            ARSCNDebugOptions.showWorldOrigin
         ]
         
         // Run the view's session
@@ -104,15 +104,19 @@ class ARReplay: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         // Do something with the new transform
         currentTransform = frame.camera.transform
+        
+        
+        let rootNode = arView.scene.rootNode
+        replay.cameraEulerAngles = frame.camera.eulerAngles
     }
 
     @IBAction func pause(_ sender: Any) {
-        replay.play()
+        replay.pause()
         arView.scene.isPaused = true
     }
     
     @IBAction func play(_ sender: Any) {
-        replay.pause()
+        replay.play()
         arView.scene.isPaused = false
     }
     

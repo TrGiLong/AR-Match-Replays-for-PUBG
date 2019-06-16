@@ -105,8 +105,6 @@ class ARReplay: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         // Do something with the new transform
         currentTransform = frame.camera.transform
         
-        
-        let rootNode = arView.scene.rootNode
         replay.cameraEulerAngles = frame.camera.eulerAngles
     }
 

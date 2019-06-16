@@ -152,6 +152,9 @@
 		16BFA93022A9BDF500E8D824 /* airdrop.dae in Resources */ = {isa = PBXBuildFile; fileRef = 16BFA92F22A9BDF500E8D824 /* airdrop.dae */; };
 		16C1C9B022AEBDF50097D7AF /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 16C1C9AE22AEBDF50097D7AF /* smoke.png */; };
 		16C1C9B122AEBDF50097D7AF /* smoke.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 16C1C9AF22AEBDF50097D7AF /* smoke.scnp */; };
+		16CEC0E322B63D7E0055B425 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16CEC0E222B63D7E0055B425 /* Licenses.plist */; };
+		16CEC0E522B63DC50055B425 /* TLAnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEC0E422B63DC50055B425 /* TLAnalogJoystick.swift */; };
+		16CEC0E722B63F5F0055B425 /* UIControllerJoystik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEC0E622B63F5F0055B425 /* UIControllerJoystik.swift */; };
 		16ECE2E622AA7DA80060583E /* spawns.json in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2E522AA7DA80060583E /* spawns.json */; };
 		16ECE2E822AA80190060583E /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECE2E722AA80190060583E /* Spawn.swift */; };
 		16ECE2EC22AA86040060583E /* sports-car.png in Resources */ = {isa = PBXBuildFile; fileRef = 16ECE2EB22AA86040060583E /* sports-car.png */; };
@@ -307,6 +310,9 @@
 		16BFA92F22A9BDF500E8D824 /* airdrop.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = airdrop.dae; sourceTree = "<group>"; };
 		16C1C9AE22AEBDF50097D7AF /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
 		16C1C9AF22AEBDF50097D7AF /* smoke.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = smoke.scnp; sourceTree = "<group>"; };
+		16CEC0E222B63D7E0055B425 /* Licenses.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
+		16CEC0E422B63DC50055B425 /* TLAnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLAnalogJoystick.swift; sourceTree = "<group>"; };
+		16CEC0E622B63F5F0055B425 /* UIControllerJoystik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControllerJoystik.swift; sourceTree = "<group>"; };
 		16ECE2E522AA7DA80060583E /* spawns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spawns.json; sourceTree = "<group>"; };
 		16ECE2E722AA80190060583E /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
 		16ECE2EB22AA86040060583E /* sports-car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sports-car.png"; sourceTree = "<group>"; };
@@ -493,6 +499,7 @@
 				169C525D22A81FD7005C5B20 /* Assets.xcassets */,
 				169C525F22A81FD7005C5B20 /* LaunchScreen.storyboard */,
 				169C526222A81FD7005C5B20 /* Info.plist */,
+				16CEC0E222B63D7E0055B425 /* Licenses.plist */,
 			);
 			path = HeightMapAR;
 			sourceTree = "<group>";
@@ -546,8 +553,10 @@
 		16A4686322AF923E0082187E /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				16A4686E22AFF49D0082187E /* UIController.swift */,
 				16B77B5E22AF05F700DC99F5 /* UIColor.swift */,
+				16A4686E22AFF49D0082187E /* UIController.swift */,
+				16CEC0E622B63F5F0055B425 /* UIControllerJoystik.swift */,
+				16CEC0E422B63DC50055B425 /* TLAnalogJoystick.swift */,
 				16B4ECBE22AD0EDD002036A5 /* Nodes */,
 			);
 			path = Engine;
@@ -845,6 +854,7 @@
 				16A469E022B00CD40082187E /* Item_Weapon_vz61Skorpion_C.png in Resources */,
 				16A469E122B00CD40082187E /* Item_Weapon_FlareGun_C.png in Resources */,
 				16A469E222B00CD40082187E /* Item_Weapon_Rhino_C.png in Resources */,
+				16CEC0E322B63D7E0055B425 /* Licenses.plist in Resources */,
 				16A469E322B00CD40082187E /* Item_Weapon_Cowbar_C.png in Resources */,
 				16A469E422B00CD40082187E /* Item_Weapon_Pan_C.png in Resources */,
 				16A469E522B00CD40082187E /* Item_Weapon_Machete_C.png in Resources */,
@@ -1017,6 +1027,7 @@
 				16B4ECAF22AD0488002036A5 /* LoadingAlert.swift in Sources */,
 				16855A3822AC35F400D68B3C /* MatchShardID.swift in Sources */,
 				16855A3D22AC35F400D68B3C /* MatchIncluded.swift in Sources */,
+				16CEC0E722B63F5F0055B425 /* UIControllerJoystik.swift in Sources */,
 				16A4686622AF92AD0082187E /* SCMap.swift in Sources */,
 				16855A4922AC499C00D68B3C /* Stats.swift in Sources */,
 				168559FA22AC346A00D68B3C /* PlayerDatum.swift in Sources */,
@@ -1048,6 +1059,7 @@
 				16ECE2E822AA80190060583E /* Spawn.swift in Sources */,
 				16855A4B22AC4AD500D68B3C /* GameResult.swift in Sources */,
 				169C525922A81FD5005C5B20 /* ARMap.swift in Sources */,
+				16CEC0E522B63DC50055B425 /* TLAnalogJoystick.swift in Sources */,
 				16855A0022AC346A00D68B3C /* PlayerType.swift in Sources */,
 				16B4ECC822AD2999002036A5 /* AssetPreload.swift in Sources */,
 				16855A3B22AC35F400D68B3C /* MatchTeam.swift in Sources */,

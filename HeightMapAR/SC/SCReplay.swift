@@ -15,7 +15,7 @@ class SCReplay: UIViewController {
     var mapInfo : MapInfo!
     var replay : Replay!
     var events : [Event]!
-    var ui : UIController!
+    var ui : UIControllerJoystik!
     
     var speed : Double = 1.0
     
@@ -35,12 +35,35 @@ class SCReplay: UIViewController {
         mapInfo = MapFactory.map(map: map)
         scene.rootNode.addChildNode(mapInfo.map)
         
-        ui = UIController(size: sceneView.frame.size)
+        ui = UIControllerJoystik(size: sceneView.frame.size)
+        ui.leftJoytick.on(.move) { [unowned self] (joystik) in
+            let pVelocity = joystik.velocity;
+            let speed = CGFloat(0.001)
+            let userVector = self.getUserVector()
+            print(userVector)
+            self.sceneView.defaultCameraController.translateInCameraSpaceBy(x: Float(pVelocity.x*speed), y: userVector.0.y*Float(speed*pVelocity.y), z: userVector.0.z*Float(speed*pVelocity.y))
+        }
+        ui.enableJoystik()
+        
         sceneView.overlaySKScene = ui.scene
         
         let data = mainPlayer.data.first!
         replay = Replay(mapInfo,map,events,ui,data.id)
         replay.speed = speed
+        
+        //setup joystik
+    }
+    
+    // Credit to https://github.com/farice/ARShooter
+    func getUserVector() -> (SCNVector3, SCNVector3) { // (direction, position)
+        if let mat = self.sceneView.defaultCameraController.pointOfView?.transform {
+//            let mat = SCNMatrix4(transform) // 4x4 transform matrix describing camera in world space
+            let dir = SCNVector3(-1 * mat.m31, -1 * mat.m32, -1 * mat.m33) // orientation of camera in world space
+            let pos = SCNVector3(mat.m41, mat.m42, mat.m43) // location of camera in world space
+            
+            return (dir, pos)
+        }
+        return (SCNVector3(0, 0, -1), SCNVector3(0, 0, -0.2))
     }
     
     override func viewDidAppear(_ animated: Bool) {

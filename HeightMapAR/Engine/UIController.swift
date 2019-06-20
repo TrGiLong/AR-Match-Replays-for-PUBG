@@ -9,10 +9,10 @@
 import SpriteKit
 
 class UIController {
-    let scene : SKScene
+    let scene : UIScene
     
     init(size : CGSize) {
-        scene = SKScene(size: size)
+        scene = UIScene(size: size)
         scene.scaleMode = .resizeFill
         
         aliveLabel = SKLabelNode(fontNamed: "AvenirNext-Bold")
@@ -27,6 +27,10 @@ class UIController {
                 self.updateTableKill()
             })
             ])))
+    }
+    
+    func setSceneTouchChanged(_ sceneTouchChanged : UISceneTouchChanged?) {
+        scene.touchChanged = sceneTouchChanged
     }
     
     private var killEvents : [LogPllayerKill] = []
@@ -73,6 +77,7 @@ class UIController {
         aliveLabel.position = CGPoint(x: scene.size.width-8, y: scene.size.height-8)
         aliveLabel.text = "Alive \(event.gameStates.numAlivePlayers)"
     }
+    
 }
 
 extension UIController {
@@ -130,5 +135,30 @@ extension Dictionary where Value: Equatable {
         return compactMap { (key: Key, val: Value) -> Key? in
             value == val ? key : nil
         }
+    }
+}
+
+typealias UISceneTouchChanged = ((_ touches: Set<UITouch>, _ event: UIEvent?) -> Void)
+
+class UIScene : SKScene {
+    
+    var touchChanged : UISceneTouchChanged?
+    
+    override func sceneDidLoad() {
+        super.sceneDidLoad()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (touchChanged != nil) {
+            touchChanged!(touches,event)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
     }
 }

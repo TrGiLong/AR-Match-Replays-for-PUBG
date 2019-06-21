@@ -171,8 +171,8 @@ class Event {
 
 class Logarmordestroy : Event {
     let attackId :           Int
-    var attacker :           Character
-    var victim :             Character
+    var attacker :           Character?
+    var victim :             Character?
     let damageTypeCategory : String
     let damageReason :       String
     let damageCauserName :   String
@@ -183,8 +183,8 @@ class Logarmordestroy : Event {
         
         self.attackId = (json["attackId"] as! NSNumber).intValue
         
-        attacker = Character(json: json["attacker"] as! [String : Any])
-        victim = Character(json: json["victim"] as! [String : Any])
+        attacker = Character(json: json["attacker"] as? [String : Any])
+        victim = Character(json: json["victim"] as? [String : Any])
         
         damageTypeCategory = json["damageTypeCategory"] as! String
         damageReason = json["damageReason"] as! String
@@ -232,13 +232,13 @@ class LogGameStatePeriodoc : Event {
 }
 
 class LogHeal : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     let healAmount : Float
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         item = Item(json: json["item"] as! [String : Any])
         
@@ -249,13 +249,13 @@ class LogHeal : Event {
 }
 
 class LogItemAttach : Event {
-    var character : Character
+    var character : Character?
     var parentitem : Item
     var childitem : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         parentitem = Item(json: json["parentItem"] as! [String : Any])
         childitem = Item(json: json["childItem"] as! [String : Any])
         
@@ -264,13 +264,13 @@ class LogItemAttach : Event {
 }
 
 class LogItemDeAttach : Event {
-    var character : Character
+    var character : Character?
     var parentitem : Item
     var childitem : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         parentitem = Item(json: json["parentItem"] as! [String : Any])
         childitem = Item(json: json["childItem"] as! [String : Any])
@@ -280,12 +280,12 @@ class LogItemDeAttach : Event {
 }
 
 class LogItemDrop : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         item = Item(json: json["item"] as! [String : Any])
         
@@ -294,12 +294,12 @@ class LogItemDrop : Event {
 }
 
 class LogItemEquip : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         item = Item(json: json["item"] as! [String : Any])
         
@@ -308,12 +308,12 @@ class LogItemEquip : Event {
 }
 
 class LogItemPickup : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         item = Item(json: json["item"] as! [String : Any])
         
@@ -322,12 +322,12 @@ class LogItemPickup : Event {
 }
 
 class LogItemPickupFromCarePackage : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         item = Item(json: json["item"] as! [String : Any])
         
@@ -336,13 +336,13 @@ class LogItemPickupFromCarePackage : Event {
 }
 
 class LogItemPickupFromLootBox : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     let ownerTeamId : Int
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         item = Item(json: json["item"] as! [String : Any])
         
@@ -353,12 +353,12 @@ class LogItemPickupFromLootBox : Event {
 }
 
 class LogItemUnEquip : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         item = Item(json: json["item"] as! [String : Any])
         
@@ -367,12 +367,12 @@ class LogItemUnEquip : Event {
 }
 
 class LogItemUse : Event {
-    var character : Character
+    var character : Character?
     var item : Item
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         item = Item(json: json["item"] as! [String : Any])
         
         super.init(json: json)
@@ -400,7 +400,7 @@ class LogMatchEnd : Event {
     override init(json : [String : Any]) {
         
         for sb in json["characters"] as! [Any] {
-            characters.append(Character(json: sb as! [String : Any]))
+            characters.append(Character(json: sb as? [String : Any])!)
         }
         
         super.init(json: json)
@@ -421,7 +421,7 @@ class LogMatchStart : Event {
     override init(json : [String : Any]) {
         
         for sb in json["characters"] as! [Any] {
-            characters.append(Character(json: sb as! [String : Any]))
+            characters.append(Character(json: sb as? [String : Any])!)
         }
         
         mapName = json["mapName"] as! String
@@ -439,13 +439,13 @@ class LogMatchStart : Event {
 }
 
 class LogObjectDestroy : Event {
-    var character : Character
+    var character : Character?
     let objectType : String
     var objectLocations : Location
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         objectType = json["objectType"] as! String
         objectLocations = Location(json: json["objectLocation"] as! [String : Any])
         
@@ -454,12 +454,12 @@ class LogObjectDestroy : Event {
 }
 
 class LogObjectParachuteLanding : Event {
-    var character : Character
+    var character : Character?
     let distance : Float
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         self.distance = (json["distance"] as! NSNumber).floatValue
         
         super.init(json: json)
@@ -470,7 +470,7 @@ class LogPLayerAttack : Event {
     let attackId : Int
     let fireWeaponStackCount : Int
     
-    var attacker : Character
+    var attacker : Character?
     let attackType : String
     
     let weapon : Item
@@ -481,7 +481,7 @@ class LogPLayerAttack : Event {
         self.attackId = (json["attackId"] as! NSNumber).intValue
         self.fireWeaponStackCount = (json["fireWeaponStackCount"] as! NSNumber).intValue
         
-        attacker = Character(json: json["attacker"] as! [String : Any])
+        attacker = Character(json: json["attacker"] as? [String : Any])
         self.attackType = json["attackType"] as! String
         
         self.weapon = Item(json: json["weapon"] as! [String : Any])
@@ -497,10 +497,10 @@ class LogPLayerAttack : Event {
 }
 
 class LogPLayerCreate : Event {
-    var character : Character
+    var character : Character?
     
     override init(json : [String : Any]) {
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
 
         super.init(json: json)
     }
@@ -509,9 +509,9 @@ class LogPLayerCreate : Event {
 class LogPllayerKill : Event  {
     let attackId : Int
     
-    var killer : Character
-    var victim : Character
-    var assistant : Character
+    var killer : Character?
+    var victim : Character?
+    var assistant : Character?
     
     var damageTypeCategory : String
     var damageCauserName : String
@@ -526,9 +526,9 @@ class LogPllayerKill : Event  {
         
         self.attackId = (json["attackId"] as! NSNumber).intValue
         
-        killer = Character(json: json["killer"] as! [String : Any])
-        victim = Character(json: json["victim"] as! [String : Any])
-        assistant = Character(json: json["assistant"] as! [String : Any])
+        killer = Character(json: json["killer"] as? [String : Any])
+        victim = Character(json: json["victim"] as? [String : Any])
+        assistant = Character(json: json["assistant"] as? [String : Any])
         
         self.dBNOId = (json["dBNOId"] as! NSNumber).intValue
         
@@ -537,7 +537,7 @@ class LogPllayerKill : Event  {
         self.damageCauserAdditionalInfo = json["damageCauserAdditionalInfo"] as! [String]
         self.damageReason = json["damageReason"] as! String
         self.distance = (json["distance"] as! NSNumber).floatValue
-        self.victimGameResult = GameResult(json: json["victimGameResult"] as! [String : Any] )
+        self.victimGameResult = GameResult(json: json["victimGameResult"] as! [String : Any])
         
         super.init(json: json)
     }
@@ -565,8 +565,8 @@ class LogPlayerLogout : Event {
 
 class LogPlayerMakeGroggy : Event {
     let attackId :                   Int
-    let attacker :                   Character
-    let victim :                     Character
+    let attacker :                   Character?
+    let victim :                     Character?
     let damageReason :               String
     let damageTypeCategory :         String
     let damageCauserName :           String
@@ -579,8 +579,8 @@ class LogPlayerMakeGroggy : Event {
         
         self.attackId = (json["attackId"] as! NSNumber).intValue
         
-        attacker = Character(json: json["attacker"] as! [String : Any])
-        victim = Character(json: json["victim"] as! [String : Any])
+        attacker = Character(json: json["attacker"] as? [String : Any])
+        victim = Character(json: json["victim"] as? [String : Any])
         
         self.dBNOId = (json["dBNOId"] as! NSNumber).intValue
         
@@ -596,14 +596,14 @@ class LogPlayerMakeGroggy : Event {
 }
 
 class LogPlayerPosition : Event {
-    let character :        Character
-    let vehicle :          Vehicle
+    let character :        Character?
+    let vehicle :          Vehicle?
     let elapsedTime :      Float
     let numAlivePlayers :  Int
     
     override init(json : [String : Any]) {
-        character = Character(json: json["character"] as! [String : Any])
-        vehicle = Vehicle(json: json["vehicle"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
+        vehicle = Vehicle(json: json["vehicle"] as? [String : Any])
         self.elapsedTime = (json["elapsedTime"] as! NSNumber).floatValue
         self.numAlivePlayers = (json["numAlivePlayers"] as! NSNumber).intValue
         
@@ -612,13 +612,13 @@ class LogPlayerPosition : Event {
 }
 
 class LogPlayerRevive : Event {
-     let reviver :              Character
-     let victim :               Character
+     let reviver :              Character?
+     let victim :               Character?
      let dBNOId :               Int
     
     override init(json : [String : Any]) {
-        reviver = Character(json: json["reviver"] as! [String : Any])
-        victim = Character(json: json["victim"] as! [String : Any])
+        reviver = Character(json: json["reviver"] as? [String : Any])
+        victim = Character(json: json["victim"] as? [String : Any])
         self.dBNOId = (json["dBNOId"] as! NSNumber).intValue
         
         super.init(json: json)
@@ -628,7 +628,7 @@ class LogPlayerRevive : Event {
 class LogPlayerTakeDamage : Event {
     let attackId :            Int
     let attacker :            Character?
-    let victim :              Character
+    let victim :              Character?
     let damageTypeCategory :  String
     let damageReason :        String
     let damage :              Float       // 1.0 damage = 1.0 health
@@ -644,7 +644,7 @@ class LogPlayerTakeDamage : Event {
         } else {
             attacker = nil
         }
-        victim = Character(json: json["victim"] as! [String : Any])
+        victim = Character(json: json["victim"] as? [String : Any])
         
         self.damageTypeCategory = json["damageTypeCategory"] as! String
         self.damageReason = json["damageReason"] as! String
@@ -661,7 +661,7 @@ class LogRedZoneEnded : Event  {
     
     override init(json : [String : Any]) {
         for sb in json["drivers"] as! [Any] {
-            drivers.append(Character(json: sb as! [String : Any]))
+            drivers.append(Character(json: sb as? [String : Any])!)
         }
         
         super.init(json: json)
@@ -670,13 +670,13 @@ class LogRedZoneEnded : Event  {
 }
 
 class LogSwimend : Event {
-    let character :           Character
+    let character :           Character?
     let swimDistance :        Float
     let maxSwimDepthOfWater : Float
     
     override init(json : [String : Any]) {
         
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
 
         self.swimDistance = (json["swimDistance"] as! NSNumber).floatValue
         self.maxSwimDepthOfWater = (json["maxSwimDepthOfWater"] as! NSNumber).floatValue
@@ -686,20 +686,20 @@ class LogSwimend : Event {
 }
 
 class LogSwimStart : Event {
-    var character : Character
+    var character : Character?
     
     override init(json : [String : Any]) {
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         super.init(json: json)
     }
 }
 
 class LogVaultStart : Event {
-    var character : Character
+    var character : Character?
     
     override init(json : [String : Any]) {
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         
         super.init(json: json)
     }
@@ -707,16 +707,16 @@ class LogVaultStart : Event {
 
 class LogVehicleDestroy : Event {
     let attackId :            Int
-    let attacker :           Character
-    let vehicle :            Vehicle
+    let attacker :           Character?
+    let vehicle :            Vehicle?
     let damageTypeCategory : String
     let damageCauserName :   String
     let distance :           Float
     
     override init(json : [String : Any]) {
         self.attackId = (json["attackId"] as! NSNumber).intValue
-        attacker = Character(json: json["attacker"] as! [String : Any])
-        vehicle = Vehicle(json: json["vehicle"] as! [String : Any])
+        attacker = Character(json: json["attacker"] as? [String : Any])
+        vehicle = Vehicle(json: json["vehicle"] as? [String : Any])
         self.damageCauserName = json["damageCauserName"] as! String
         self.damageTypeCategory = json["damageTypeCategory"] as! String
         self.distance = (json["distance"] as! NSNumber).floatValue
@@ -726,15 +726,15 @@ class LogVehicleDestroy : Event {
 }
 
 class LogVehicleLeave : Event {
-    let character :           Character
-    let vehicle :            Vehicle
+    let character :           Character?
+    let vehicle :            Vehicle?
     let rideDistance :          Float
     let seatIndex :           Int
     let maxSpeed :           Float
     
     override init(json : [String : Any]) {
-        character = Character(json: json["character"] as! [String : Any])
-        vehicle = Vehicle(json: json["vehicle"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
+        vehicle = Vehicle(json: json["vehicle"] as? [String : Any])
         self.rideDistance = (json["rideDistance"] as! NSNumber).floatValue
         self.seatIndex = (json["seatIndex"] as! NSNumber).intValue
         self.maxSpeed = (json["maxSpeed"] as! NSNumber).floatValue
@@ -744,15 +744,15 @@ class LogVehicleLeave : Event {
 }
 
 class LogVehicleRide : Event {
-    let attacker :           Character
-    let vehicle :            Vehicle
+    let attacker :           Character?
+    let vehicle :            Vehicle?
 
     let seatIndex :           Int
 
     
     override init(json : [String : Any]) {
-        attacker = Character(json: json["character"] as! [String : Any])
-        vehicle = Vehicle(json: json["vehicle"] as! [String : Any])
+        attacker = Character(json: json["character"] as? [String : Any])
+        vehicle = Vehicle(json: json["vehicle"] as? [String : Any])
 
         self.seatIndex = (json["seatIndex"] as! NSNumber).intValue
         
@@ -761,12 +761,12 @@ class LogVehicleRide : Event {
 }
 
 class LogWeaponFireCount : Event {
-    let character :           Character
+    let character :           Character?
     let weaponId :            String
     let fireCount :           Int
     
     override init(json : [String : Any]) {
-        character = Character(json: json["character"] as! [String : Any])
+        character = Character(json: json["character"] as? [String : Any])
         self.weaponId = json["weaponId"] as! String
         self.fireCount = (json["fireCount"] as! NSNumber).intValue
         super.init(json: json)
@@ -775,17 +775,17 @@ class LogWeaponFireCount : Event {
 
 class LogWheelDestroy : Event {
     let attackId :            Int
-    let attacker :           Character
-    let vehicle :            Vehicle
+    let attacker :           Character?
+    let vehicle :            Vehicle?
     let damageTypeCategory : String
     let damageCauserName :   String
     
     override init(json : [String : Any]) {
         self.attackId = (json["attackId"] as! NSNumber).intValue
         
-        attacker = Character(json: json["attacker"] as! [String : Any])
+        attacker = Character(json: json["attacker"] as? [String : Any])
         self.damageCauserName = json["damageCauserName"] as! String
-        vehicle = Vehicle(json: json["vehicle"] as! [String : Any])
+        vehicle = Vehicle(json: json["vehicle"] as? [String : Any])
         self.damageTypeCategory = json["damageTypeCategory"] as! String
         
         super.init(json: json)

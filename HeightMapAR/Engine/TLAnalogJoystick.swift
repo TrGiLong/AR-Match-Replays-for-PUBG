@@ -199,7 +199,7 @@ open class TLAnalogJoystick: SKNode {
     public let base: TLAnalogJoystickComponent
 	
 	private var pHandleRatio: CGFloat
-	private var displayLink: CADisplayLink!
+    var displayLink: CADisplayLink!
 	private var hadnlers = [TLAnalogJoystickEventType: TLAnalogJoystickEventHandlers]()
 	private var handlerIDsRelEvent = [TLAnalogJoystickHandlerID: TLAnalogJoystickEventType]()
 	private(set) var tracking = false {
@@ -226,6 +226,12 @@ open class TLAnalogJoystick: SKNode {
 			}
 		}
 	}
+    
+    func invalidate() {
+        displayLink.invalidate()
+        displayLink = nil
+        removeAllChildren()
+    }
 	
 	public var velocity: CGPoint {
 		let diff = handle.diameter * 0.02
@@ -341,7 +347,6 @@ open class TLAnalogJoystick: SKNode {
     }
 	
 	deinit {
-		displayLink.invalidate()
 	}
 	
 	convenience init(withDiameter diameter: CGFloat, handleRatio: CGFloat = 0.6) {
@@ -362,7 +367,7 @@ open class TLAnalogJoystick: SKNode {
 	private func runEvent(_ type: TLAnalogJoystickEventType) {
 		let handlers = getEventHandlers(forType: type)
 
-		handlers.forEach { _, handler in
+		handlers.forEach { [unowned self] _, handler in
 			handler(self)
 		}
 	}

@@ -19,7 +19,8 @@ class Character {
     let isInRedZone :  Bool
     let zone :         [String]
     
-    init(json : [String : Any]) {
+    init?(json : [String : Any]?) {
+        guard let json = json else { return nil }
         name = json["name"] as! String
         teamId = (json["teamId"] as! NSNumber).intValue
         health = (json["health"] as! NSNumber).floatValue

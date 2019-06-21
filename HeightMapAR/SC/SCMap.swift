@@ -84,7 +84,7 @@ class SCMap: UIViewController {
 
             let translation = CGPoint(x: cur.x - prev.x, y: cur.y - prev.y)
             
-            let dx = translation.x * 0.25
+            let dx = -translation.x * 0.25
             let dy = -translation.y * 0.25
             
             var degreesX = self.cameraNode.eulerAngles.x.radiansToDegrees + Float(dy)
@@ -96,7 +96,6 @@ class SCMap: UIViewController {
                 degreesX = -10
             }
             
-            print(degreesX)
             
             self.cameraNode.eulerAngles.x = degreesX.degreesToRadians
             self.cameraNode.eulerAngles.y = degreesY.degreesToRadians

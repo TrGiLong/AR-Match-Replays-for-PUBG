@@ -23,7 +23,7 @@ class UIController {
         
         scene.run(SKAction.repeatForever(SKAction.sequence([
             SKAction.wait(forDuration: 2),
-            SKAction.run({
+            SKAction.run({ [unowned self] in 
                 self.updateTableKill()
             })
             ])))
@@ -93,10 +93,10 @@ extension UIController {
         node.name = "\(event.attackId)"
         
         let textAttacker = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        textAttacker.text = event.killer.name
+        textAttacker.text = event.killer?.name
         textAttacker.horizontalAlignmentMode = .left
         let textVictim   = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        textVictim.text = event.victim.name
+        textVictim.text = event.victim?.name
         textVictim.horizontalAlignmentMode = .left
         let weaponIcon : SKSpriteNode!
         

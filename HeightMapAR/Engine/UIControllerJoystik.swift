@@ -24,5 +24,8 @@ class UIControllerJoystik : UIController {
     func disableJoystik() {
         leftJoytick.removeFromParent()
     }
-    
+
+    deinit {
+        leftJoytick.invalidate() // Memory leak in library. TODO: contact to author to fix this problem. (CADisplayLink)
+    }
 }

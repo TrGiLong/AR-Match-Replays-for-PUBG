@@ -13,7 +13,10 @@ class Vehicle {
     let vehicleID: String
     let healthPercent, feulPercent: Float
     
-    init(json : [String : Any]) {
+    init?(json : [String : Any]?) {
+        guard let json = json else {
+            return nil
+        }
         vehicleType = json["vehicleType"] as! String
         vehicleID = json["vehicleType"] as! String
         healthPercent = (json["healthPercent"] as! NSNumber).floatValue

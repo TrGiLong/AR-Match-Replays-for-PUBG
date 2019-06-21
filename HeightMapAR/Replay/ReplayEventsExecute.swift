@@ -114,19 +114,22 @@ extension Replay {
     
     
     func heal(event : LogHeal) {
-        if let node = getPlayer(character: event.character) {
+        guard let character = event.character else { return }
+        if let node = getPlayer(character: character) {
             if let textNode = node.childNode(withName: kHP, recursively: false) {
-                textNode.geometry = hpGeometry(health: event.character.health + event.healAmount)
+                textNode.geometry = hpGeometry(health: character.health + event.healAmount)
             }
         }
     }
     
     func itemUse(event : LogItemUse) {
-        _ = getPlayer(character: event.character)
+        guard let character = event.character else { return }
+        _ = getPlayer(character: character)
     }
     
     func playerRevive(event : LogPlayerRevive) {
-        _ = getPlayer(character: event.reviver)
+        guard let reviver = event.reviver else { return }
+        _ = getPlayer(character: reviver)
     }
     
     func logPlayyerAttack(event : LogPLayerAttack) {
@@ -171,8 +174,10 @@ extension Replay {
     }
     
     func armorDestry(event : Logarmordestroy, repeatAnimation : Int = 1) {
-        guard let attackerNode = getPlayer(character: event.attacker) else { return }
-        guard let victimNode = getPlayer(character: event.victim) else { return }
+        guard let attacker = event.attacker else { return }
+        guard let victim = event.victim else { return }
+        guard let attackerNode = getPlayer(character: attacker) else { return }
+        guard let victimNode = getPlayer(character: victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
@@ -184,8 +189,10 @@ extension Replay {
     }
     
     func playerKill(event : LogPllayerKill, repeatAnimation : Int = 1) {
-        guard let attackerNode = getPlayer(character: event.killer) else { return }
-        guard let victimNode = getPlayer(character: event.victim) else { return }
+        guard let killer = event.killer else { return }
+        guard let victim = event.victim else { return }
+        guard let attackerNode = getPlayer(character: killer) else { return }
+        guard let victimNode = getPlayer(character: victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
@@ -206,8 +213,10 @@ extension Replay {
     }
     
     func playerMakeGroggy(event : LogPlayerMakeGroggy, repeatAnimation : Int = 1) {
-        guard let attackerNode = getPlayer(character: event.attacker) else { return }
-        guard let victimNode = getPlayer(character: event.victim) else { return }
+        guard let attacker = event.attacker else { return }
+        guard let victim = event.victim else { return }
+        guard let attackerNode = getPlayer(character: attacker) else { return }
+        guard let victimNode = getPlayer(character: victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
@@ -221,17 +230,16 @@ extension Replay {
     
     func playerTakeDamage(event : LogPlayerTakeDamage, repeatAnimation : Int = 1) {
         guard let attacker = event.attacker else { return }
-        //        guard let victim  = event.victim else { return }
-        
+        guard let victim = event.victim else { return }
         guard let attackerNode = getPlayer(character: attacker) else { return }
-        guard let victimNode = getPlayer(character: event.victim) else { return }
+        guard let victimNode = getPlayer(character: victim) else { return }
         
         var from = attackerNode.position
         var to   = victimNode.position
         
-        if let node = getPlayer(character: event.victim) {
+        if let node = getPlayer(character: victim) {
             if let textNode = node.childNode(withName: kHP, recursively: false) {
-                textNode.geometry = hpGeometry(health: event.victim.health - event.damage)
+                textNode.geometry = hpGeometry(health: victim.health - event.damage)
             }
         }
         
@@ -242,19 +250,21 @@ extension Replay {
     }
     
     func vehicleRide(event : LogVehicleRide) {
-        guard let node = getPlayer(character: event.attacker) else { return }
+        guard let attacker = event.attacker else { return }
+        guard let node = getPlayer(character: attacker) else { return }
         
-        let newLocation = locationToVector(location: event.attacker.location)
+        let newLocation = locationToVector(location: attacker.location)
         node.removeAction(forKey: kMovingActionKey)
         node.position = newLocation
     }
     
     func playerCreated(event : LogPLayerCreate) {
-        let node = getPlayerNodeOrCreated(character: event.character)
+        guard let character = event.character else { return }
+        let node = getPlayerNodeOrCreated(character: character)
         mapDataSource.node.addChildNode(node)
         
         node.removeAction(forKey: kMovingActionKey)
-        let newLocation = locationToVector(location: event.character.location)
+        let newLocation = locationToVector(location: character.location)
         node.position = newLocation
     }
     
@@ -271,15 +281,17 @@ extension Replay {
     }
     
     func playerEventPosition(event : LogPlayerPosition) {
-        guard let node = getPlayer(character: event.character) else { return }
-        let newLocation = locationToVector(location: event.character.location)
+        guard let character = event.character else { return }
+        guard let node = getPlayer(character: character) else { return }
+        let newLocation = locationToVector(location: character.location)
         
         if let nextEvent = firstFutureEvent(in: 11, compare: { (futureEvent) -> Bool in
             guard let futureEvent = futureEvent as? LogPlayerPosition else { return false }
-            return futureEvent.character.accountId == event.character.accountId
+            return futureEvent.character?.accountId == character.accountId
         }) as? LogPlayerPosition {
+            guard let nextEventCharacter = nextEvent.character else { return }
             node.position = newLocation
-            let nexLocation = locationToVector(location: nextEvent.character.location)
+            let nexLocation = locationToVector(location: nextEventCharacter.location)
             node.runAction(SCNAction.move(to: nexLocation, duration: 10/speed),forKey: kMovingActionKey)
         }
         

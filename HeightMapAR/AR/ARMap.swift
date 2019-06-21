@@ -18,14 +18,14 @@ struct PhysicsBody {
 class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     var map : Map = .sanhok
-    var mapInfo : MapInfo!
+    var mapDataSource : MapDataSource!
     
     @IBOutlet weak var arView: ARSCNView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapInfo = MapFactory.map(map: map)
+        mapDataSource = MapFactory.map(map: map)
         
         arView.delegate = self
         
@@ -84,12 +84,12 @@ class ARView: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             return
         }
         
-        let width = mapInfo.map.boundingBox.max.x - mapInfo.map.boundingBox.min.x
-        let height = mapInfo.map.boundingBox.max.z - mapInfo.map.boundingBox.min.z
+        let width = mapDataSource.node.boundingBox.max.x - mapDataSource.node.boundingBox.min.x
+        let height = mapDataSource.node.boundingBox.max.z - mapDataSource.node.boundingBox.min.z
         
-        mapInfo.map.removeFromParentNode()
-        mapInfo.map.position = SCNVector3(currentTransform[3][0]-width/4, currentTransform[3][1], currentTransform[3][2]-height/4)
-        arView.scene.rootNode.addChildNode(mapInfo.map)
+        mapDataSource.node.removeFromParentNode()
+        mapDataSource.node.position = SCNVector3(currentTransform[3][0]-width/4, currentTransform[3][1], currentTransform[3][2]-height/4)
+        arView.scene.rootNode.addChildNode(mapDataSource.node)
         
 
     }

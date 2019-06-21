@@ -27,21 +27,16 @@ func mapRealSize(map : Map) -> CGSize {
     }
 }
 
-
-typealias  MapSize = (width : CGFloat, height : CGFloat)
-typealias  MapCoordiante = (width : UInt32, height : UInt32)
-typealias  MapInfo = (map : SCNNode, points : [SCNVector3], originSize : MapSize, size : MapCoordiante )
-
 class MapFactory {
     
     static let delta = 32
     static let k : Float = 1
     
-    static func map( map : Map ) -> MapInfo? {
+    static func map( map : Map ) -> MapDataSource? {
         return MapFactory.createMap(map : map)
     }
     
-    static private func createMap(map : Map) -> MapInfo? {
+    static private func createMap(map : Map) -> MapDataSource? {
         let image = UIImage(named: "\(map.rawValue)HeightMap.png")!
         
         var sources : [SCNVector3] = [];
@@ -116,10 +111,26 @@ class MapFactory {
             node.addChildNode(vnsNode)
         }
         
-        return (node,
-                sources,
-                (image.size.width * image.scale,image.size.height * image.scale),
-                (xLength, yLength)
-        )
+        return MapDataSource(node,sources,CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale), MapDataSource.MapSize(width: xLength, height: yLength))
+    }
+}
+
+class MapDataSource {
+    
+    struct MapSize {
+        let width  : UInt32
+        let height : UInt32
+    }
+    
+    let node : SCNNode
+    let rawPoints : [SCNVector3]
+    let mapSizeInPixels : CGSize
+    let mapSize : MapSize
+    
+    init(_ node : SCNNode,_ rawPoints : [SCNVector3], _ mapSizeInPixels : CGSize,_ mapSize : MapSize) {
+        self.node = node
+        self.rawPoints = rawPoints
+        self.mapSizeInPixels = mapSizeInPixels
+        self.mapSize = mapSize
     }
 }

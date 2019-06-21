@@ -12,7 +12,7 @@ import SceneKit
 class SCMap: UIViewController {
 
     var map : Map = .sanhok
-    var mapInfo : MapInfo!
+    var mapDataSource : MapDataSource!
     var ui : UIControllerJoystik!
     
     let camera = SCNCamera()
@@ -107,10 +107,10 @@ class SCMap: UIViewController {
         
         sceneView.overlaySKScene = ui.scene
         
-        mapInfo = MapFactory.map(map: map)
-        scene.rootNode.addChildNode(mapInfo.map)
+        mapDataSource = MapFactory.map(map: map)
+        scene.rootNode.addChildNode(mapDataSource.node)
         
-        let map = mapInfo.map
+        let map = mapDataSource.node
         cameraNode.position = SCNVector3((map.boundingBox.max.x)/4, 0.5, (map.boundingBox.max.z)/4)
         cameraNode.eulerAngles = SCNVector3Make(-Float.pi/3, 0, 0)
 

@@ -26,7 +26,7 @@ class ARReplay: ARView {
         ui = UIController(size: arView.bounds.size)
 
         let data = mainPlayer.data.first!
-        replay = Replay(mapInfo,map,events,ui, data.id)
+        replay = Replay(mapDataSource,map,events,ui, data.id)
         replay.speed = speed
         
         arView.overlaySKScene = ui.scene

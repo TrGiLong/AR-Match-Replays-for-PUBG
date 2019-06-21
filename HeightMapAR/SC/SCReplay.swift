@@ -20,7 +20,7 @@ class SCReplay: SCMap {
         super.viewDidLoad()
         
         let data = mainPlayer.data.first!
-        replay = Replay(mapInfo,map,events,ui,data.id)
+        replay = Replay(mapDataSource,map,events,ui,data.id)
         replay.speed = speed
 
         sceneView.delegate = self

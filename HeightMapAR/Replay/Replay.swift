@@ -11,7 +11,7 @@ import SceneKit
 class Replay {
     
     var map : Map
-    var mapInfo : MapInfo
+    var mapDataSource : MapDataSource
     var events : [Event]
     
     var currentEventIndex : Int = 0
@@ -36,8 +36,8 @@ class Replay {
     
     weak var ui : UIController?
     
-    init(_ mapInfo : MapInfo,_ map : Map,_ events : [Event],_ ui : UIController? = nil, _ mainPlayer : String) {
-        self.mapInfo = mapInfo
+    init(_ mapDataSource : MapDataSource,_ map : Map,_ events : [Event],_ ui : UIController? = nil, _ mainPlayer : String) {
+        self.mapDataSource = mapDataSource
         self.map = map
         self.events = events
         eventLoopTime = events[0]._D

@@ -57,7 +57,7 @@ extension Replay {
         let line = SCNGeometry.lineThrough(points: [from,to], width: 4, closed: false, color: UIColor.green.cgColor)
         
         let node = SCNNode(geometry: line)
-        mapInfo.map.addChildNode(node)
+        mapDataSource.node.addChildNode(node)
         node.runAction(SCNAction.sequence([
             
             SCNAction.repeat(SCNAction.sequence([

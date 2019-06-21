@@ -51,7 +51,7 @@ extension Replay {
     }
     
     func processEventInFuture(time : TimeInterval = 10 ,execute : @escaping () -> Void) {
-        mapInfo.map.runAction(
+        mapDataSource.node.runAction(
             SCNAction.sequence([
                 SCNAction.wait(duration: time/speed),
                 SCNAction.run({ (_) in
@@ -97,7 +97,7 @@ extension Replay {
         blueZone?.removeFromParentNode()
         blueZone = drawZone(position: blueZonePosition, radius: CGFloat(radius), color: UIColor(red: 0.1882, green: 0, blue: 0.8078, alpha: 0.4))
         blueZone?.position = blueZonePosition
-        mapInfo.map.addChildNode(blueZone!)
+        mapDataSource.node.addChildNode(blueZone!)
         
         //red zone
         let redZonePosition = locationToVector(location: event.gameStates.redZonePosition)
@@ -106,7 +106,7 @@ extension Replay {
         redZone?.removeFromParentNode()
         redZone = drawZone(position: redZonePosition, radius: CGFloat(redRadius), color: UIColor(red: 1, green: 0, blue: 0, alpha: 0.4))
         redZone?.position = redZonePosition
-        mapInfo.map.addChildNode(redZone!)
+        mapDataSource.node.addChildNode(redZone!)
         
         //update ui
         ui?.numberAlive(event: event)
@@ -251,7 +251,7 @@ extension Replay {
     
     func playerCreated(event : LogPLayerCreate) {
         let node = getPlayerNodeOrCreated(character: event.character)
-        mapInfo.map.addChildNode(node)
+        mapDataSource.node.addChildNode(node)
         
         node.removeAction(forKey: kMovingActionKey)
         let newLocation = locationToVector(location: event.character.location)
@@ -260,7 +260,7 @@ extension Replay {
     
     func playerLogin(event : LogPlayerLogin) {
         if let node = getPlayer(id: event.accountId) {
-            mapInfo.map.addChildNode(node)
+            mapDataSource.node.addChildNode(node)
         }
     }
     

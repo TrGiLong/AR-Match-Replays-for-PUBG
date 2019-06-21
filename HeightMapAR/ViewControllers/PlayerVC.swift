@@ -35,7 +35,7 @@ class PlayerVC: UIViewController {
             let matches = Observable<PlayerMatchesDatum>.from(data).flatMap { (matchData) -> Single<Match> in
                 return PubgAPI.getMatch(playerMatch: matchData, platform: self.platform)
             }
-            
+
             matches.subscribe(onNext: { (match) in
                 self.matches.append(match)
                 self.tableView.reloadData()

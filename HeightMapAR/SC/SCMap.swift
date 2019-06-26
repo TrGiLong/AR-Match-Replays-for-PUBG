@@ -22,6 +22,8 @@ class SCMap: UIViewController {
     
     var isMovingCamera = false
     
+    var tmpCameraAngles : SCNVector3?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,6 +57,7 @@ class SCMap: UIViewController {
         
         ui.leftJoytick.on(.begin) { [unowned self](_) in
             self.isMovingCamera = true
+            self.tmpCameraAngles = self.cameraNode.eulerAngles
         }
         
         ui.leftJoytick.on(.move) { [unowned self] (joystik) in
@@ -72,6 +75,7 @@ class SCMap: UIViewController {
         
         ui.leftJoytick.on(.end) { [unowned self](_) in
             self.isMovingCamera = false
+            self.cameraNode.eulerAngles = self.tmpCameraAngles ?? self.cameraNode.eulerAngles
         }
         
         ui.enableJoystik()
@@ -92,10 +96,9 @@ class SCMap: UIViewController {
             
             if (degreesX < -80) {
                 degreesX = -80
-            } else if (degreesX > -10) {
-                degreesX = -10
+            } else if (degreesX > 80) {
+                degreesX = 80
             }
-            
             
             self.cameraNode.eulerAngles.x = degreesX.degreesToRadians
             self.cameraNode.eulerAngles.y = degreesY.degreesToRadians

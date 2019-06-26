@@ -85,6 +85,56 @@ extension Replay {
             infoNode!.addChildNode(hpNode!)
         }
         hpNode?.geometry = hpGeometry(health: character.health)
+        
+        guard let inventory = getInventory(character: character) else { return }
+        
+        // Weapon
+        var weaponNode = infoNode!.childNode(withName: kWeaponLabel, recursively: false)
+        if (weaponNode == nil) {
+            let plane = SCNPlane(width: 0.25, height: 0.125)
+            plane.firstMaterial?.diffuse.contents = UIColor.clear
+            plane.firstMaterial?.isDoubleSided = true
+            weaponNode = SCNNode(geometry: plane)
+            weaponNode!.name = kWeaponLabel
+            weaponNode!.position = SCNVector3(0.35, 0.3, 0)
+            infoNode!.addChildNode(weaponNode!)
+        }
+        if let weapon = inventory.weapon {
+            weaponNode!.geometry?.firstMaterial?.diffuse.contents = UIImage(named: weapon.itemID)
+        }
+
+        //head
+        var headNode = infoNode!.childNode(withName: kHeadLabel, recursively: false)
+        if (headNode == nil) {
+            let plane = SCNPlane(width: 0.1, height: 0.1)
+            plane.firstMaterial?.diffuse.contents = UIColor.clear
+            plane.firstMaterial?.isDoubleSided = true
+            headNode = SCNNode(geometry: plane)
+            headNode!.name = kHeadLabel
+            headNode!.position = SCNVector3(0.15, 0.5, 0)
+            infoNode!.addChildNode(headNode!)
+        }
+
+        if let head = inventory.head {
+            headNode!.geometry?.firstMaterial?.diffuse.contents = UIImage(named: head.imageID)
+        }
+        
+        //armor
+        var armorNode = infoNode!.childNode(withName: kArmorLabel, recursively: false)
+        if (armorNode == nil) {
+            let plane = SCNPlane(width: 0.1, height: 0.1)
+            plane.firstMaterial?.diffuse.contents = UIColor.clear
+            plane.firstMaterial?.isDoubleSided = true
+            armorNode = SCNNode(geometry: plane)
+            armorNode!.name = kArmorLabel
+            armorNode!.position = SCNVector3(0.35, 0.5, 0)
+            infoNode!.addChildNode(armorNode!)
+        }
+        
+        if let armor = inventory.armor {
+            armorNode!.geometry?.firstMaterial?.diffuse.contents = UIImage(named: armor.imageID)
+        }
+        
     }
     
     func updateRotationInfoNode() {

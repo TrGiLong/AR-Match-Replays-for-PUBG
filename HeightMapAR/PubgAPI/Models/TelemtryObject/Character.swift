@@ -32,3 +32,13 @@ class Character {
         zone = json["zone"] as! [String] 
     }
 }
+
+extension Character : Hashable {
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        return lhs.accountId == rhs.accountId
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.accountId)
+    }
+}

@@ -45,6 +45,8 @@ extension Replay {
             self.gameStatePeriodic(event: event as! LogGameStatePeriodoc)
         case .LogItemUse:
             self.itemUse(event: event as! LogItemUse)
+        case .LogItemEquip:
+            self.itemEquip(event: event as! LogItemEquip)
         default:
             return
         }
@@ -296,4 +298,16 @@ extension Replay {
         }
         
     }
+    
+    func itemEquip(event : LogItemEquip) {
+//        print(event.item.itemID,event.item.category,event.item.subCategory)
+        guard let character = event.character else { return }
+        var inventory = playersInvetory[character]
+        if inventory == nil {
+            inventory = CharacterInventory(characterID: character.accountId)
+            playersInvetory[character] = inventory
+        }
+        inventory?.getNewItem(item: event.item)
+    }
+    
 }

@@ -33,6 +33,9 @@ class Replay {
     let kMovingActionKey = "movingActionKey"
     let kHP = "HP"
     let kPlayerInfoNode = "playerInfoNode"
+    let kWeaponLabel = "weaponLabel"
+    let kHeadLabel = "headLabel"
+    let kArmorLabel = "armorLabel"
     
     weak var ui : UIController?
     
@@ -76,10 +79,12 @@ class Replay {
             
             updateRotationInfoNode()
         }
-        
-        
     }
     
-    
-
+    var playersInvetory : [Character : CharacterInventory] = [:]
+    func getInventory(character : Character) -> CharacterInventory? {
+        return playersInvetory[character]
+    }
 }
+
+

@@ -61,7 +61,7 @@ extension Replay {
     }
     
     func updatePlayerInfoNode(node : SCNNode, character : Character) {
-
+        
         var infoNode = node.childNode(withName: kPlayerInfoNode, recursively: false)
         if infoNode == nil {
             infoNode = SCNNode()

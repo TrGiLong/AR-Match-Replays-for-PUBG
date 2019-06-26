@@ -362,7 +362,6 @@
 				16ECE2ED22AA86070060583E /* big-anchor.png */,
 				16ECE2E522AA7DA80060583E /* spawns.json */,
 				16BFA92F22A9BDF500E8D824 /* airdrop.dae */,
-				16A4699822B00CD40082187E /* Item */,
 				16B4ECB022AD08A8002036A5 /* Map */,
 				16B4ECC522AD11BE002036A5 /* SceneKitAsset.scnassets */,
 				16C1C9AE22AEBDF50097D7AF /* smoke.png */,
@@ -519,6 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				16A4685D22AF86000082187E /* PubgAsset.swift */,
+				16A4699822B00CD40082187E /* Item */,
 				16A4685022AF85EB0082187E /* telemetry */,
 			);
 			path = "pubg-assets";

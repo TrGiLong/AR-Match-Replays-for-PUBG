@@ -7,7 +7,6 @@ target 'HeightMapAR' do
 	pod 'Alamofire'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
-  pod 'Google-Mobile-Ads-SDK'
   # Pods for HeightMapAR
 
 end

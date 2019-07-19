@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "254F5BF7B0C2547F40C249F2D61B7989"
+               BlueprintIdentifier = "C522B8BB954E235F684B2B3C26BAB513"
                BuildableName = "Pods_HeightMapAR.framework"
                BlueprintName = "Pods-HeightMapAR"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "254F5BF7B0C2547F40C249F2D61B7989"
+            BlueprintIdentifier = "C522B8BB954E235F684B2B3C26BAB513"
             BuildableName = "Pods_HeightMapAR.framework"
             BlueprintName = "Pods-HeightMapAR"
             ReferencedContainer = "container:Pods.xcodeproj">

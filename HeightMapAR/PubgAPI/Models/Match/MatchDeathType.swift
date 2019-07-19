@@ -5,4 +5,5 @@ enum MatchDeathType: String, Codable {
     case byplayer = "byplayer"
     case suicide = "suicide"
     case logout = "logout"
+    case byzone = "byzone"
 }

@@ -8,7 +8,10 @@ The map is builded by using a normal map and a height map file in `/assets/Map`.
 
 More detail about building the map you can see in the `MapFactory` class. 
 
-For getting a replay data I use API endpoints at `https://developer.pubg.com`. The data is a sequence of actions. Example: Move player 1 to (x,y) -> Player 1 picks a weapon -> Player 1 was killed -> and so on...
+For getting a replay data I use API endpoints at `https://developer.pubg.com`. The data is a sequence of actions. 
+Using `SceneKit` I connect the actions from timeline and the nodes in scene.
+
+Example: Move player 1 to (x,y) -> Player 1 picks a weapon -> Player 1 was killed -> and so on... 
 
 AR Match Replays for PUBG is a third-party application. This application is in no way sponsored, endorsed or administered by, or associated with Bluehole, PUBG Corporation or Tencent Games.
 
